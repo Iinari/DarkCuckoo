@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 20ece848c12407049ae1bf0a85fdfbab
+guid: ed629a12748f2d54ba65da5e65aa3d08
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3818052225429175914
-    second: walk.png0026_0
+      213: 3821784648644234806
+    second: HillopurkinVartija_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk.png0026_0
+      name: HillopurkinVartija_0
       rect:
         serializedVersion: 2
-        x: 807
-        y: 633
-        width: 385
-        height: 400
+        x: 0
+        y: 0
+        width: 332
+        height: 308
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6e789625427cf430800000000000000
-      internalID: 3818052225429175914
+      spriteID: 63e0b76a3e4b90530800000000000000
+      internalID: 3821784648644234806
       vertices: []
       indices: 
       edges: []
@@ -138,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f71250a2361010c4aa540e1a0b6a25df
+    spriteID: e78a6947fa5c84d4fa6c8e23061a1f2a
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      walk.png0026_0: 3818052225429175914
+      HillopurkinVartija_0: 3821784648644234806
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
