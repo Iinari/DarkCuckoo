@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80106059f9dcb9f48a425501719d552b, type: 3}
+  m_Name: Juustoukko
+  m_EditorClassIdentifier: 
+  HeroClass: 2
+  heroName: Juustoukko
+  heroSprite: {fileID: -127738096878908423, guid: 62125765afe458148beedd127507e010, type: 3}
+  manaPoolIcon: {fileID: 5277609131733322071, guid: 2320141d5379c6b49a8cfba7f940541d, type: 3}
+  health: 100
+  mana: 3
+  strength: 1
+  luck: 1

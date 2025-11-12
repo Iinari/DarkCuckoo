@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a8118ad6b6e6647a2169e2a92e98c3, type: 3}
+  m_Name: Uppercut
+  m_EditorClassIdentifier: 
+  cardName: Uppercut
+  ID: 1
+  cardDescription: Deal # damage
+  cost: 3
+  cardType: 0
+  cardRarity: 0
+  cardImage: {fileID: 13241043379834031, guid: 6fef56de21ab0ba4e92997b05350f922, type: 3}
+  damage: 3
+  damageMin: 0
+  damageMax: 0
+  damageType: 0
+  damageSubType: 0

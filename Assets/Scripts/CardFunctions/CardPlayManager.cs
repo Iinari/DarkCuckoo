@@ -1,0 +1,144 @@
+using Unity.VisualScripting;
+using UnityEngine;
+using SnIProductions;
+
+public class CardPlayManager : MonoBehaviour
+{
+    public Card playedCard;
+
+    public Enemy lastTarget;
+
+    public Hero playerHero;
+
+    private HandManager handManager;
+
+    private DiscardManager discardManager;
+
+    void Awake()
+    {
+        handManager = FindFirstObjectByType<HandManager>();
+        discardManager = FindFirstObjectByType<DiscardManager>();
+    }
+
+    public Enemy GetTargetEnemy()
+    {
+        return lastTarget;
+    }
+
+    public void SetTargetEnemy(Enemy target)
+    {
+        if (target != null)
+        {
+            lastTarget = target;
+        }
+
+    }
+
+    public Card GetLastPlayedCard()
+    {
+        return playedCard;
+    }
+
+    public void SetLastPlayedCard(Card card)
+    {
+        if (card != null)
+        {
+            playedCard = card;  
+        }
+    }
+
+    public void PlayTheCard(Card card)
+    {   
+        SetLastPlayedCard(card);
+
+        if (playedCard != null)
+        {
+            switch (playedCard.cardData.cardType)
+            {
+                case CardType.Attack:
+                    if (lastTarget != null)
+                    {
+                        lastTarget.TakeDamage(playedCard.cardData.GetDamage());
+                    }
+                    else Debug.Log(playedCard.cardData.cardType + "didn't have valid target");
+                    break;
+                case CardType.Skill:
+                    PlaySkillCard(card);
+                    break;
+
+            }
+
+            DecreaseMP(card.manaCost);
+        }
+        
+    }
+
+
+    public bool CheckHasEnoughMana(int cardCost)
+    { 
+        if (playerHero.attributesManager.mp - cardCost >= 0)
+        {
+            return (playerHero.attributesManager.mp - cardCost >= 0);
+        }
+        else
+        {
+            Debug.Log("NOT ENOUGH MANA");
+            return (playerHero.attributesManager.mp - cardCost >= 0);
+        }
+        
+    }
+
+    public void DecreaseMP(int mpAmount)
+    {
+        playerHero.attributesManager.ModifyAttribute(AttributesManager.Attribute.MP, -mpAmount);
+    }
+
+    public void PlaySkillCard(Card card)
+    {
+        
+        int heal = card.cardData.GetHealPower();
+        if (heal > 0) 
+        {
+            playerHero.attributesManager.ModifyAttribute(AttributesManager.Attribute.HP, heal);
+        }
+
+        int block = card.cardData.GetBlockPower();
+        if (block > 0)
+        {
+            Debug.Log("Gained " + block + " block");
+        }
+
+    }
+
+    public void DiscardThisCard()
+    {
+        if (discardManager != null)
+        {
+            discardManager.AddToDiscard(playedCard.cardData);
+            Destroy(gameObject);
+        }
+    }
+
+    public void TargetEnemyWithPlay(Enemy enemy, Card playedCard)
+    {
+
+        if (handManager == null)
+        {
+            handManager = FindFirstObjectByType<HandManager>();
+        }
+        if (handManager != null)
+        {
+            if (discardManager == null)
+            {
+                discardManager = FindFirstObjectByType<DiscardManager>();
+            }
+            
+            SetLastPlayedCard(playedCard);
+            SetTargetEnemy(enemy);
+            PlayTheCard(playedCard);
+
+        }
+    }
+
+
+}
