@@ -7,7 +7,7 @@ using UnityEngine;
 //as enemies only know about themselves as units
 public class EnemyManager : MonoBehaviour
 {
-    public List<Enemy> enemyList;
+    public List<EnemyData> enemyList;
     public void DisplayEnemy(EnemyData enemyData, GameObject enemyPrefab, Transform enemyTransform)
     {
         //Instatiate the enemy
@@ -22,7 +22,7 @@ public class EnemyManager : MonoBehaviour
         newEnemy.GetComponent<Enemy>().enemyData = enemyData;
         newEnemy.GetComponent<Enemy>().UpdateEnemyDisplay();
 
-        enemyList.Add(newEnemy.GetComponent<Enemy>());
+        enemyList.Add(enemyData);
      
     }
 }

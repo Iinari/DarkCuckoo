@@ -7,6 +7,9 @@ public enum BattleState { Start, PlayerTurn, EnemyTurn, Won, Lost}
 
 public class BattleSystem : MonoBehaviour
 {
+    //These are values that tester might want to change in editor, that is why these are on top
+    public EnemyData ChosenEnemy;
+
     //variables for displaying and instatiate player hero
     public GameObject playerPrefab;
     public Transform playerPosition;
@@ -18,7 +21,7 @@ public class BattleSystem : MonoBehaviour
     public Transform enemyPosition;
     public List<EnemyData> allEnemies = new();
     public List<Enemy> enemiesInBattle;
-    public int enemyCount;
+    private int enemyCount;
 
     //Manager classes
     public HeroManager heroManager;
@@ -66,15 +69,24 @@ public class BattleSystem : MonoBehaviour
 
     public void ChooseEnemy()
     {
-        //This is just a testing phase code, later this needs logic for choosing the enemy for right type/level etc.
-        EnemyData[] enemies = Resources.LoadAll<EnemyData>("Enemies");
-        allEnemies.AddRange(enemies);
-
-        if (allEnemies.Count > 0)
+        //Enemy can be chosen in Scene, if enemy is not set set randon enemy from the list
+        if (ChosenEnemy == null)
         {
-            Utility.Shuffle(allEnemies);
-            CreateUnit(allEnemies[0]);
+            //This is just a testing phase code, later this needs logic for choosing the enemy for right type/level etc.
+            EnemyData[] enemies = Resources.LoadAll<EnemyData>("Enemies");
+            allEnemies.AddRange(enemies);
+
+            if (allEnemies.Count > 0)
+            {
+                Utility.Shuffle(allEnemies);
+                CreateUnit(allEnemies[0]);
+            }
         }
+        else
+        {
+            CreateUnit(ChosenEnemy);
+        }
+        
     }
 
     public void ChoosePlayerHero()
@@ -140,7 +152,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public List<Enemy> GetEncounterEnemies()
+    public List<EnemyData> GetEncounterEnemies()
     {
         return enemyManager.enemyList;
     }

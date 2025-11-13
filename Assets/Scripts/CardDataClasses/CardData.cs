@@ -6,8 +6,6 @@ using UnityEngine;
 
 namespace SnIProductions 
 {
-    [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
-    //Parent class for all the player cards
     public class CardData : ScriptableObject
     {
         public string cardName;

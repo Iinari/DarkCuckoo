@@ -2032,6 +2032,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 465581118}
     - target: {fileID: 1451605200686595864, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: ChosenEnemy
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451605200686595864, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
       propertyPath: resultPopUp
       value: 
       objectReference: {fileID: 465581118}
