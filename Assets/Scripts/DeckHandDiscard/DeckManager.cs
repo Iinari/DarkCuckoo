@@ -5,7 +5,13 @@ using UnityEngine;
 
 public class DeckManager : MonoBehaviour
 {
-    public List<CardData> allCards = new();
+    private List<CardData> allCards = new();
+
+    private List<CardData> startingDeck = new();
+
+    public List<CardData> cardsInPlay = new();
+
+    public int copiesOfStartingCards;
 
     public int maxHandSize = 10;
 
@@ -19,11 +25,31 @@ public class DeckManager : MonoBehaviour
 
     private void Start()
     {
+
+        Debug.Log("CardsInPlay length: " + cardsInPlay.Count);
         //Load all card assets from Resources folder
         CardData[] cards = Resources.LoadAll<CardData>("Cards");
 
         //Add the loaded cards to the allCards list
         allCards.AddRange(cards);
+
+        if (copiesOfStartingCards <= 0) 
+        {
+            copiesOfStartingCards = 3;
+        }
+
+
+        foreach (CardData card in cards)
+        {
+            if (card.isInStartingDeck)
+            {
+                //Checks how many copies for the starting cards should be made and creates the copies
+                for (int j = 0; j < copiesOfStartingCards; j++) 
+                {
+                cardsInPlay.Add(card);
+                }
+            }
+        }
 
     }
 
@@ -56,7 +82,7 @@ public class DeckManager : MonoBehaviour
         }
 
         handManager.BattleSetup(maxHandSize);
-        drawPileManager.MakeDrawPile(allCards);
+        drawPileManager.MakeDrawPile(cardsInPlay);
         drawPileManager.BattleSetUp(maxHandSize);
     }
 

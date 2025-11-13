@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Big Attack
   ID: 0
+  isInStartingDeck: 0
   cardDescription: Deal # damage
   cost: 0
   cardType: 0

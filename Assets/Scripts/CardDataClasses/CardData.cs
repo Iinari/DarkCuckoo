@@ -12,6 +12,8 @@ namespace SnIProductions
 
         public int ID;
 
+        public bool isInStartingDeck;
+
         public string cardDescription;
 
         public int cost;

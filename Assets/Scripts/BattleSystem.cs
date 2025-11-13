@@ -152,7 +152,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public List<EnemyData> GetEncounterEnemies()
+    public List<Enemy> GetEncounterEnemies()
     {
         return enemyManager.enemyList;
     }
@@ -227,6 +227,20 @@ public class BattleSystem : MonoBehaviour
             {
                 Instantiate(prefab, transform.position, Quaternion.identity, transform);
                 cardPlayManager = GetComponentInChildren<CardPlayManager>();
+            }
+        }
+
+        if (deckManager == null)
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefabs/EnemyManager");
+            if (prefab == null)
+            {
+                Debug.Log("EnemyManager Prefab not found");
+            }
+            else
+            {
+                Instantiate(prefab, transform.position, Quaternion.identity, transform);
+                enemyManager = GetComponentInChildren<EnemyManager>();
             }
         }
 

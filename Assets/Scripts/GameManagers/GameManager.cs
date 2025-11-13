@@ -68,20 +68,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (DeckManager == null)
-        {
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/DeckManager");
-            if (prefab == null)
-            {
-                Debug.Log("DeckManager Prefab not found");
-            }
-            else
-            {
-                Instantiate(prefab, transform.position, Quaternion.identity, transform);
-                DeckManager = GetComponentInChildren<DeckManager>();
-            }
-        }
-
     }
 
 }

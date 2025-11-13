@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Uppercut
   ID: 1
+  isInStartingDeck: 1
   cardDescription: Deal # damage
   cost: 3
   cardType: 0
