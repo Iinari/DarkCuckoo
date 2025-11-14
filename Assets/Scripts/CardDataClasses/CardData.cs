@@ -8,9 +8,11 @@ namespace SnIProductions
 {
     public class CardData : ScriptableObject
     {
+        public int ID;
+
         public string cardName;
 
-        public int ID;
+        public CardType cardType;
 
         public bool isInStartingDeck;
 
@@ -18,7 +20,7 @@ namespace SnIProductions
 
         public int cost;
 
-        public CardType cardType;
+        public string spriteName;
 
         public Rarity cardRarity;
 
