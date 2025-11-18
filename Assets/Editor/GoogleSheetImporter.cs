@@ -6,7 +6,9 @@ using Unity.VisualScripting;
 using SnIProductions;
 using System;
 using UnityEngine.UIElements;
+using System.Runtime.CompilerServices;
 
+//Creates a tool for importing data from Google Sheet
 public class GoogleSheetImporter : Editor
 {
     private const string sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vROZLeQBhzRp9K0pAJvUClGkAwMZ0PdCMq7yC8uJ2WDXbWnSdBzZUCUkF2oCxOm2l3VbzOlX-Td0spY/pub?output=csv";
@@ -14,6 +16,7 @@ public class GoogleSheetImporter : Editor
 
     [MenuItem("Tools/Import/Import Google Sheet")]
 
+    //Imports Google Sheet when menu item created above is clicked
     public static void ImportSheet()
     {
         if (!Directory.Exists(savePath))
@@ -22,44 +25,34 @@ public class GoogleSheetImporter : Editor
         string csv = DownloadCSV(sheetUrl);
         string[] lines = csv.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
 
-        // Skip header
+        // Skip header (header row 0 is used as headline, not for data)
         for (int i = 1; i < lines.Length; i++)
         {
             string line = lines[i].Trim();
 
-            // Skip totally blank rows
-            if (string.IsNullOrWhiteSpace(line))
-                continue;
-
             string[] columns = line.Split(',');
 
-            // Skip rows where ALL columns are empty
-            bool allEmpty = true;
-            foreach (string col in columns)
-            {
-                if (!string.IsNullOrWhiteSpace(col))
-                {
-                    allEmpty = false;
-                    break;
-                }
-            }
-            if (allEmpty)
-                continue;
-
-            // Now you know it's a real row with some data
+            // Create scriptable object 
             CardData card = ScriptableObject.CreateInstance<CardData>();
 
             card.ID = ParseInt(columns[0]);
-            card.cardName = columns[1];
-            card.cardType = ParseCardType(columns[2]);
-            card.isInStartingDeck = ParseBool(columns[3]);
-            card.cost = ParseInt(columns[4]);
-            card.cardRarity = ParseRarity(columns[5]);
-            card.spriteName = columns[6];
-            card.cardDescription = columns[7];
 
-            CreateCardAsset(card);
+            if (card.ID == 0)
+            {
+                Debug.LogWarning("Can't create asset with ID value 0.");
+            }
+            else
+            {
+                card.cardName = columns[1];
+                card.cardType = ParseCardType(columns[2]);
+                card.isInStartingDeck = ParseBool(columns[3]);
+                card.cost = ParseInt(columns[4]);
+                card.cardRarity = ParseRarity(columns[5]);
+                card.spriteName = columns[6];
+                card.cardDescription = columns[7];
 
+                CreateCardAsset(card);
+            }
         }
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
@@ -148,4 +141,5 @@ public class GoogleSheetImporter : Editor
         Debug.LogError($"Failed to parse int from '{value}'");
         return 0;
     }
+
 }
