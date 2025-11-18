@@ -49,17 +49,17 @@ public class GoogleSheetImporter : Editor
             // Now you know it's a real row with some data
             CardData card = ScriptableObject.CreateInstance<CardData>();
 
-            card.ID = ParseInteger(columns[0]);
+            card.ID = ParseInt(columns[0]);
             card.cardName = columns[1];
             card.cardType = ParseCardType(columns[2]);
             card.isInStartingDeck = ParseBool(columns[3]);
-            card.cost = ParseInteger(columns[4]);
+            card.cost = ParseInt(columns[4]);
             card.cardRarity = ParseRarity(columns[5]);
             card.spriteName = columns[6];
             card.cardDescription = columns[7];
 
-            string assetPath = $"{savePath}Card_{card.ID}.asset";
-            AssetDatabase.CreateAsset(card, assetPath);
+            CreateCardAsset(card);
+
         }
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
@@ -67,10 +67,29 @@ public class GoogleSheetImporter : Editor
         Debug.Log("Google Sheet Import Complete!");
     }
 
-    private static int ParseInt(string v)
+    private static void CreateCardAsset(CardData card)
     {
-        throw new NotImplementedException();
+        string assetPath = $"{savePath}Card_{card.ID}.asset";
+
+        CardData existingCard = AssetDatabase.LoadAssetAtPath<CardData>(assetPath);
+
+        if (existingCard != null)
+        {
+            // Update fields
+            existingCard.cardName = card.cardName;
+            existingCard.cardType = card.cardType;
+            existingCard.isInStartingDeck = card.isInStartingDeck;
+            existingCard.cost = card.cost;
+            existingCard.cardRarity = card.cardRarity;
+            existingCard.spriteName = card.spriteName;
+            existingCard.cardDescription = card.cardDescription;
+        }
+        else
+        {
+            AssetDatabase.CreateAsset(card, assetPath);
+        }
     }
+
 
     private static string DownloadCSV(string url)
     {
@@ -112,7 +131,7 @@ public class GoogleSheetImporter : Editor
         return Rarity.Common; // or pick your own fallback
     }
 
-    private static int ParseInteger(string value)
+    private static int ParseInt(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
         {
