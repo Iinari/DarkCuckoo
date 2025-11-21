@@ -9,15 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe294019cd568841938b272cecfd4ed, type: 3}
+  m_Script: {fileID: 11500000, guid: c2a8118ad6b6e6647a2169e2a92e98c3, type: 3}
   m_Name: Card_2
-  m_EditorClassIdentifier: Assembly-CSharp::SnIProductions.CardData
+  m_EditorClassIdentifier: Assembly-CSharp::AttackCardData
   ID: 2
   cardName: ' Slap'
   cardType: 0
   isInStartingDeck: 0
   cardDescription: 
-  cost: 2
+  cost: 0
   spriteName: 
   cardRarity: 0
   cardImage: {fileID: 0}
+  damage: 0
+  damageMin: 0
+  damageMax: 0
+  damageType: 0
+  damageSubType: 0

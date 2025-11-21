@@ -9,17 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9da61bee5c88694588261618eac2699, type: 3}
-  m_Name: Card_6
-  m_EditorClassIdentifier: Assembly-CSharp::SkillCardData
-  ID: 0
-  cardName: 
+  m_Script: {fileID: 11500000, guid: c2a8118ad6b6e6647a2169e2a92e98c3, type: 3}
+  m_Name: Card_8
+  m_EditorClassIdentifier: Assembly-CSharp::AttackCardData
+  ID: 8
+  cardName: Double Slap
   cardType: 0
   isInStartingDeck: 0
   cardDescription: 
-  cost: 0
+  cost: 3
   spriteName: 
-  cardRarity: 0
+  cardRarity: 2
   cardImage: {fileID: 0}
-  healPower: 0
-  blockPower: 0
+  damage: 0
+  damageMin: 0
+  damageMax: 0
+  damageType: 0
+  damageSubType: 0

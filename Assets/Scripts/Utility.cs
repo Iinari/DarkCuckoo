@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Includes Enums and generally useful functions
 namespace SnIProductions
 {
     public static class Utility
