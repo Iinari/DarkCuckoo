@@ -90,7 +90,7 @@ public class GoogleSheetImporter : Editor
 
                         if (attackCardsDic.TryGetValue(card.ID, out var attackRow))
                         {
-                            //Debug.Log(card.ID + " damage: " + attackRow[8]);
+                            FillAttackData(card, attackRow, savePath);
                         }
                         else
                         {
@@ -110,19 +110,6 @@ public class GoogleSheetImporter : Editor
                         break;
                 }
 
-
-
-                
-
-                /*if (CardExists(card, savePath))
-                {
-                    UpdateValuesBasedOnType(card);
-                }
-                else
-                {
-                    CreateCardBasedOnType(card);
-                }*/
-
             }
         }
         AssetDatabase.SaveAssets();
@@ -136,8 +123,10 @@ public class GoogleSheetImporter : Editor
         throw new NotImplementedException();
     }
 
-    private static void FillAttackData(CardData card, string[] row)
+    private static void FillAttackData(CardData card, string[] row, string assetPath)
     {
+
+        string savePath = $"{assetPath}Card_{card.ID}.asset";
         AttackCardData attackCard = ScriptableObject.CreateInstance<AttackCardData>();
         attackCard.cardName = card.cardName;
         attackCard.cardType = card.cardType;
@@ -146,8 +135,11 @@ public class GoogleSheetImporter : Editor
         attackCard.cardRarity = card.cardRarity;
         attackCard.spriteName = card.spriteName;
         attackCard.cardDescription = card.cardDescription;
+        
         attackCard.damage = GoogleSheetParser.ParseInt(row[8]);
-        Debug.Log(card.cardName + " damage: " + (row[8]));
+        
+
+        AssetDatabase.CreateAsset(attackCard, savePath);
     }
 
     private static string DownloadCSV(string url)

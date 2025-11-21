@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a8118ad6b6e6647a2169e2a92e98c3, type: 3}
   m_Name: Card_1
   m_EditorClassIdentifier: Assembly-CSharp::AttackCardData
-  ID: 1
+  ID: 0
   cardName: Punch
   cardType: 0
   isInStartingDeck: 1
@@ -21,7 +21,7 @@ MonoBehaviour:
   spriteName: 
   cardRarity: 0
   cardImage: {fileID: 0}
-  damage: 0
+  damage: 3
   damageMin: 0
   damageMax: 0
   damageType: 0
