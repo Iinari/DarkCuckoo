@@ -42,7 +42,7 @@ public class DeckManager : MonoBehaviour
 
         foreach (CardData card in cards)
         {
-            if (card.isInStartingDeck)
+            if (card.isInStartDeck)
             {
                 //Checks how many copies for the starting cards should be made and creates the copies
                 for (int j = 0; j < copiesOfStartingCards; j++) 

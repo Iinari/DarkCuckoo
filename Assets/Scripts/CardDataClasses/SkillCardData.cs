@@ -5,27 +5,27 @@ using UnityEngine;
 public class SkillCardData : CardData
 {
 
-    public int healPower;
-    public int blockPower;
+    public int heal;
+    public int block;
 
     public override void UpdateCardDescription()
     {
-        string healAsString = healPower.ToString();
-        cardDescription = cardDescription.Replace("#", healAsString);
-        Debug.Log(cardDescription);
+        string healAsString = heal.ToString();
+        description = description.Replace("#", healAsString);
+        Debug.Log(description);
     }
 
     public override int GetHealPower()
     {
-        return healPower;
+        return heal;
     }
 
-    public override int GetBlockPower() { return blockPower; }
+    public override int GetBlockPower() { return block; }
 
     public override string GetCardDescription()
     {
-        string healAsString = healPower.ToString();
-        string tempDescpription = cardDescription.Replace("#", healAsString);
+        string healAsString = heal.ToString();
+        string tempDescpription = description.Replace("#", healAsString);
         return tempDescpription;
     }
 }

@@ -12,17 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a8118ad6b6e6647a2169e2a92e98c3, type: 3}
   m_Name: Card_8
   m_EditorClassIdentifier: Assembly-CSharp::AttackCardData
-  ID: 0
+  ID: 8
   cardName: Double Slap
-  cardType: 0
-  isInStartingDeck: 0
-  cardDescription: 
+  type: 0
+  isInStartDeck: 0
+  description: 
   cost: 3
   spriteName: 
-  cardRarity: 2
-  cardImage: {fileID: 0}
+  rarity: 2
+  image: {fileID: 0}
   damage: 20
-  damageMin: 0
-  damageMax: 0
-  damageType: 0
-  damageSubType: 0

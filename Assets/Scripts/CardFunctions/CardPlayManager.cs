@@ -53,14 +53,14 @@ public class CardPlayManager : MonoBehaviour
 
         if (playedCard != null)
         {
-            switch (playedCard.cardData.cardType)
+            switch (playedCard.cardData.type)
             {
                 case CardType.Attack:
                     if (lastTarget != null)
                     {
                         lastTarget.TakeDamage(playedCard.cardData.GetDamage());
                     }
-                    else Debug.Log(playedCard.cardData.cardType + "didn't have valid target");
+                    else Debug.Log(playedCard.cardData.type + "didn't have valid target");
                     break;
                 case CardType.Skill:
                     PlaySkillCard(card);

@@ -12,24 +12,24 @@ namespace SnIProductions
 
         public string cardName;
 
-        public CardType cardType;
+        public CardType type;
 
-        public bool isInStartingDeck;
+        public bool isInStartDeck;
 
-        public string cardDescription;
+        public string description;
 
         public int cost;
 
         public string spriteName;
 
-        public Rarity cardRarity;
+        public Rarity rarity;
 
-        public Sprite cardImage;
+        public Sprite image;
 
 
         public virtual int GetDamage() { return 0; }  // Default implementation
 
-        public virtual string GetCardDescription() { return cardDescription; } //Default
+        public virtual string GetCardDescription() { return description; } //Default
 
         public virtual void UpdateCardDescription() { }
 

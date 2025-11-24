@@ -9,15 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbe294019cd568841938b272cecfd4ed, type: 3}
+  m_Script: {fileID: 11500000, guid: a9da61bee5c88694588261618eac2699, type: 3}
   m_Name: Card_5
-  m_EditorClassIdentifier: Assembly-CSharp::SnIProductions.CardData
+  m_EditorClassIdentifier: Assembly-CSharp::SkillCardData
   ID: 5
   cardName: Heal
-  cardType: 1
-  isInStartingDeck: 1
-  cardDescription: 
+  type: 1
+  isInStartDeck: 1
+  description: 
   cost: 1
   spriteName: 
-  cardRarity: 0
-  cardImage: {fileID: 0}
+  rarity: 0
+  image: {fileID: 0}
+  heal: 10
+  block: 0

@@ -193,7 +193,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         {
             if (playManager.CheckHasEnoughMana(GetComponent<Card>().manaCost))
             {
-                switch (GetComponent<Card>().cardData.cardType)
+                switch (GetComponent<Card>().cardData.type)
                 {
                     case CardType.Attack:
 

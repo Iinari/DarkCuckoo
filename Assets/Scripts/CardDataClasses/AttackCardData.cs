@@ -6,11 +6,12 @@ public class AttackCardData : CardData
 {
     public int damage;
 
-    public int damageMin;
-    public int damageMax;
+    //NOT USED RN
+    //public int damageMin;
+    //public int damageMax;
 
-    public DamageType damageType;
-    public DamageSubType damageSubType;
+    //public DamageType damageType;
+    //public DamageSubType damageSubType;
 
 
     public override int GetDamage()
@@ -21,13 +22,13 @@ public class AttackCardData : CardData
     public override string GetCardDescription()
     {
         string dmgAsString = damage.ToString();
-        string tempDescription = cardDescription.Replace("#", dmgAsString);
+        string tempDescription = description.Replace("#", dmgAsString);
         return tempDescription;
     }
 
     public override void UpdateCardDescription()
     {
         string dmgAsString = damage.ToString();
-        cardDescription = cardDescription.Replace("#", dmgAsString);
+        description = description.Replace("#", dmgAsString);
     }
 }

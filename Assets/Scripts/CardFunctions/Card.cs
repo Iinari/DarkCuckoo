@@ -31,9 +31,9 @@ public class Card : MonoBehaviour
         nameText.text = cardData.cardName;
         costText.text = cardData.cost.ToString();
         manaCost = cardData.cost;
-        descriptionText.text = cardData.cardDescription;
-        cardImage.sprite = cardData.cardImage;
-        cardTypeText.text = cardData.cardType.ToString();
+        descriptionText.text = cardData.description;
+        cardImage.sprite = cardData.image;
+        cardTypeText.text = cardData.type.ToString();
 
         UpdateCardDescription();
 
@@ -41,7 +41,7 @@ public class Card : MonoBehaviour
 
     public void UpdateCardDescription()
     {
-        switch (cardData.cardType)
+        switch (cardData.type)
         {
             case CardType.Attack:
                 descriptionText.text = cardData.GetCardDescription();
