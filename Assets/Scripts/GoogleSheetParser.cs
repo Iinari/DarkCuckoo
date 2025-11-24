@@ -94,7 +94,7 @@ public class GoogleSheetParser
 
         bool isFirstRow = true;   // <-- NEW
 
-        List<string> currentRow = new List<string>();
+        List<string> currentRow = new();
         string currentValue = "";
 
         void CommitRow()

@@ -15,6 +15,7 @@ using System.Security.Cryptography;
 //Creates a tool for importing data from Google Sheet
 public class GoogleSheetImporter : Editor
 {
+    //Google Sheet url's if new type like PowerCard is implemented the url to sheet should be added under skillSheetUrl
     private const string masterSheetUrl = 
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vROZLeQBhzRp9K0pAJvUClGkAwMZ0PdCMq7yC8uJ2WDXbWnSdBzZUCUkF2oCxOm2l3VbzOlX-Td0spY/pub?output=csv";
     private const string attackSheetUrl =
@@ -30,9 +31,6 @@ public class GoogleSheetImporter : Editor
     //Imports Google Sheet when menu item created above is clicked
     public static void ImportSheet()
     {
-        Dictionary<int, string[]> attackCardsDic = new();
-        Dictionary<int, string[]> skillCardsDic = new();
-
         if (!Directory.Exists(savePath))
             Directory.CreateDirectory(savePath);
 
@@ -40,12 +38,9 @@ public class GoogleSheetImporter : Editor
         string attackCSV = DownloadCSV(attackSheetUrl);
         string skillCSV = DownloadCSV(skillSheetUrl);
 
-        //MasterCardSheet is parsed to string[]
-        var masterRows = GoogleSheetParser.ParseSheet(masterCSV);
-
         //Subsheets are parsed to dictrionaries <int, string[]>
-        attackCardsDic = GoogleSheetParser.ParseSubCSVToDictionary(attackCSV);
-        skillCardsDic = GoogleSheetParser.ParseSubCSVToDictionary(skillCSV);
+        Dictionary<int, string[]> attackCardsDic = GoogleSheetParser.ParseSubCSVToDictionary(attackCSV);
+        Dictionary<int, string[]> skillCardsDic = GoogleSheetParser.ParseSubCSVToDictionary(skillCSV);
 
         string[] lines = masterCSV.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -103,6 +98,7 @@ public class GoogleSheetImporter : Editor
 
                     default:
                         card = ScriptableObject.CreateInstance<CardData>();
+                        AssetDatabase.CreateAsset(card, savePath);
                         break;
                 }
 
@@ -116,10 +112,8 @@ public class GoogleSheetImporter : Editor
 
     private static string DownloadCSV(string url)
     {
-        using (WebClient wc = new WebClient())
-        {
-            return wc.DownloadString(url);
-        }
+        using WebClient wc = new();
+        return wc.DownloadString(url);
     }
 
 }

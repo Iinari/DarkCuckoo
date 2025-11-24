@@ -7,8 +7,6 @@ public class DeckManager : MonoBehaviour
 {
     private List<CardData> allCards = new();
 
-    private List<CardData> startingDeck = new();
-
     public List<CardData> cardsInPlay = new();
 
     public int copiesOfStartingCards;
@@ -101,7 +99,7 @@ public class DeckManager : MonoBehaviour
         for (int i = 0; i < handManager.cardsInHand.Count; i++)
         {
             discardManager.AddToDiscard(handManager.cardsInHand[i].GetComponent<Card>().cardData);
-            Destroy(handManager.cardsInHand[i].gameObject);
+            Destroy(handManager.cardsInHand[i]);
         }
         handManager.cardsInHand.Clear();
         handManager.UpdateHandVisuals();
