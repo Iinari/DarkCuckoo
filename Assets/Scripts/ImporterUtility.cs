@@ -9,69 +9,6 @@ namespace SnIProductions
 {
     public static class ImporterUtility
     {
-        public static void CreateCardAsset(CardData card, string savePath)
-        {
-            string assetPath = $"{savePath}Card_{card.ID}.asset";
-
-            CardData existingCard = AssetDatabase.LoadAssetAtPath<CardData>(assetPath);
-
-            //Check if the card asset with this ID already exists, if it does update the data fields if it doesn't create it
-            if (existingCard != null)
-            {
-                // Update fields
-                existingCard.cardName = card.cardName;
-                existingCard.type = card.type;
-                existingCard.isInStartDeck = card.isInStartDeck;
-                existingCard.cost = card.cost;
-                existingCard.rarity = card.rarity;
-                existingCard.spriteName = card.spriteName;
-                existingCard.description = card.description;
-            }
-            else
-            {
-                //CheckCardType(card);
-                AssetDatabase.CreateAsset(GetCardType(card), assetPath);
-                //AssetDatabase.CreateAsset(card, assetPath);
-            }
-        }
-
-        public static void CreateAttackCard(CardData card, string savePath)
-        {
-
-        }
-
-        public static CardData GetCardType(CardData card)
-        {
-            switch (card.type)
-            {
-                case CardType.Attack:
-
-                    return SetAttackCardValues(card);
-
-                case CardType.Skill:
-                    CardData skillCard = ScriptableObject.CreateInstance<SkillCardData>();
-                    return skillCard;
-                default:
-                    return card;
-            }
-        }
-
-        public static CardData SetAttackCardValues(CardData card)
-        {
-            CardData attackCard = ScriptableObject.CreateInstance<AttackCardData>();
-            attackCard.cardName = card.cardName;
-            attackCard.ID = card.ID;
-            attackCard.type = card.type;
-            attackCard.isInStartDeck = card.isInStartDeck;
-            attackCard.cost = card.cost;
-            attackCard.rarity = card.rarity;
-            attackCard.spriteName = card.spriteName;
-            attackCard.description = card.description;
-            return attackCard;
-
-
-           
-        }
         public static void FillAttackData(CardData card, string[] row, string assetPath)
         {
             AttackCardData attackCard = ScriptableObject.CreateInstance<AttackCardData>();
