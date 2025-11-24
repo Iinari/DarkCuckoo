@@ -18,8 +18,8 @@ MonoBehaviour:
   isInStartDeck: 0
   description: 
   cost: 2
-  spriteName: 
+  spriteName: Icecream
   rarity: 0
-  image: {fileID: 0}
+  image: {fileID: -3262147762514089854, guid: 2f4e0fc4b721e984f991a0b057293567, type: 3}
   heal: 30
   block: 0

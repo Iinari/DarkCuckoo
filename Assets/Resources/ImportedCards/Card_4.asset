@@ -18,8 +18,8 @@ MonoBehaviour:
   isInStartDeck: 0
   description: 
   cost: 0
-  spriteName: 
+  spriteName: Watermelon
   rarity: 0
-  image: {fileID: 0}
+  image: {fileID: -8558258358756935692, guid: 684f0cd3838d51f48b642afe342ecfeb, type: 3}
   heal: 3
   block: 0

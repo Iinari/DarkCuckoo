@@ -18,8 +18,8 @@ MonoBehaviour:
   isInStartDeck: 1
   description: 
   cost: 1
-  spriteName: 
+  spriteName: Potion
   rarity: 0
-  image: {fileID: 0}
+  image: {fileID: -2880734798192188640, guid: b19fb64a54c10d748ac15aad16fad050, type: 3}
   heal: 10
   block: 0

@@ -18,7 +18,7 @@ MonoBehaviour:
   isInStartDeck: 1
   description: That hurts
   cost: 2
-  spriteName: 
+  spriteName: Bear
   rarity: 0
-  image: {fileID: 0}
+  image: {fileID: 4693792977596894205, guid: 15a71f9733cd62b44a85b4adc00995b7, type: 3}
   damage: 3

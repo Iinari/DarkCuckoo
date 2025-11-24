@@ -3,6 +3,7 @@ using UnityEditor.Overlays;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 namespace SnIProductions
 {
@@ -83,7 +84,7 @@ namespace SnIProductions
             attackCard.rarity = card.rarity;
             attackCard.spriteName = card.spriteName;
             attackCard.description = card.description;
-
+            attackCard.image = LoadCardSprite(card.spriteName);
             //AttackCardData type data 
             attackCard.damage = GoogleSheetParser.ParseInt(row[8]);
 
@@ -101,6 +102,7 @@ namespace SnIProductions
             skillCard.rarity = card.rarity;
             skillCard.spriteName = card.spriteName;
             skillCard.description = card.description;
+            skillCard.image = LoadCardSprite(card.spriteName);
 
             //SkillCardData rows must match the GoogleSheet
             skillCard.block = GoogleSheetParser.ParseInt(row[8]);
@@ -113,6 +115,19 @@ namespace SnIProductions
         public static string GetAssetPath(string path, int id)
         {
             return $"{path}Card_{id}.asset";
+        }
+
+        private static Sprite LoadCardSprite(string spriteName)
+        {
+            // Add extension automatically if not included
+            if (!spriteName.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
+                spriteName += ".png";
+
+            // Path relative to project root
+            string path = $"Assets/Art/Cards/{spriteName}";
+
+            Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(path);
+            return sprite;
         }
 
     } 

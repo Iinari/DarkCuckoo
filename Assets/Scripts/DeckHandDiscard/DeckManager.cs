@@ -27,9 +27,9 @@ public class DeckManager : MonoBehaviour
     {
 
         //Load all card assets from Resources folder
-        CardData[] cards = Resources.LoadAll<CardData>("Cards");
+        //CardData[] cards = Resources.LoadAll<CardData>("Cards");
 
-        //CardData[] cards = Resources.LoadAll<CardData>("ImportedCards");
+        CardData[] cards = Resources.LoadAll<CardData>("ImportedCards");
 
         //Add the loaded cards to the allCards list
         allCards.AddRange(cards);

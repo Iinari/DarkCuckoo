@@ -18,7 +18,7 @@ MonoBehaviour:
   isInStartDeck: 1
   description: 
   cost: 2
-  spriteName: 
+  spriteName: SmolDuck
   rarity: 0
-  image: {fileID: 0}
+  image: {fileID: 13241043379834031, guid: 6fef56de21ab0ba4e92997b05350f922, type: 3}
   damage: 10
