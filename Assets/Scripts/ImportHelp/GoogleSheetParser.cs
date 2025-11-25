@@ -8,34 +8,6 @@ using System.IO;
 
 public class GoogleSheetParser
 {
-    public static Dictionary<int, string[]> ParseSheet(string csv)
-    {
-        var dict = new Dictionary<int, string[]>();
-
-        string[] lines = csv.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
-
-        for (int i = 1; i < lines.Length; i++)  // skip header row
-        {
-
-            string line = lines[i].Trim();
-            if (string.IsNullOrWhiteSpace(line)) continue;
-
-            string[] cols = line.Split(',');
-
-            // Skip entirely empty rows
-            bool allEmpty = true;
-            foreach (var c in cols)
-                if (!string.IsNullOrWhiteSpace(c))
-                    allEmpty = false;
-            if (allEmpty) continue;
-
-            int id = ParseInt(cols[0]);
-            dict[id] = cols;
-        }
-
-        return dict;
-    }
-
     public static int ParseInt(string value)
     {
         if (string.IsNullOrWhiteSpace(value))
