@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: Double Slap
   type: 0
   isInStartDeck: 0
-  description: 
+  description: Deal # damage
   cost: 3
   spriteName: 
   rarity: 2

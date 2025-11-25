@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: ' Slap'
   type: 0
   isInStartDeck: 0
-  description: SLAP
+  description: Deal # damage
   cost: 0
   spriteName: 
   rarity: 0

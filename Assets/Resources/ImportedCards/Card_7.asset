@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: Attack
   type: 0
   isInStartDeck: 1
-  description: 
+  description: Deal # damage
   cost: 2
   spriteName: SmolDuck
   rarity: 0

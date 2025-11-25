@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: Tiny Heal
   type: 1
   isInStartDeck: 0
-  description: 
+  description: Heal #
   cost: 0
   spriteName: Watermelon
   rarity: 0

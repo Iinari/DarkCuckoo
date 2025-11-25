@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: Heal
   type: 1
   isInStartDeck: 1
-  description: 
+  description: Heal #
   cost: 1
   spriteName: Potion
   rarity: 0

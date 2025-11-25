@@ -650,16 +650,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8261164044707945422, guid: e542650c41c9c2940be95dfea6362f9c, type: 3}
       propertyPath: cardsInPlay.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8261164044707945422, guid: e542650c41c9c2940be95dfea6362f9c, type: 3}
       propertyPath: 'cardsInPlay.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: ce7b8960897f8594c96e2629bd5ebc91, type: 2}
+      objectReference: {fileID: 11400000, guid: 9cb9900a3af26024bb20be1f62b5a3ca, type: 2}
     - target: {fileID: 8261164044707945422, guid: e542650c41c9c2940be95dfea6362f9c, type: 3}
       propertyPath: 'cardsInPlay.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 05daccaf5fd240e43a156ae6df0f18aa, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: ' Kick'
   type: 0
   isInStartDeck: 0
-  description: 
+  description: Deal # damage
   cost: 2
   spriteName: 
   rarity: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   cardName: Punch
   type: 0
   isInStartDeck: 1
-  description: That hurts
+  description: Deal # damage
   cost: 2
   spriteName: Bear
   rarity: 0
