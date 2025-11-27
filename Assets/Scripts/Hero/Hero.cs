@@ -46,7 +46,7 @@ public class Hero : BattleUnit
         battleSystem.playerHero = this;
     }
 
-    public void FirstUpdateHeroDisplay()
+    public void HeroDisplayFirstUpdate()
     {
         heroNameTxt.text = heroData.heroName;
         heroCurrentHealth = heroData.health;

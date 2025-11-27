@@ -20,4 +20,6 @@ public class HeroData : UnitData
 
     public float luck;
 
+    public float satiety;
+
 }

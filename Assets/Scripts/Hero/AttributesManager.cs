@@ -6,7 +6,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class AttributesManager : MonoBehaviour
 {
-
+    //If new attribute is implemented it should be added to enum
     public enum Attribute
     {
         Health,
@@ -19,7 +19,9 @@ public class AttributesManager : MonoBehaviour
 
         Strength,
 
-        Luck
+        Luck,
+
+        Satiety
     }
 
     //Attributes
@@ -29,12 +31,14 @@ public class AttributesManager : MonoBehaviour
     public int mp = 0;
     public float strength = 0;
     public float luck = 0;
+    public float satiety = 0;
 
     //Max values for attributes
     private readonly int maxHealth = 100000;
     private readonly int maxMana = 100;
     private readonly float maxStrengtht = 200f;
     private readonly float maxLuck = 100f;
+    private readonly float maxSatiety = 100f;
 
     //Min values for attributes
     private readonly int minMaxHealth = 1;
@@ -42,6 +46,7 @@ public class AttributesManager : MonoBehaviour
     private readonly int minMana = 0;
     private readonly float minStrength = 0;
     private readonly float minLuck = 0;
+    private readonly float minSatiety = 0;
 
     //Stored value
     public int s_Health;
@@ -50,6 +55,7 @@ public class AttributesManager : MonoBehaviour
     public int s_mp;
     public float s_Strength;
     public float s_Luck;
+    public float s_Satiety;
 
     public HeroData playerHeroData = null;
 
@@ -80,49 +86,14 @@ public class AttributesManager : MonoBehaviour
             case Attribute.Luck:
                 luck = Mathf.Clamp(luck + (int)value, minLuck, maxLuck);
                 break;
+            case Attribute.Satiety:
+                satiety = Mathf.Clamp(satiety + (int)value, minSatiety, maxSatiety);
+                break;
             default:
                 Debug.LogWarning($"Invalid attribute passed to ModifyAttribute: {attribute}");
                 break;
         }
 
-    }
-
-    public void StoreAttribute(Attribute attribute) 
-    {
-        switch (attribute)
-        {
-            case Attribute.Health:
-                s_Health = fullHealth;
-                break;
-            case Attribute.HP:
-                s_hp = hp;
-                break;
-            case Attribute.Mana:
-                s_Mana = fullMana;
-                break;
-            case Attribute.MP:
-                s_mp = mp;
-                break;
-            case Attribute.Strength:
-                s_Strength = strength;
-                break;
-            case Attribute.Luck:
-                s_Luck = luck;
-                break;
-            default:
-                Debug.LogWarning($"Invalid attribute passed to StoreAttribute: {attribute}");
-                break;
-        }
-
-    }
-
-    public void StoreAllAttributes()
-    {
-        s_Health = fullHealth;
-        //does mp and hp need to be here?
-        s_Mana = fullMana;
-        s_Strength = strength;
-        s_Luck = luck;
     }
 
     public void RestoreAttribute(Attribute attribute)
@@ -144,9 +115,11 @@ public class AttributesManager : MonoBehaviour
             case Attribute.Strength:
                 strength = s_Strength;
                 break;
-
             case Attribute.Luck:
                 luck = s_Luck;
+                break;
+            case Attribute.Satiety:
+                satiety = s_Satiety;
                 break;
             default:
                 Debug.LogWarning($"Invalid attribute passed to RestoreAttribute: {attribute}");
@@ -157,11 +130,12 @@ public class AttributesManager : MonoBehaviour
     public void RestoreAllAttributes() 
     {
         fullHealth = s_Health;
-        hp = fullHealth;
+        //hp = fullHealth;
         fullMana = s_Mana;
-        mp = fullMana;
+        //mp = fullMana;
         strength = s_Strength;
         luck = s_Luck;
+        satiety = s_Satiety;
 
         Debug.Log("Restored all");
     }
@@ -182,8 +156,53 @@ public class AttributesManager : MonoBehaviour
             mp = fullMana;
             strength = DataToLoad.strength;
             luck = DataToLoad.luck;
+            satiety = DataToLoad.satiety;
 
             StoreAllAttributes();
         }
     }
+
+    public void StoreAttribute(Attribute attribute)
+    {
+        switch (attribute)
+        {
+            case Attribute.Health:
+                s_Health = fullHealth;
+                break;
+            case Attribute.HP:
+                s_hp = hp;
+                break;
+            case Attribute.Mana:
+                s_Mana = fullMana;
+                break;
+            case Attribute.MP:
+                s_mp = mp;
+                break;
+            case Attribute.Strength:
+                s_Strength = strength;
+                break;
+            case Attribute.Luck:
+                s_Luck = luck;
+                break;
+            case Attribute.Satiety:
+                s_Satiety = satiety;
+                break;
+            default:
+                Debug.LogWarning($"Invalid attribute passed to StoreAttribute: {attribute}");
+                break;
+        }
+
+    }
+
+    public void StoreAllAttributes()
+    {
+        s_Health = fullHealth;
+        s_hp = hp;
+        s_Mana = fullMana;
+        s_mp = mp;
+        s_Strength = strength;
+        s_Luck = luck;
+        s_Satiety = satiety;
+    }
+
 }
