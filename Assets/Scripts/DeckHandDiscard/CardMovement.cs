@@ -28,6 +28,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private CardPlayManager playManager;
 
     private bool isAttackPlayState = false;
+    private bool attackCardFrozen = false;
 
     [SerializeField] private float selectScale = 1.1f;
 
@@ -116,10 +117,12 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     //Reset position, scahel and rotation to default
     private void TransitionToDefaulState()
     {
+        attackCardFrozen = false;
         currentState = 0;
         rectTransform.localScale = originalScale;
         rectTransform.localPosition = originalPosition;
         rectTransform.localRotation = originalRotation;
+
         glowEffect.SetActive(false);
         playArrow.SetActive(false);
         glowPlayEffect.SetActive(false);
@@ -159,31 +162,32 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (currentState == 2)
+        if (currentState != 2) return;
+
+        bool isOverPlayZone = Input.mousePosition.y > cardPlay.y;
+
+        if (!isOverPlayZone) return;
+       
+        // ENTER PLAY STATE
+        currentState = 3;
+
+        if (GetComponent<Card>().cardData.type == CardType.Attack)
         {
-            bool isOverPlayZone = Input.mousePosition.y > cardPlay.y;
+            isAttackPlayState = true;
+            attackCardFrozen = true;
 
-            if (isOverPlayZone)
-            {
-                currentState = 3;
+            playArrow.SetActive(true);
+            glowPlayEffect.SetActive(true);
 
-                glowPlayEffect.SetActive(true);
-
-                if (GetComponent<Card>().cardData.type == CardType.Attack)
-                {
-                    isAttackPlayState = true;
-                    playArrow.SetActive(true);
-                }
-                else
-                {
-                    isAttackPlayState = false;
-                }
-            }
-            else
-            {
-                playArrow.SetActive(false);
-                glowPlayEffect.SetActive(false);
-            }
+            // Attack cards stop blocking raycasts
+            var cg = GetComponent<CanvasGroup>();
+            if (!cg) cg = gameObject.AddComponent<CanvasGroup>();
+            cg.blocksRaycasts = false;
+        }
+        else
+        {
+            isAttackPlayState = false;
+            glowPlayEffect.SetActive(true);
         }
     }
 
@@ -205,59 +209,43 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     private void HandlePlayState()
     {
-        bool isOverPlayZoneNow = Input.mousePosition.y > cardPlay.y;
+        bool isStillOverPlayZone = Input.mousePosition.y > cardPlay.y;
 
-        // Attack cards: freeze card + allow targeting
-        if (isAttackPlayState)
+        // Non-attack cards **follow mouse**
+        if (!isAttackPlayState)
         {
-            // ensure UI doesn't block physics
-            var cg = GetComponent<CanvasGroup>();
-            if (!cg) cg = gameObject.AddComponent<CanvasGroup>();
-            cg.blocksRaycasts = false;
+            if (isStillOverPlayZone)
+                glowPlayEffect.SetActive(true);
+            else
+                glowPlayEffect.SetActive(false);
 
-            // Mouse released → ALWAYS try targeting enemy
-            if (!Input.GetMouseButton(0))
-            {
-                if (playManager.CheckHasEnoughMana(GetComponent<Card>().manaCost))
-                {
-                    HandleAttackRelease();
-                }
-
-                TransitionToDefaulState();
-            }
-
-            return;
-
-            /*if (!Input.GetMouseButton(0)) // On release
-            {
-                bool isStillOverPlayZone = Input.mousePosition.y > cardPlay.y;
-
-                if (isStillOverPlayZone)
-                {
-                    // PLAY CARD
-                    if (playManager.CheckHasEnoughMana(GetComponent<Card>().manaCost))
-                    {
-                        var card = GetComponent<Card>();
-
-                        switch (card.cardData.type)
-                        {
-                            case CardType.Attack:
-                                HandleAttackRelease();
-                                break;
-
-                            default:
-                                playManager.PlayTheCard(card);
-                                DiscardThisCard();
-                                break;
-                        }
-                    }
-                }
-
-                // If attack card misses or non-attack card leaves play zone, reset
-                TransitionToDefaulState();
-            }*/
-            }
+            rectTransform.position = Vector3.Lerp(rectTransform.position, Input.mousePosition, lerpFactor);
+            
         }
+        else
+        {
+            // Attack card: FREEZE
+            if (!attackCardFrozen)
+                attackCardFrozen = true;
+        }
+
+        // RELEASE
+        if (!Input.GetMouseButton(0))
+        {
+            Card card = GetComponent<Card>();
+
+            if (playManager.CheckHasEnoughMana(card.manaCost))
+            {
+                if (card.cardData.type == CardType.Attack)
+                    HandleAttackRelease();
+                else if (isStillOverPlayZone)
+                {
+                    PlayNonAttackCard(card);
+                }
+            }
+            TransitionToDefaulState();
+        }
+    }
 
 
     private void UpdateCardPlayPostion()
@@ -267,7 +255,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             float segment = cardPlayMultiplier / cardPlayDivider;
 
             cardPlay.y = canvasRectTransform.rect.height * segment;
-
         }
     }
 
@@ -295,6 +282,12 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         handManager.UpdateHandVisuals();
     }
 
+
+    private void PlayNonAttackCard(Card card)
+    {
+        playManager.PlayTheCard(card);
+        DiscardThisCard();
+    }
     private void HandleAttackRelease()
     {
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
