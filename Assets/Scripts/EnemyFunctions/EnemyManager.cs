@@ -10,19 +10,31 @@ public class EnemyManager : MonoBehaviour
     public List<Enemy> enemyList;
     public void DisplayEnemy(EnemyData enemyData, GameObject enemyPrefab, Transform enemyTransform)
     {
-        //Instatiate the enemy
+        // Instantiate the enemy prefab
         GameObject newEnemy = Instantiate(enemyPrefab, enemyTransform.position, Quaternion.identity, enemyTransform);
 
-        newEnemy.GetComponent<SpriteRenderer>().sprite = enemyData.enemySprite;
+        Enemy enemyComponent = newEnemy.GetComponent<Enemy>();
 
-        Vector2 S = newEnemy.GetComponent<SpriteRenderer>().sprite.bounds.size;
-        newEnemy.GetComponent<BoxCollider2D>().size= S;
+        // Set the sprite
+        enemyComponent.spriteRenderer.sprite = enemyData.enemySprite;
 
-        //Set the Enemys data of the instantieted enemy
-        newEnemy.GetComponent<Enemy>().enemyData = enemyData;
-        newEnemy.GetComponent<Enemy>().UpdateEnemyDisplay();
+        // Adjust collider based on sprite size
 
-        enemyList.Add(newEnemy.GetComponent<Enemy>());
-     
+        Vector2 S = enemyComponent.spriteRenderer.sprite.bounds.size;
+        enemyComponent.boxCollider.size = S;
+
+        /*Destroy(newEnemy.GetComponent<BoxCollider2D>());
+        newEnemy.AddComponent<BoxCollider2D>();
+
+        var col = newEnemy.GetComponent<BoxCollider2D>();
+        Debug.Log("Collider center: " + col.offset + " size: " + col.size);*/
+
+        // Assign enemy data
+        enemyComponent.enemyData = enemyData;
+        enemyComponent.UpdateEnemyDisplay();
+
+        // Add to list
+        enemyList.Add(enemyComponent);
+
     }
 }
