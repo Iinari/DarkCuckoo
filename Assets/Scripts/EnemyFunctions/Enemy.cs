@@ -25,6 +25,10 @@ public class Enemy : BattleUnit
 
     public BattleSystem battleSystem;
 
+    public SpriteRenderer spriteRenderer;
+
+    public BoxCollider2D boxCollider;
+
 
     public void UpdateEnemyDisplay()
     {
