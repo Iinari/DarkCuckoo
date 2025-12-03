@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    private RectTransform rectTransform;
+    [HideInInspector] public RectTransform rectTransform;
 
     private RectTransform canvasRectTransform;
 
@@ -17,10 +17,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     private int currentState = 0;
 
-    private Quaternion originalRotation;
-
-    private Vector3 originalPosition;
-
     private HandManager handManager;
 
     private DiscardManager discardManager;
@@ -29,6 +25,9 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     private bool isAttackPlayState = false;
     private bool attackCardFrozen = false;
+
+    [HideInInspector] public Vector3 targetHandPos;
+    [HideInInspector] public Quaternion targetHandRot;
 
     [SerializeField] private float selectScale = 1.1f;
 
@@ -48,8 +47,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     [SerializeField] private float cardPlayMultiplier = 1f;
 
-    [SerializeField] private bool needUpdateCardPlayPosition = false;
-
     [SerializeField] private int playPositionYDivider = 2;
 
     [SerializeField] private float playPositionYMultiplier = 1f;
@@ -57,8 +54,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField] private int playPositionXDivider = 4;
 
     [SerializeField] private float playPositionXMultiplier = 1f;
-
-    [SerializeField] private bool needUpdatePlayPosition = false;
 
     void Awake()
     {
@@ -71,11 +66,9 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         }
 
         originalScale = canvasRectTransform.localScale;
-        originalPosition = canvasRectTransform.localPosition;
-        originalRotation = canvasRectTransform.localRotation;
 
         UpdateCardPlayPostion();
-        UpdatePlayPostion();
+        //UpdatePlayPostion();
 
         handManager = FindFirstObjectByType<HandManager>();
         discardManager = FindFirstObjectByType<DiscardManager>();
@@ -86,16 +79,21 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     void Update()
     {
-        if (needUpdateCardPlayPosition)
+        // Smoothly follow the hand-target when NOT dragging or playing
+        if (currentState != 2 && currentState != 3)
         {
-            UpdateCardPlayPostion();
-        }
+            rectTransform.anchoredPosition = Vector3.Lerp(
+                rectTransform.anchoredPosition,
+                targetHandPos,
+                Time.deltaTime * 10f
+            );
 
-        if (needUpdatePlayPosition) 
-        {
-            UpdatePlayPostion();
+            rectTransform.localRotation = Quaternion.Lerp(
+                rectTransform.localRotation,
+                targetHandRot,
+                Time.deltaTime * 10f
+            );
         }
-
         switch (currentState)
         {
             case 1:
@@ -120,8 +118,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         attackCardFrozen = false;
         currentState = 0;
         rectTransform.localScale = originalScale;
-        rectTransform.localPosition = originalPosition;
-        rectTransform.localRotation = originalRotation;
 
         glowEffect.SetActive(false);
         playArrow.SetActive(false);
@@ -129,18 +125,21 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
         var cg = GetComponent<CanvasGroup>();
         if (cg) cg.blocksRaycasts = true;
+
+        handManager.UpdateHandVisuals();
     }
 
+    //When mouse is hovered over a card
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (currentState == 0)
         {
-            originalPosition = rectTransform.localPosition;
-            originalRotation = rectTransform.localRotation;
+            
             originalScale = rectTransform.localScale;
 
-            currentState = 1;
+            handManager.UpdateHovered(gameObject);
 
+            currentState = 1;
         }
     }
 
@@ -258,17 +257,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         }
     }
 
-    private void UpdatePlayPostion()
-    {
-        if (canvasRectTransform != null && playPositionYDivider != 0 && playPositionXDivider != 0)
-        {
-            float segmentX = playPositionXMultiplier / playPositionXDivider;
-            float segmentY = playPositionYMultiplier / playPositionYDivider;
-
-            playPosition.x = canvasRectTransform.rect.width * segmentX;
-            playPosition.y = canvasRectTransform.rect.height * segmentY;
-        }
-    }
 
     public void DiscardThisCard()
     {
@@ -294,8 +282,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         worldPoint.z = 0;
 
         Collider2D hit = Physics2D.OverlapPoint(worldPoint);
-
-        Debug.Log("WorldPoint: " + worldPoint);
 
         if (hit != null)
         {

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using SnIProductions;
 using System.Collections;
 using System.Collections.Generic;
@@ -51,27 +51,62 @@ public class HandManager : MonoBehaviour
     {
         int cardCount = cardsInHand.Count;
 
-        if (cardCount == 1)
-        {
-            cardsInHand[0].transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
-            cardsInHand[0].transform.localPosition = new Vector3(0f, 0f, 0f);
-            return;
-        }
+        if (cardCount == 0) return;
 
         for (int i = 0; i < cardCount; i++)
         {
-            float rotationAngle = (fanSpread * (i - (cardCount - 1) / 2f));
-            cardsInHand[i].transform.localRotation = Quaternion.Euler(0f, 0f, rotationAngle);
+            float rot = fanSpread * (i - (cardCount - 1) / 2f);
+            float x = cardSpacing * (i - (cardCount - 1) / 2f);
 
-            float horizontalOffset = (cardSpacing * (i - (cardCount - 1) / 2f));
+            float t = (2f * i / (cardCount - 1) - 1f);
+            float y = verticalSpacing * (1 - t * t);
 
-            float normalizedPosition = (2f * i / (cardCount - 1) - 1f); //Normalize card position between -1, 1
-            float verticalOffset = verticalSpacing * (1 - normalizedPosition * normalizedPosition); 
+            CardMovement cm = cardsInHand[i].GetComponent<CardMovement>();
 
-            //Set card position
-            cardsInHand[i].transform.localPosition = new Vector3(horizontalOffset, verticalOffset, 0f);
+            cm.targetHandPos = new Vector3(x, y, 0f);
+            cm.targetHandRot = Quaternion.Euler(0, 0, rot);
         }
     }
 
+    public void UpdateHovered(GameObject hoveredCard)
+    {
+        int cardCount = cardsInHand.Count;
+        if (cardCount == 0) return;
+
+        float pushAmount = 60f;   // how far other cards move aside
+        float hoverRise = 60f;   // how much hovered card rises
+
+        int hoveredIndex = cardsInHand.IndexOf(hoveredCard);
+        if (hoveredIndex < 0) hoveredIndex = 0; // safety
+
+        for (int i = 0; i < cardCount; i++)
+        {
+            GameObject cardObj = cardsInHand[i];
+            CardMovement cm = cardObj.GetComponent<CardMovement>(); // <-- use cardObj, not hoveredCard
+
+            // Compute base fan layout
+            float rot = fanSpread * (i - (cardCount - 1) / 2f);
+            float x = cardSpacing * (i - (cardCount - 1) / 2f);
+
+            float t = (2f * i / (cardCount - 1) - 1f);
+            float y = verticalSpacing * (1 - t * t);
+
+            if (i == hoveredIndex)
+            {
+                // Hovered card: rise and straighten
+                y += hoverRise;
+                cm.targetHandRot = Quaternion.identity;
+            }
+            else
+            {
+                // Non-hover: push aside and keep normal rotation
+                if (i < hoveredIndex) x -= pushAmount;
+                else if (i > hoveredIndex) x += pushAmount;
+
+                cm.targetHandRot = Quaternion.Euler(0f, 0f, rot);
+            }
+
+            cm.targetHandPos = new Vector3(x, y, 0f);
+        }
+    }
 }
-        
