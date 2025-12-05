@@ -47,14 +47,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
     [SerializeField] private float cardPlayMultiplier = 1f;
 
-    [SerializeField] private int playPositionYDivider = 2;
-
-    [SerializeField] private float playPositionYMultiplier = 1f;
-
-    [SerializeField] private int playPositionXDivider = 4;
-
-    [SerializeField] private float playPositionXMultiplier = 1f;
-
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -68,7 +60,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         originalScale = canvasRectTransform.localScale;
 
         UpdateCardPlayPostion();
-        //UpdatePlayPostion();
 
         handManager = FindFirstObjectByType<HandManager>();
         discardManager = FindFirstObjectByType<DiscardManager>();
