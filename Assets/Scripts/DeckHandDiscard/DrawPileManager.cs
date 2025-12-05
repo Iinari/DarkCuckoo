@@ -2,6 +2,7 @@ using SnIProductions;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Overlays;
 using UnityEngine;
 
 public class DrawPileManager : MonoBehaviour
@@ -18,8 +19,20 @@ public class DrawPileManager : MonoBehaviour
 
     private DiscardManager discardManager;
 
-    public TextMeshProUGUI drawPileCounter;
+    public Transform drawPilePosition;
 
+    public GameObject drawPilePrefab;
+
+    private DrawPile drawPileVisual;
+
+    private void Awake()
+    {
+        GameObject visualDeck = Instantiate(drawPilePrefab, drawPilePosition.position, Quaternion.identity, drawPilePosition);
+
+        drawPileVisual = visualDeck.GetComponent<DrawPile>();
+
+        
+    }
     public void MakeDrawPile(List<CardData> cardsToAdd)
     {
         drawPile.AddRange(cardsToAdd);
@@ -34,6 +47,7 @@ public class DrawPileManager : MonoBehaviour
             handManager = FindFirstObjectByType<HandManager>();
         }
         maxHandSize = setMaxHandSize;
+        
     }
 
     public void DrawCard(HandManager handManager)
@@ -66,7 +80,12 @@ public class DrawPileManager : MonoBehaviour
 
     private void UpdateDrawPileCount()
     {
-        drawPileCounter.text = drawPile.Count.ToString();
+        if (drawPileVisual != null)
+        {
+            drawPileVisual.drawPileCounter.text = drawPile.Count.ToString();
+            drawPileVisual.UpdateDrawPileVisuals(drawPile.Count);
+        }
+        else Debug.Log("drawPileVisual is null in DrawPileManager");
     }
 
     private void RefillDeckFromDiscard()
