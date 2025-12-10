@@ -34,7 +34,6 @@ public class BattleSystem : MonoBehaviour
 
     public BattleSceneUIManager battleSceneUIManager;
 
-    public ResultPopUp resultPopUp;
     public BattleState state = BattleState.Start;
 
 
@@ -259,20 +258,10 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        if (drawPileManager == null)
+        if(battleSceneUIManager == null)
         {
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/DrawPileManager");
-            if (prefab == null)
-            {
-                Debug.Log("drawPileManager Prefab not found");
-            }
-            else
-            {
-                Instantiate(prefab, transform.position, Quaternion.identity, transform);
-                drawPileManager = GetComponentInChildren<DrawPileManager>();
-            }
+            Debug.Log("BattleSceneUIManager is null on BattleSystem");
         }
-
         deckManager.BattleSetup();
 
         ChooseEnemy();

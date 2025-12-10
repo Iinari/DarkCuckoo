@@ -696,6 +696,10 @@ PrefabInstance:
       value: BattleSceneUIManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}

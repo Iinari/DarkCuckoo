@@ -84,14 +84,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6511116953872748924}
-  - component: {fileID: 8817340812618249958}
+  - component: {fileID: 925315014498336550}
   m_Layer: 5
-  m_Name: DrawPileDisplay
+  m_Name: DrawPileDisplayPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6511116953872748924
 RectTransform:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1771.9, y: 1028}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8817340812618249958
+--- !u!114 &925315014498336550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,9 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3586b13872cdc3e41a0b7314fdbb1522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DrawPileDisplay
-  drawPileDisplayPrefab: {fileID: 2451048023132925714}
+  cam: {fileID: 0}
+  popUpPrefab: {fileID: 2451048023132925714}
   continueButton: {fileID: 7152080211635906518}
-  canvasGroup: {fileID: 0}
 --- !u!1 &2919306125826672615
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &7423087396613891311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,23 +454,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8817340812618249958}
+      objectReference: {fileID: 2451048023132925714}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseDrawPileDisplay
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DrawPileDisplay, Assembly-CSharp
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

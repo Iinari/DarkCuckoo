@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class BattleSceneUIManager : MonoBehaviour
 {
-    [SerializeField] GameObject drawPilePrefab;
+    [SerializeField] GameObject drawPileDisplayPrefab;
     [SerializeField] GameObject resultPrefab;
 
     private ResultPopUp resultPopUp;
@@ -14,15 +15,13 @@ public class BattleSceneUIManager : MonoBehaviour
     public void Awake()
     {
         GameObject results = Instantiate(resultPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
-        resultPopUp = results.GetComponentInChildren<ResultPopUp>();
-
-        
+        resultPopUp = results.GetComponent<ResultPopUp>();
         results.gameObject.SetActive(false);
         
-
-        GameObject drawPile = Instantiate(drawPilePrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
-        drawPileDisplay = drawPile.GetComponentInChildren<DrawPileDisplay>();
+        GameObject drawPile = Instantiate(drawPileDisplayPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
+        drawPileDisplay = drawPile.GetComponent<DrawPileDisplay>();
         drawPile.gameObject.SetActive(false);
+
     }
 
     public void OpenResultScreen(bool playerDied)
@@ -52,12 +51,17 @@ public class BattleSceneUIManager : MonoBehaviour
         {
             drawPileDisplay.OpenDrawPileDisplay();
         }
-        else Debug.Log("DrawPileDisplay Null");
-
     }
 
     public void TryGetDrawPileDisplayRef()
     {
-        drawPileDisplay = FindFirstObjectByType<DrawPileDisplay>();
+        if (drawPileDisplay == null)
+        {
+            drawPileDisplay = FindAnyObjectByType<DrawPileDisplay>(FindObjectsInactive.Include);
+            if (drawPileDisplay == null)
+            {
+                Debug.Log("DrawPileDisplay ref is null");
+            }
+        }
     }
 }

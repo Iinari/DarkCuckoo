@@ -23,10 +23,12 @@ public class LevelLoader : MonoBehaviour
 
     }
 
+    //Reloads the current scene, for testing
     public void ReloadThisLevel()
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+
         //StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
     }
 }

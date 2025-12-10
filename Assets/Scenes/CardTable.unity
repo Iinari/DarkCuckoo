@@ -2011,9 +2011,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1945755313}
     - target: {fileID: 1492215623688721889, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: resultPrefab
+      value: 
+      objectReference: {fileID: 5608080532543762218, guid: fba9f168d1f82174cb48f7948720c367, type: 3}
+    - target: {fileID: 1492215623688721889, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
       propertyPath: BattleTransform
       value: 
       objectReference: {fileID: 1535723442}
+    - target: {fileID: 1492215623688721889, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: drawPileDisplayPrefab
+      value: 
+      objectReference: {fileID: 2451048023132925714, guid: beabae4f119029d41b74fe80d155806b, type: 3}
     - target: {fileID: 1797475281684728371, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
       propertyPath: m_Name
       value: BattleSystem
