@@ -32,7 +32,9 @@ public class BattleSystem : MonoBehaviour
     public DrawPileManager drawPileManager;
     public DiscardManager discardManager;
 
-    public PopUp popUp;
+    public BattleSceneUIManager battleSceneUIManager;
+
+    public ResultPopUp resultPopUp;
     public BattleState state = BattleState.Start;
 
 
@@ -143,11 +145,9 @@ public class BattleSystem : MonoBehaviour
 
         if (CheckWasDmgLethal())
         {
-            Debug.Log("Player died");
-
-            if(popUp != null)
+            if (battleSceneUIManager != null)
             {
-                popUp.OpenDeathScreen();
+                battleSceneUIManager.OpenResultScreen(true);
             }
         }
     }
@@ -169,10 +169,9 @@ public class BattleSystem : MonoBehaviour
 
     public void EnemyDied()
     {
-
-        if (popUp != null)
+        if (battleSceneUIManager != null)
         {
-            popUp.OpenVictoryScreen();
+            battleSceneUIManager.OpenResultScreen(false);
         }
     }
 
@@ -187,6 +186,8 @@ public class BattleSystem : MonoBehaviour
         handManager = FindFirstObjectByType<HandManager>();
         drawPileManager = FindFirstObjectByType<DrawPileManager>();
         discardManager = FindFirstObjectByType<DiscardManager>();
+
+        battleSceneUIManager = FindFirstObjectByType<BattleSceneUIManager>();
 
         if (enemyManager == null)
         {

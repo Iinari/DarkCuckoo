@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8131861241743786476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1451605200686595864
@@ -44,13 +45,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2ecc4446858e345a77071c61fbb1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChosenEnemy: {fileID: 0}
   playerPrefab: {fileID: 3331217340476473481, guid: 69fa1d87292c46047b9c0773158b3fb4, type: 3}
-  enemyPrefab: {fileID: 7545693069157738872, guid: 78645844348f4ce43bcd159e5a7e5369, type: 3}
   playerPosition: {fileID: 0}
-  enemyPosition: {fileID: 0}
-  state: 0
   allHeroes: []
+  playerHero: {fileID: 0}
+  enemyPrefab: {fileID: 7545693069157738872, guid: 78645844348f4ce43bcd159e5a7e5369, type: 3}
+  enemyPosition: {fileID: 0}
   allEnemies: []
+  enemiesInBattle: []
   heroManager: {fileID: 3794127281476440023, guid: 9d33ce8961c6b7b47bb179ded32c3761, type: 3}
   enemyManager: {fileID: 8761238537541054614, guid: 7645014c88336f44bba958a65848eb3d, type: 3}
   cardPlayManager: {fileID: 6850809577535598148, guid: 8154834079e1e864bb4b1954fd1fea61, type: 3}
+  deckManager: {fileID: 0}
+  handManager: {fileID: 0}
+  drawPileManager: {fileID: 0}
+  discardManager: {fileID: 0}
+  sceneUIManager: {fileID: 0}
+  resultPopUp: {fileID: 0}
+  state: 0
+--- !u!1001 &7551699786422508740
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8060873990032492923}
+    m_Modifications:
+    - target: {fileID: 1735902665553780008, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735902665553780008, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735902665553780008, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735902665553780008, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735902665553780008, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735902665553780008, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735902665553780008, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735902665553780008, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735902665553780008, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1735902665553780008, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206893216217576661, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+      propertyPath: m_Name
+      value: BattleSceneUIManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+--- !u!4 &8131861241743786476 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1735902665553780008, guid: bfedfb8d0caebe34eb13aea83452625f, type: 3}
+  m_PrefabInstance: {fileID: 7551699786422508740}
+  m_PrefabAsset: {fileID: 0}

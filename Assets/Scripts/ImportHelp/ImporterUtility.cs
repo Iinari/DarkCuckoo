@@ -9,7 +9,7 @@ namespace SnIProductions
 {
     public static class ImporterUtility
     {
-        public static void FillAttackData(CardData card, string[] row, string assetPath)
+        public static void CreateAttackCardSO(CardData card, string[] row, string assetPath)
         {
             AttackCardData attackCard = ScriptableObject.CreateInstance<AttackCardData>();
             //base data from the cardData
@@ -28,7 +28,7 @@ namespace SnIProductions
             AssetDatabase.CreateAsset(attackCard, GetAssetPath(assetPath, card.ID));
         }
 
-        public static void FillSkillData(CardData card, string[] row, string assetPath)
+        public static void CreateSkillCardSO(CardData card, string[] row, string assetPath)
         {
             SkillCardData skillCard = ScriptableObject.CreateInstance<SkillCardData>();
             skillCard.ID = card.ID;

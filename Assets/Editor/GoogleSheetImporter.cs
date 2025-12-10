@@ -77,7 +77,7 @@ public class GoogleSheetImporter : Editor
 
                         if (attackCardsDic.TryGetValue(card.ID, out var attackRow))
                         {
-                            ImporterUtility.FillAttackData(card, attackRow, savePath);
+                            ImporterUtility.CreateAttackCardSO(card, attackRow, savePath);
                         }
                         else
                         {
@@ -88,7 +88,7 @@ public class GoogleSheetImporter : Editor
                     case CardType.Skill:
                         if (skillCardsDic.TryGetValue(card.ID, out var skillRow))
                         {
-                            ImporterUtility.FillSkillData(card, skillRow, savePath);
+                            ImporterUtility.CreateSkillCardSO(card, skillRow, savePath);
                         }
                         else
                         {
