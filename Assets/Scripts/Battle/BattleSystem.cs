@@ -262,6 +262,9 @@ public class BattleSystem : MonoBehaviour
         {
             Debug.Log("BattleSceneUIManager is null on BattleSystem");
         }
+
+        battleSceneUIManager.SceneUISetUp();
+
         deckManager.BattleSetup();
 
         ChooseEnemy();

@@ -12,7 +12,7 @@ public class BattleSceneUIManager : MonoBehaviour
 
     public Transform BattleTransform;
 
-    public void Awake()
+    public void SceneUISetUp()
     {
         GameObject results = Instantiate(resultPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
         resultPopUp = results.GetComponent<ResultPopUp>();
