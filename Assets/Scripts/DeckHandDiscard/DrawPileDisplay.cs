@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using SnIProductions;
 using System;
+using static UnityEngine.Rendering.DebugUI;
 
 public class DrawPileDisplay : PopUp
 {
@@ -12,7 +13,7 @@ public class DrawPileDisplay : PopUp
     public GameObject HBoxPrefab;
     public GameObject contentBorder;
     public Transform contentBorderTransform;
-
+    public GameObject latestHBox;
     public DrawPileManager drawPileManager;
 
     public void OpenDrawPileDisplay()
@@ -32,8 +33,17 @@ public class DrawPileDisplay : PopUp
     {
         for (int i = 0; i < drawPile.Count; i++)
         {
-            //GameObject hBox = Instantiate(HBoxPrefab, contentBorderTransform.position, Quaternion.identity, contentBorderTransform);
-            //GameObject cardUI = Instantiate(cardCanvasPrefab, contentBorderTransform.position, Quaternion.identity, contentBorderTransform);
+            if (i == 0)
+            {
+                latestHBox = Instantiate(HBoxPrefab, contentBorderTransform.position, Quaternion.identity, contentBorderTransform);
+                
+            }
+            else if (i % 5 == 0) 
+            {
+                latestHBox = Instantiate(HBoxPrefab, contentBorderTransform.position, Quaternion.identity, contentBorderTransform);
+            }
+
+            CreateSingularCardDisplay(latestHBox, drawPile[i]);
         }
     }
 
@@ -44,6 +54,13 @@ public class DrawPileDisplay : PopUp
             drawPileManager = FindFirstObjectByType<DrawPileManager>();
         }
         return drawPileManager.drawPile;
+    }
+
+    public void CreateSingularCardDisplay(GameObject layoutGroup, CardData card)
+    {
+        GameObject displayedCard = Instantiate(cardCanvasPrefab, layoutGroup.transform.position, Quaternion.identity, layoutGroup.gameObject.transform);
+        displayedCard.GetComponent<Card>().cardData = card;
+        displayedCard.GetComponent<Card>().UpdateCardDisplay();
     }
 
 }

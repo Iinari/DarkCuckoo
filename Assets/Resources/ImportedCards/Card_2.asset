@@ -15,10 +15,10 @@ MonoBehaviour:
   ID: 2
   cardName: ' Slap'
   type: 0
-  isInStartDeck: 0
+  isInStartDeck: 1
   description: Deal # damage
   cost: 0
-  spriteName: 
+  spriteName: LittleGuy
   rarity: 0
-  image: {fileID: 0}
+  image: {fileID: -4918344269662520756, guid: 050ff968f11d9164881f653764966e7f, type: 3}
   damage: 5

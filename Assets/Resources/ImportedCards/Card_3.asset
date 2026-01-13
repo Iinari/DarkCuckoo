@@ -15,10 +15,10 @@ MonoBehaviour:
   ID: 3
   cardName: ' Kick'
   type: 0
-  isInStartDeck: 0
+  isInStartDeck: 1
   description: Deal # damage
   cost: 2
-  spriteName: 
+  spriteName: Tearyeye
   rarity: 0
-  image: {fileID: 0}
+  image: {fileID: 5915184452364829229, guid: 41cabf84206cdfa498d6ad7aed495ddc, type: 3}
   damage: 8
