@@ -8,7 +8,7 @@ public class BattleSceneUIManager : MonoBehaviour
     [SerializeField] GameObject resultPrefab;
 
     private ResultPopUp resultPopUp;
-    private DrawPileDisplay drawPileDisplay;
+    private CardPopUpDisplay drawPileDisplay;
 
     public Transform BattleTransform;
 
@@ -19,7 +19,7 @@ public class BattleSceneUIManager : MonoBehaviour
         results.gameObject.SetActive(false);
         
         GameObject drawPile = Instantiate(drawPileDisplayPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
-        drawPileDisplay = drawPile.GetComponent<DrawPileDisplay>();
+        drawPileDisplay = drawPile.GetComponent<CardPopUpDisplay>();
         drawPile.gameObject.SetActive(false);
 
     }
@@ -49,7 +49,16 @@ public class BattleSceneUIManager : MonoBehaviour
         TryGetDrawPileDisplayRef();
         if (drawPileDisplay != null)
         {
-            drawPileDisplay.OpenDrawPileDisplay();
+            drawPileDisplay.OpenCardDisplay(false);
+        }
+    }
+
+    public void ActivateDiscardDisplay()
+    {
+        TryGetDrawPileDisplayRef();
+        if (drawPileDisplay != null)
+        {
+            drawPileDisplay.OpenCardDisplay(true);
         }
     }
 
@@ -57,7 +66,7 @@ public class BattleSceneUIManager : MonoBehaviour
     {
         if (drawPileDisplay == null)
         {
-            drawPileDisplay = FindAnyObjectByType<DrawPileDisplay>(FindObjectsInactive.Include);
+            drawPileDisplay = FindAnyObjectByType<CardPopUpDisplay>(FindObjectsInactive.Include);
             if (drawPileDisplay == null)
             {
                 Debug.Log("DrawPileDisplay ref is null");

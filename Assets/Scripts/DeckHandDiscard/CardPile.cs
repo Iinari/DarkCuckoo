@@ -35,6 +35,7 @@ public class CardPile : MonoBehaviour
             flippedCards[i].SetActive(drawPileCount - 1 >= i);
         }
 
+        //Depending on the type of the card pile, activate button(s) needed
         switch (header)
         {
             case "Deck":
@@ -42,7 +43,6 @@ public class CardPile : MonoBehaviour
                 break;
             case "Discard":
                 btnActivateDrawPile.gameObject.SetActive(false);
-                btnActivateDiscard.gameObject.SetActive(false);
                 break;
         }
     }

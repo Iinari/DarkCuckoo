@@ -704,7 +704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ActivateDrawPileDisplay
+      value: ActivateDiscardDisplay
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -721,6 +721,10 @@ PrefabInstance:
     - target: {fileID: 6577673412043504906, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_Name
       value: Btn_ActivateDiscardDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673412043504906, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9192766831518035650, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_Color.a
@@ -871,6 +875,10 @@ PrefabInstance:
     - target: {fileID: 6577673412043504906, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_Name
       value: Btn_ActivateDrawPileDipslay
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673412043504906, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9192766831518035650, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_Color.a

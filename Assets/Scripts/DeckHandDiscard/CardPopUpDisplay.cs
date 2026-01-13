@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using TMPro;
 using SnIProductions;
 using System;
-using static UnityEngine.Rendering.DebugUI;
 
-public class DrawPileDisplay : PopUp
+
+public class CardPopUpDisplay : PopUp
 {
     public GameObject cardCanvasPrefab;
     public GameObject HBoxPrefab;
@@ -15,16 +15,31 @@ public class DrawPileDisplay : PopUp
     public Transform contentBorderTransform;
     public GameObject latestHBox;
     public DrawPileManager drawPileManager;
+    public DiscardManager discardManager;
 
-    public void OpenDrawPileDisplay()
+    public TextMeshProUGUI header;
+    public Button btnBack;
+
+    public void OpenCardDisplay(bool openDiscard)
     {
         gameObject.SetActive(true);
 
         //First make sure that the Display is clear
         ClearDisplayedCards();
 
-        //Then generate display from the cards present in draw pile
-        GenerateCardView(GetCardsFromDrawPileManager());
+
+        if (openDiscard)
+        {
+            GenerateCardView(GetCardsFromDiscardManager());
+            header.text = "Discard";
+            SetBackButtonRight(btnBack);
+        }
+        else
+        {
+            //Then generate display from the cards present in draw pile
+            GenerateCardView(GetCardsFromDrawPileManager());
+            SetBackButtonLeft(btnBack);
+        }
     }
 
     public void CloseDrawPileDisplay() 
@@ -59,6 +74,15 @@ public class DrawPileDisplay : PopUp
         return drawPileManager.drawPile;
     }
 
+    public List<CardData> GetCardsFromDiscardManager()
+    {
+        if (discardManager == null)
+        {
+            discardManager = FindFirstObjectByType<DiscardManager>();
+        }
+        return discardManager.discardCards;
+    }
+
     public void CreateSingularCardDisplay(GameObject layoutGroup, CardData card)
     {
         GameObject displayedCard = Instantiate(cardCanvasPrefab, layoutGroup.transform.position, Quaternion.identity, layoutGroup.gameObject.transform);
@@ -76,4 +100,25 @@ public class DrawPileDisplay : PopUp
         latestHBox = null;
     }
 
+    public void SetBackButtonRight(Button button)
+    {
+        RectTransform rt = button.GetComponent<RectTransform>();
+
+        rt.anchorMin = new Vector2(1f, 0f);
+        rt.anchorMax = new Vector2(1f, 0f);
+        rt.pivot = new Vector2(1f, 0f);
+
+        rt.anchoredPosition = new Vector2(-5f, -5f); // padding from corner
+    }
+
+    public void SetBackButtonLeft(Button button)
+    {
+        RectTransform rt = button.GetComponent<RectTransform>();
+
+        rt.anchorMin = new Vector2(0f, 0f);
+        rt.anchorMax = new Vector2(0f, 0f);
+        rt.pivot = new Vector2(0f, 0f);
+
+        rt.anchoredPosition = new Vector2(-5f, -5f); // padding from corner
+    }
 }

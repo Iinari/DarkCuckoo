@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6145261212462355857}
   - component: {fileID: 8646812546537881913}
   m_Layer: 5
-  m_Name: DrawPileBG
+  m_Name: CardDispalyBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6511116953872748924}
   - component: {fileID: 925315014498336550}
   m_Layer: 5
-  m_Name: DrawPileDisplayPrefab
+  m_Name: CardDisplayPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,11 @@ MonoBehaviour:
   HBoxPrefab: {fileID: 5728443700729191332, guid: 795ef85050fc76d46855da648f7ae692, type: 3}
   contentBorder: {fileID: 2818355101652343644}
   contentBorderTransform: {fileID: 8469433304759375210}
+  latestHBox: {fileID: 0}
   drawPileManager: {fileID: 0}
+  discardManager: {fileID: 0}
+  header: {fileID: 7596542852128098630}
+  btnBack: {fileID: 7152080211635906518}
 --- !u!1 &2818355101652343644
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +448,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2456061103634427718, guid: 935555742d3e1db4f860e67260d15980, type: 3}
       propertyPath: m_Name
-      value: Text
+      value: Txt_Header
       objectReference: {fileID: 0}
     - target: {fileID: 2998923923416443320, guid: 935555742d3e1db4f860e67260d15980, type: 3}
       propertyPath: m_Pivot.x
@@ -550,6 +554,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2998923923416443320, guid: 935555742d3e1db4f860e67260d15980, type: 3}
   m_PrefabInstance: {fileID: 40350251382366345}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7596542852128098630 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7629956688373524943, guid: 935555742d3e1db4f860e67260d15980, type: 3}
+  m_PrefabInstance: {fileID: 40350251382366345}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9154422477775898095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -668,7 +683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673412043504906, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_Name
-      value: DrawPileDisplayBackButton
+      value: BackButton
       objectReference: {fileID: 0}
     - target: {fileID: 7451413168709109894, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_text
