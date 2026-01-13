@@ -20,8 +20,11 @@ public class DrawPileDisplay : PopUp
     {
         gameObject.SetActive(true);
 
+        //First make sure that the Display is clear
+        ClearDisplayedCards();
+
+        //Then generate display from the cards present in draw pile
         GenerateCardView(GetCardsFromDrawPileManager());
-      
     }
 
     public void CloseDrawPileDisplay() 
@@ -31,6 +34,7 @@ public class DrawPileDisplay : PopUp
 
     public void GenerateCardView(List<CardData> drawPile)
     {
+        Utility.Shuffle(drawPile);
         for (int i = 0; i < drawPile.Count; i++)
         {
             if (i == 0)
@@ -61,6 +65,16 @@ public class DrawPileDisplay : PopUp
         GameObject displayedCard = Instantiate(cardCanvasPrefab, layoutGroup.transform.position, Quaternion.identity, layoutGroup.gameObject.transform);
         displayedCard.GetComponent<Card>().cardData = card;
         displayedCard.GetComponent<Card>().UpdateCardDisplay();
+    }
+
+    private void ClearDisplayedCards()
+    {
+        for (int i = contentBorderTransform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(contentBorderTransform.GetChild(i).gameObject);
+        }
+
+        latestHBox = null;
     }
 
 }
