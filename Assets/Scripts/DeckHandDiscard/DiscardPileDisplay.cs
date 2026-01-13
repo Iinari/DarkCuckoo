@@ -1,13 +1,8 @@
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using TMPro;
 using SnIProductions;
-using System;
-using static UnityEngine.Rendering.DebugUI;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class DrawPileDisplay : PopUp
+public class DiscardPileDisplay : PopUp
 {
     public GameObject cardCanvasPrefab;
     public GameObject HBoxPrefab;
@@ -16,7 +11,7 @@ public class DrawPileDisplay : PopUp
     public GameObject latestHBox;
     public DrawPileManager drawPileManager;
 
-    public void OpenDrawPileDisplay()
+    public void OpenDiscardPileDisplay()
     {
         gameObject.SetActive(true);
 
@@ -27,21 +22,20 @@ public class DrawPileDisplay : PopUp
         GenerateCardView(GetCardsFromDrawPileManager());
     }
 
-    public void CloseDrawPileDisplay() 
+    public void CloseDiscardPileDisplay()
     {
         gameObject.SetActive(false);
     }
 
     public void GenerateCardView(List<CardData> drawPile)
     {
-        Utility.Shuffle(drawPile);
         for (int i = 0; i < drawPile.Count; i++)
         {
             if (i == 0)
             {
                 latestHBox = Instantiate(HBoxPrefab, contentBorderTransform.position, Quaternion.identity, contentBorderTransform);
             }
-            else if (i % 5 == 0) 
+            else if (i % 5 == 0)
             {
                 latestHBox = Instantiate(HBoxPrefab, contentBorderTransform.position, Quaternion.identity, contentBorderTransform);
             }
@@ -75,5 +69,4 @@ public class DrawPileDisplay : PopUp
 
         latestHBox = null;
     }
-
 }

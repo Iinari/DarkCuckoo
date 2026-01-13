@@ -23,21 +23,19 @@ public class DrawPileManager : MonoBehaviour
 
     public GameObject drawPilePrefab;
 
-    private DrawPile drawPileVisual;
+    private CardPile drawPileVisual;
 
-    private void Awake()
-    {
-        GameObject visualDeck = Instantiate(drawPilePrefab, drawPilePosition.position, Quaternion.identity, drawPilePosition);
+    private string drawPileTxt = "Deck";
 
-        drawPileVisual = visualDeck.GetComponent<DrawPile>();
-
-        
-    }
     public void MakeDrawPile(List<CardData> cardsToAdd)
     {
         drawPile.AddRange(cardsToAdd);
         Utility.Shuffle(drawPile);
-        UpdateDrawPileCount();
+
+        GameObject visualDeck = Instantiate(drawPilePrefab, drawPilePosition.position, Quaternion.identity, drawPilePosition);
+
+        drawPileVisual = visualDeck.GetComponent<CardPile>();
+        drawPileVisual.FirstPileUpdate(drawPile.Count, drawPileTxt);
     }
 
     public void BattleSetUp(int setMaxHandSize)
@@ -82,8 +80,7 @@ public class DrawPileManager : MonoBehaviour
     {
         if (drawPileVisual != null)
         {
-            drawPileVisual.drawPileCounter.text = drawPile.Count.ToString();
-            drawPileVisual.UpdateDrawPileVisuals(drawPile.Count);
+            drawPileVisual.UpdatePileVisuals(drawPile.Count);
         }
         else Debug.Log("drawPileVisual is null in DrawPileManager");
     }
@@ -95,7 +92,7 @@ public class DrawPileManager : MonoBehaviour
             discardManager = FindFirstObjectByType<DiscardManager>();
         }
 
-        if(discardManager != null && discardManager.discardCount > 0)
+        if(discardManager != null && discardManager.discardCards.Count > 0)
         {
             drawPile = discardManager.PullAllFromDiscard();
             Utility.Shuffle(drawPile);

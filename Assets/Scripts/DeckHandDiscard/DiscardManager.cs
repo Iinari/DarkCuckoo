@@ -8,19 +8,30 @@ public class DiscardManager : MonoBehaviour
 {
     public List<CardData> discardCards = new();
 
-    public TextMeshProUGUI discardCountVisual;
+    public Transform discardPilePosition;
 
-    public int discardCount;
+    public GameObject discardPilePrefab;
+
+    private CardPile discardPileVisual;
+
+    private string discardPileHeader = "Discard";
 
     private void Awake()
     {
-        UpdateDiscardCount();
+        GameObject visualDiscard = Instantiate(discardPilePrefab, discardPilePosition.position, Quaternion.identity, discardPilePosition);
+
+        discardPileVisual = visualDiscard.GetComponent<CardPile>();
+
+        discardPileVisual.FirstPileUpdate(discardCards.Count, discardPileHeader);
     }
 
     private void UpdateDiscardCount()
     {
-        discardCountVisual.text = discardCards.Count.ToString();
-        discardCount = discardCards.Count;
+        if (discardPileVisual != null)
+        {
+            discardPileVisual.UpdatePileVisuals(discardCards.Count);
+        }
+        else Debug.Log("discardPileVisual is null in DiscardManager");
     }
 
     public void AddToDiscard(CardData card)
