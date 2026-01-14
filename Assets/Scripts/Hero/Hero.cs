@@ -77,8 +77,4 @@ public class Hero : BattleUnit
         }
     }
 
-    public override void DisplayUnit(UnitData heroData)
-    {
-
-    }
 }

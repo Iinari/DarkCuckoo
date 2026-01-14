@@ -41,6 +41,7 @@ public class DiscardManager : MonoBehaviour
             discardCards.Add(card);
             UpdateDiscardCount();
         }
+        else Debug.Log("AddToDiscard failed due to null card value");
     }
 
     public CardData PullFromDiscard()

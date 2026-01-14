@@ -12,6 +12,4 @@ public abstract class BattleUnit : MonoBehaviour
 
     public int currentHP;
 
-
-    public abstract void DisplayUnit(UnitData unitData);
 }

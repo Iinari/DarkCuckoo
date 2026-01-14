@@ -65,12 +65,10 @@ public class CardPlayManager : MonoBehaviour
                 case CardType.Skill:
                     PlaySkillCard(card);
                     break;
-
             }
 
             DecreaseMP(card.manaCost);
-        }
-        
+        }    
     }
 
 
@@ -109,7 +107,7 @@ public class CardPlayManager : MonoBehaviour
         }
 
     }
-
+    /*
     public void DiscardThisCard()
     {
         if (discardManager != null)
@@ -117,7 +115,7 @@ public class CardPlayManager : MonoBehaviour
             discardManager.AddToDiscard(playedCard.cardData);
             Destroy(gameObject);
         }
-    }
+    }*/
 
     public void TargetEnemyWithPlay(Enemy enemy, Card playedCard)
     {

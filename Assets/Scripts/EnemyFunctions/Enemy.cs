@@ -60,11 +60,6 @@ public class Enemy : BattleUnit
         }
     }
 
-    public override void DisplayUnit(UnitData enemyData)
-    {
-
-    }
-
     public void TakeTurn(BattleSystem battleSystem)
     {
         int dmg = Random.Range(enemyData.enemyMinDmg, enemyData.enemyMaxDmg);

@@ -254,11 +254,9 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         if (discardManager != null)
         {
             discardManager.AddToDiscard(GetComponent<Card>().cardData);
+            handManager.cardsInHand.Remove(gameObject);
             Destroy(gameObject);
         }
-
-        handManager.cardsInHand.Remove(gameObject);
-        handManager.UpdateHandVisuals();
     }
 
 
