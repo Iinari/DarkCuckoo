@@ -3,98 +3,80 @@ using System.Collections.Generic;
 using SnIProductions;
 using UnityEngine;
 
+//Class for handling players deck, all of it. When cards are added or removed completely (not discarded) it should be done by DeckManager
 public class DeckManager : MonoBehaviour
 {
-    private List<CardData> allCards = new();
-
-    public List<CardData> cardsInPlay = new();
+    public List<CardData> deck = new(); //Player's cards
 
     public int copiesOfStartingCards;
-
     public int maxHandSize = 10;
-
     public int startingHandSize = 5;
 
     private HandManager handManager;
-
     private DrawPileManager drawPileManager;
-
     private DiscardManager discardManager;
 
     private void Start()
     {
+        LoadStartingDeck();
+    }
 
-        //Load all card assets from Resources folder
-        //CardData[] cards = Resources.LoadAll<CardData>("Cards");
-
+    public void LoadStartingDeck()
+    {
+        deck.Clear();
         CardData[] cards = Resources.LoadAll<CardData>("ImportedCards");
 
-        //Add the loaded cards to the allCards list
-        allCards.AddRange(cards);
-
-        if (copiesOfStartingCards <= 0) 
+        //Makes sure copiesOfStartingCards has a value
+        if (copiesOfStartingCards <= 0)
         {
             copiesOfStartingCards = 3;
         }
 
-
+        //Goes through all imported cards to check which are in starting hand.
+        //NOTETOSELF: Should Importer put starting cards in different folder?
         foreach (CardData card in cards)
         {
             if (card.isInStartDeck)
             {
                 //Checks how many copies for the starting cards should be made and creates the copies
-                for (int j = 0; j < copiesOfStartingCards; j++) 
+                for (int j = 0; j < copiesOfStartingCards; j++)
                 {
-                cardsInPlay.Add(card);
+                    deck.Add(card);
                 }
             }
         }
-
     }
 
-    private void Awake()
+    public void AddCardToDeck(CardData card)
     {
-        if (drawPileManager == null)
-        {
-            drawPileManager = FindFirstObjectByType<DrawPileManager>();
-        }
-        if (handManager == null)
-        {
-            handManager = FindFirstObjectByType<HandManager>();
-        }
-        if(discardManager == null)
-        {
-            discardManager = FindFirstObjectByType<DiscardManager>();
-        }
+        deck.Add(card);
     }
 
+    /**
+    public void RemoveCardFromDeck(CardData card) 
+    { 
+        deck.Remove(card);
+    }**/
 
     public void BattleSetup()
     {
-        if (drawPileManager == null)
-        {
-            drawPileManager = FindFirstObjectByType<DrawPileManager>();
-        }
-        if (handManager == null)
-        {
-            handManager = FindFirstObjectByType<HandManager>();
-        }
+        GetManagerReferences();
 
         handManager.BattleSetup(maxHandSize);
-        drawPileManager.MakeDrawPile(cardsInPlay);
+        drawPileManager.MakeDrawPile(deck);
         drawPileManager.BattleSetUp(maxHandSize);
     }
 
-    public void TurnSetUp()
+    public void StartPlayersTurn()
     {
         drawPileManager.StartPlayerTurn(startingHandSize);
     }
 
     public void EndPlayersTurn()
     {
-        if(discardManager == null)
+        if(handManager == null)
         {
-            discardManager = FindFirstObjectByType<DiscardManager>();
+            GetManagerReferences();
         }
         for (int i = 0; i < handManager.cardsInHand.Count; i++)
         {
@@ -103,5 +85,21 @@ public class DeckManager : MonoBehaviour
         }
         handManager.cardsInHand.Clear();
         handManager.UpdateHandVisuals();
+    }
+
+    public void GetManagerReferences()
+    {
+        if (drawPileManager == null)
+        {
+            drawPileManager = FindFirstObjectByType<DrawPileManager>();
+        }
+        if (handManager == null)
+        {
+            handManager = FindFirstObjectByType<HandManager>();
+        }
+        if (discardManager == null)
+        {
+            discardManager = FindFirstObjectByType<DiscardManager>();
+        }
     }
 }

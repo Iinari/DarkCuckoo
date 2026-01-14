@@ -47,7 +47,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.PlayerTurn;
         RestoreMana();
-        deckManager.TurnSetUp();
+        deckManager.StartPlayersTurn();
     }
 
     public void EnemyTurn() 
