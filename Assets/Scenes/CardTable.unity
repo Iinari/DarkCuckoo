@@ -1256,7 +1256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   discardCards: []
   discardPilePosition: {fileID: 1202773157}
-  discardPilePrefab: {fileID: 5024858541358502870, guid: ec9940e2d0013b948bcfd3454c11f0b1, type: 3}
+  discardPilePrefab: {fileID: 3342303316336810372, guid: 2616482b4df964d42a1be8c50f0b8f79, type: 3}
 --- !u!1 &1159480119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,7 +1366,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 786, y: -360}
+  m_AnchoredPosition: {x: 786, y: -332}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1300839347
@@ -1401,7 +1401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -800, y: -384}
+  m_AnchoredPosition: {x: -800, y: -332}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1301097445
@@ -2297,7 +2297,7 @@ RectTransform:
   m_GameObject: {fileID: 2060444790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.88, y: 0.88, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1389950926}
@@ -2305,7 +2305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -175, y: -474}
+  m_AnchoredPosition: {x: -175, y: -491.4}
   m_SizeDelta: {x: 160, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060444792

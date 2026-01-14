@@ -30,14 +30,14 @@ public class CardPopUpDisplay : PopUp
 
         if (openDiscard)
         {
-            GenerateCardView(GetCardsFromDiscardManager());
+            GenerateCardView(GetCardsFromDiscardManager(), false);
             header.text = "Discard";
             SetBackButtonRight(btnBack);
         }
         else
         {
             //Then generate display from the cards present in draw pile
-            GenerateCardView(GetCardsFromDrawPileManager());
+            GenerateCardView(GetCardsFromDrawPileManager(), true);
             SetBackButtonLeft(btnBack);
         }
     }
@@ -47,9 +47,11 @@ public class CardPopUpDisplay : PopUp
         gameObject.SetActive(false);
     }
 
-    public void GenerateCardView(List<CardData> drawPile)
+    public void GenerateCardView(List<CardData> drawPile, bool isDrawPile)
     {
+        if(isDrawPile)
         Utility.Shuffle(drawPile);
+
         for (int i = 0; i < drawPile.Count; i++)
         {
             if (i == 0)
