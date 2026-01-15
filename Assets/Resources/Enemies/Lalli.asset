@@ -16,6 +16,6 @@ MonoBehaviour:
   enemySprite: {fileID: 1302993493870987621, guid: 60273f8992eeb0c49a260b604f1d2342, type: 3}
   scale: 0.5
   enemyName: Talonpoika Lalli
-  enemyHealth: 1000
+  enemyHealth: 10
   enemyMinDmg: 10
   enemyMaxDmg: 15

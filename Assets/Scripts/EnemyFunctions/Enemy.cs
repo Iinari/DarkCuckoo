@@ -55,8 +55,11 @@ public class Enemy : BattleUnit
             {
                 battleSystem.EnemyDied();
             }
-            battleSystem = FindFirstObjectByType<BattleSystem>();
-            battleSystem.EnemyDied();
+            else
+            {
+                battleSystem = FindFirstObjectByType<BattleSystem>();
+                battleSystem.EnemyDied();
+            }
         }
     }
 

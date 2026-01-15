@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5aff9c6ac03f49f41934c9db778ac508, type: 3}
-  m_Name: Kissa
-  m_EditorClassIdentifier: 
+  m_Name: VihainenKatti
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   encounterIcon: {fileID: 0}
   enemySprite: {fileID: 3818052225429175914, guid: 20ece848c12407049ae1bf0a85fdfbab, type: 3}
-  scale: 1
+  scale: 0
   enemyName: Vihainen Katti
-  enemyHealth: 50
-  enemyMinDmg: 3
-  enemyMaxDmg: 10
+  enemyHealth: 30
+  enemyMinDmg: 10
+  enemyMaxDmg: 20

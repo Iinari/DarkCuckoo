@@ -16,6 +16,6 @@ MonoBehaviour:
   enemySprite: {fileID: 3821784648644234806, guid: ed629a12748f2d54ba65da5e65aa3d08, type: 3}
   scale: 1
   enemyName: Hillopurkin vartija
-  enemyHealth: 100
+  enemyHealth: 20
   enemyMinDmg: 10
   enemyMaxDmg: 20

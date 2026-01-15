@@ -23,10 +23,6 @@ public class ResultPopUp : PopUp
     private string victoryScreenTxt = "Victory";
 
 
-    public override void ActivatePopUp()
-    {
-       
-    }
     public void OpenVictoryScreen()
     {
         gameObject.SetActive(true);
@@ -38,6 +34,8 @@ public class ResultPopUp : PopUp
         {
             child.gameObject.SetActive(false);
         }
+
+        GetComponentInChildren<RewardManager>().DisplayRewardCards();
     }
 
     public void OpenDeathScreen()
