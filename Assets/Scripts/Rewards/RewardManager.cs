@@ -8,6 +8,8 @@ public class RewardManager : MonoBehaviour
     public GameObject contentBorder;
     public int rewardCount;
 
+    private CardData cardToDisplay;
+
     public List<CardData> allRewardCards = new();
     private List<CardData> rewardCards = new();
 
@@ -21,7 +23,13 @@ public class RewardManager : MonoBehaviour
         }
         for (int i = 0; i < rewardCount; i++) 
         {
-            DisplayCard(GetRandomCard(allRewardCards));
+            //Prevent duplicates in rewards
+            cardToDisplay = GetRandomCard(allRewardCards);
+            while (SameCardAlreadyDisplayed(cardToDisplay))
+            {
+                cardToDisplay = GetRandomCard(allRewardCards);
+            }
+            DisplayCard(cardToDisplay);
         }
     }
 

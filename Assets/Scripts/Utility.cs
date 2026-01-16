@@ -17,6 +17,12 @@ namespace SnIProductions
                 (list[j], list[i]) = (list[i], list[j]);
             }
         }
+
+        public static bool ProbabilityCheck(int probability)
+        {
+            int rnd = Random.Range(0, 101);
+            return rnd <= probability;
+        }
     }
 
     public enum Rarity
