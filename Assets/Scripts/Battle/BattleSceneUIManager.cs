@@ -39,7 +39,6 @@ public class BattleSceneUIManager : MonoBehaviour
             if (resultPopUp != null)
             {
                 resultPopUp.OpenVictoryScreen();
-                Debug.Log("YAY!");
             }
             else Debug.Log("ResultPopUp Null");
         }

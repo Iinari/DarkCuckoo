@@ -89,4 +89,11 @@ namespace SnIProductions
         Summon
     }
 
+    public enum CardState
+    {
+        Default,
+        Hovered,
+        Dragging,
+        Playing
+    }
 }

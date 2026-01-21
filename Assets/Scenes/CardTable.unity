@@ -2732,6 +2732,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3718807129400404403, guid: 9d38872c7fc91824ca6209786622d114, type: 3}
+      propertyPath: cardPrefab
+      value: 
+      objectReference: {fileID: 2256470940564864649, guid: 253bb9871840a274299d75860a240bbb, type: 3}
+    - target: {fileID: 3718807129400404403, guid: 9d38872c7fc91824ca6209786622d114, type: 3}
       propertyPath: handTransform
       value: 
       objectReference: {fileID: 1526536627}
