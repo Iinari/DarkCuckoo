@@ -7,9 +7,11 @@ using System;
 //Script for card hand management 
 public class HandManager : MonoBehaviour
 {
+    public bool usingNewSystem;
+
     public GameObject cardPrefab; //Assign card prefab in inspector
 
-    public bool usingNewSystem;
+    public GameObject newCardPrefab;
 
     public Transform handTransform; //Root of the hand position
 
@@ -34,20 +36,29 @@ public class HandManager : MonoBehaviour
     {
         if (cardsInHand.Count < handMaxSize)
         {
+
             //Instatiate the card
-            GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
-            cardsInHand.Add(newCard);
-
-            //Set the CardData of the instantieted card
-            
-            newCard.GetComponent<Card>().cardData = cardData;
-            newCard.GetComponent<Card>().UpdateCardDisplay();
-
-            if (usingNewSystem) 
+            if (usingNewSystem)
             {
+                GameObject newCard = Instantiate(newCardPrefab, handTransform.position, Quaternion.identity, handTransform);
+
+                //Set the CardData of the instantieted card
+
+                newCard.GetComponent<Card>().cardData = cardData;
+                newCard.GetComponent<Card>().UpdateCardDisplay();
                 RegisterCard(newCard);
             }
-            else UpdateHandVisuals();
+            else
+            {
+                GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
+                cardsInHand.Add(newCard);
+
+                //Set the CardData of the instantieted card
+
+                newCard.GetComponent<Card>().cardData = cardData;
+                newCard.GetComponent<Card>().UpdateCardDisplay();
+                UpdateHandVisuals();
+            } 
         }        
     }
 

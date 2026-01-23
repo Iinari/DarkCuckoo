@@ -7,9 +7,7 @@ public class CardHandLayout : MonoBehaviour
     public Quaternion TargetRotation { get; private set; }
 
     private RectTransform rectTransform;
-
     private CardInteractionState state;
-
 
     [SerializeField] private float followSpeed = 10f;
 
@@ -21,8 +19,10 @@ public class CardHandLayout : MonoBehaviour
 
     void Update()
     {
+        // Layout does NOTHING while dragging, targeting or playing
         if (state.CurrentState == CardState.Dragging ||
-       state.CurrentState == CardState.Playing)
+            state.CurrentState == CardState.Playing ||
+            state.CurrentState == CardState.Targeting)
             return;
 
         rectTransform.anchoredPosition = Vector3.Lerp(

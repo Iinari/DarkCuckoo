@@ -112,6 +112,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 806793255898277477, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
       insertIndex: -1
       addedObject: {fileID: -9014790527315387977}
+    - targetCorrespondingSourceObject: {fileID: 806793255898277477, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7092599024264627914}
+    - targetCorrespondingSourceObject: {fileID: 806793255898277477, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4368247959395085098}
   m_SourcePrefab: {fileID: 100100000, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
 --- !u!1 &2256470940564864649 stripped
 GameObject:
@@ -143,8 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40569b887af4efe468552a2be2c87ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardHover
-  hoverScale: 1.1
-  glow: {fileID: 2433450799069469001}
 --- !u!114 &5457395798003720408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,9 +185,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30df9d7cab712c40af76d947d489d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardPlayLogic
-  cardPlay: {x: 0, y: 300}
+  cardPlay: {x: 0, y: 600}
+  playGlowEffect: {fileID: 5030008570669174836}
+--- !u!114 &7092599024264627914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2256470940564864649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8900c7ff21e1bf84a8184fe4d44178f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardTargeting
+  playArrow: {fileID: 7823704459834383280}
+--- !u!114 &4368247959395085098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2256470940564864649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb07acdadc208264dbf4857f6b4fa14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardHoverVisual
+  hoverScale: 1.15
+  scaleSpeed: 10
+  glowEffect: {fileID: 2433450799069469001}
 --- !u!1 &2433450799069469001 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3866213800597143973, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
+  m_PrefabInstance: {fileID: 1468972189610105068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5030008570669174836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5885351807584782552, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
+  m_PrefabInstance: {fileID: 1468972189610105068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7823704459834383280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8714948708916134748, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
   m_PrefabInstance: {fileID: 1468972189610105068}
   m_PrefabAsset: {fileID: 0}

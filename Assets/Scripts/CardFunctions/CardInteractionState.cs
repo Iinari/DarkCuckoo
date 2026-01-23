@@ -10,10 +10,13 @@ public class CardInteractionState : MonoBehaviour
 
     public void SetState(CardState newState)
     {
+        
         if (CurrentState == newState)
             return;
 
         CurrentState = newState;
+
+        Debug.Log(newState);
         OnStateChanged?.Invoke(CurrentState);
     }
 
