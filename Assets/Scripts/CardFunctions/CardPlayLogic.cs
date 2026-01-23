@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class CardPlayLogic : MonoBehaviour
 {
-    [SerializeField] private Vector2 cardPlay;
-
     [SerializeField] private GameObject playGlowEffect;
 
     private CardInteractionState state;
@@ -22,20 +20,23 @@ public class CardPlayLogic : MonoBehaviour
         if (state.CurrentState != CardState.Dragging)
             return;
 
-        if (Input.mousePosition.y > cardPlay.y && card.cardData.type == CardType.Attack)
+        if (Input.mousePosition.y > card.cardPlay.y && card.cardData.type == CardType.Attack)
         {
             state.SetState(CardState.Targeting);
         }
-
-        /*if (state.CurrentState == CardState.Playing && !Input.GetMouseButton(0))
+        if (Input.mousePosition.y > card.cardPlay.y && !Input.GetMouseButton(0)) 
         {
             TryPlayCard();
+        }
+        else if (Input.mousePosition.y < card.cardPlay.y && !Input.GetMouseButton(0))
+        {
             state.ResetToDefault();
-        }*/
+        }
     }
 
     private void TryPlayCard()
     {
         Debug.Log("Card played or cancelled");
+        state.ResetToDefault();
     }
 }

@@ -7,6 +7,8 @@ public class CardTargeting : MonoBehaviour
 
     [SerializeField] private GameObject playArrow;
 
+    [SerializeField] private GameObject glowEffect;
+
     void Awake()
     {
         state = GetComponent<CardInteractionState>();
@@ -33,10 +35,12 @@ public class CardTargeting : MonoBehaviour
     private void StartTargeting()
     {
         playArrow.SetActive(true);
+        glowEffect.SetActive(true);
     }
 
     private void EndTargeting()
     {
         playArrow.SetActive(false);
+        glowEffect.SetActive(false);
     }
 }

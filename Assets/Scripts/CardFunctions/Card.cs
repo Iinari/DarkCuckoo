@@ -26,6 +26,9 @@ public class Card : MonoBehaviour
 
     public CardPlayManager cardPlayManager;
 
+    public Vector2 cardPlay;
+
+
     public void UpdateCardDisplay()
     {
         nameText.text = cardData.cardName;

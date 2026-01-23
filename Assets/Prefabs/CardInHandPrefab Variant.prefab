@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardInHandPrefab Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5983805754713756421, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
+      propertyPath: cardPlay.y
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 8852851735844188936, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -118,6 +122,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 806793255898277477, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4368247959395085098}
+    - targetCorrespondingSourceObject: {fileID: 806793255898277477, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3485322972684791389}
   m_SourcePrefab: {fileID: 100100000, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
 --- !u!1 &2256470940564864649 stripped
 GameObject:
@@ -185,7 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30df9d7cab712c40af76d947d489d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardPlayLogic
-  cardPlay: {x: 0, y: 600}
   playGlowEffect: {fileID: 5030008570669174836}
 --- !u!114 &7092599024264627914
 MonoBehaviour:
@@ -200,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardTargeting
   playArrow: {fileID: 7823704459834383280}
+  glowEffect: {fileID: 5030008570669174836}
 --- !u!114 &4368247959395085098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +222,19 @@ MonoBehaviour:
   hoverScale: 1.15
   scaleSpeed: 10
   glowEffect: {fileID: 2433450799069469001}
+--- !u!114 &3485322972684791389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2256470940564864649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e8061406738844fa4a0c651d5d02cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardPlayVisual
+  glowEffect: {fileID: 5030008570669174836}
 --- !u!1 &2433450799069469001 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3866213800597143973, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
