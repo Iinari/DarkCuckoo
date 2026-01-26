@@ -7,11 +7,7 @@ using System;
 //Script for card hand management 
 public class HandManager : MonoBehaviour
 {
-    public bool usingNewSystem;
-
     public GameObject cardPrefab; //Assign card prefab in inspector
-
-    public GameObject newCardPrefab;
 
     public Transform handTransform; //Root of the hand position
 
@@ -129,14 +125,12 @@ public class HandManager : MonoBehaviour
     {
         cardsInHand.Add(card);
 
-        var state = card.GetComponent<CardInteractionState>();
-        if (state != null)
+        if (card.TryGetComponent<CardInteractionState>(out var state))
         {
-            Action<CardState> handler = _ => UpdateHandVisuals();
+            void handler(CardState _) => UpdateHandVisuals();
             stateHandlers[state] = handler;
             state.OnStateChanged += handler;
         }
-
         UpdateHandVisuals();
     }
 

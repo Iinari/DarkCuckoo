@@ -11,13 +11,10 @@ public class CardPlayLauncher : MonoBehaviour
 
     private CardPlayManager playManager;
 
-    private HandManager handManager;
-
     void Awake()
     {
         state = GetComponent<CardInteractionState>();
         playManager = FindFirstObjectByType<CardPlayManager>();
-        handManager = FindFirstObjectByType<HandManager>();
         card = GetComponent<Card>();
     }
 
@@ -42,6 +39,10 @@ public class CardPlayLauncher : MonoBehaviour
 
     private void TryPlayCard()
     {
-        playManager.PlayTheCard(gameObject);
+        if (playManager.CheckHasEnoughMana(card.cardData.cost))
+        {
+            playManager.PlayTheCard(gameObject);
+        } 
+        else state.ResetToDefault();
     }
 }
