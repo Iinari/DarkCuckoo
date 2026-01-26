@@ -258,5 +258,7 @@ public class HandManager : MonoBehaviour
 
         cardsInHand.Remove(card);
         UpdateHandVisuals();
+
+        Destroy(card);
     }
 }

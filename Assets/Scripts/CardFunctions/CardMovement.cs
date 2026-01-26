@@ -230,7 +230,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                     HandleAttackRelease();
                 else if (isStillOverPlayZone)
                 {
-                    PlayNonAttackCard(card);
+                    //PlayNonAttackCard(card);
                 }
             }
             TransitionToDefaulState();
@@ -260,11 +260,11 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     }
 
 
-    private void PlayNonAttackCard(Card card)
+    /*private void PlayNonAttackCard(Card card)
     {
         playManager.PlayTheCard(card);
         DiscardThisCard();
-    }
+    }*/
     private void HandleAttackRelease()
     {
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -277,7 +277,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             Enemy enemy = hit.GetComponentInParent<Enemy>();
             if (enemy != null)
             {
-                playManager.TargetEnemyWithPlay(enemy, GetComponent<Card>());
+                //playManager.TargetEnemyWithPlay(enemy, GetComponent<Card>());
                 DiscardThisCard();
                 return;
             }

@@ -47,9 +47,9 @@ public class CardPlayManager : MonoBehaviour
         }
     }
 
-    public void PlayTheCard(Card card)
+    public void PlayTheCard(GameObject cardObj)
     {   
-        SetLastPlayedCard(card);
+        SetLastPlayedCard(cardObj.GetComponent<Card>());
 
         if (playedCard != null)
         {
@@ -63,11 +63,13 @@ public class CardPlayManager : MonoBehaviour
                     else Debug.Log(playedCard.cardData.type + "didn't have valid target");
                     break;
                 case CardType.Skill:
-                    PlaySkillCard(card);
+                    PlaySkillCard(playedCard);
                     break;
             }
+            DecreaseMP(playedCard.manaCost);
 
-            DecreaseMP(card.manaCost);
+            DiscardThisCard();
+            handManager.UnregisterCard(cardObj);
         }    
     }
 
@@ -107,17 +109,17 @@ public class CardPlayManager : MonoBehaviour
         }
 
     }
-    /*
+    
     public void DiscardThisCard()
     {
         if (discardManager != null)
         {
             discardManager.AddToDiscard(playedCard.cardData);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
-    }*/
+    }
 
-    public void TargetEnemyWithPlay(Enemy enemy, Card playedCard)
+    public void TargetEnemyWithPlay(Enemy enemy, GameObject cardObj)
     {
 
         if (handManager == null)
@@ -133,7 +135,7 @@ public class CardPlayManager : MonoBehaviour
             
             SetLastPlayedCard(playedCard);
             SetTargetEnemy(enemy);
-            PlayTheCard(playedCard);
+            PlayTheCard(cardObj);
 
         }
     }

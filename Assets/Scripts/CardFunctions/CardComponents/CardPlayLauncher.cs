@@ -1,7 +1,7 @@
 using SnIProductions;
 using UnityEngine;
 
-public class CardPlayLogic : MonoBehaviour
+public class CardPlayLauncher : MonoBehaviour
 {
     [SerializeField] private GameObject playGlowEffect;
 
@@ -9,9 +9,15 @@ public class CardPlayLogic : MonoBehaviour
 
     private Card card;
 
+    private CardPlayManager playManager;
+
+    private HandManager handManager;
+
     void Awake()
     {
         state = GetComponent<CardInteractionState>();
+        playManager = FindFirstObjectByType<CardPlayManager>();
+        handManager = FindFirstObjectByType<HandManager>();
         card = GetComponent<Card>();
     }
 
@@ -36,7 +42,6 @@ public class CardPlayLogic : MonoBehaviour
 
     private void TryPlayCard()
     {
-        Debug.Log("Card played or cancelled");
-        state.ResetToDefault();
+        playManager.PlayTheCard(gameObject);
     }
 }
