@@ -115,6 +115,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5459397879036685226, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7815389498066029526}
+    - targetCorrespondingSourceObject: {fileID: 5459397879036685226, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6976319769830314404}
+    - targetCorrespondingSourceObject: {fileID: 5459397879036685226, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -860265267284663689}
+    - targetCorrespondingSourceObject: {fileID: 5459397879036685226, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9222915655268390929}
   m_SourcePrefab: {fileID: 100100000, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
 --- !u!114 &958980395535641155 stripped
 MonoBehaviour:
@@ -127,6 +136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2117895962739155443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3715414700742315488, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
+  m_PrefabInstance: {fileID: 3380948588498496531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2497423745729422936 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 883597772943280715, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
@@ -197,3 +211,43 @@ MonoBehaviour:
   descriptionText: {fileID: 4007832930253670082}
   cardTypeText: {fileID: 958980395535641155}
   cardPlayManager: {fileID: 0}
+  cardPlay: {x: 0, y: 0}
+--- !u!114 &6976319769830314404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7289119591468304313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb07acdadc208264dbf4857f6b4fa14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardHoverVisual
+  hoverScale: 1.15
+  scaleSpeed: 10
+  glowEffect: {fileID: 2117895962739155443}
+--- !u!114 &-860265267284663689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7289119591468304313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 210d5fe832d691040ac8b6027b9c67be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardInteractionState
+--- !u!114 &9222915655268390929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7289119591468304313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f73b5c8fa632145aa74d001869fe3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayedCardHover

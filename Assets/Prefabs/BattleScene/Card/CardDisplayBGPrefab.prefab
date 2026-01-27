@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6511116953872748924}
   - component: {fileID: 925315014498336550}
   m_Layer: 5
-  m_Name: CardDisplayPrefab
+  m_Name: CardDisplayBGPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

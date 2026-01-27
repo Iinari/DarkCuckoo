@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 3602528484343794313}
   - component: {fileID: 3938301392965445404}
   - component: {fileID: 3434137125097564486}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SpriteRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 596684188750990558}
   - component: {fileID: 9033820627015440770}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EnemyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

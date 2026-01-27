@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeroClass: 2
   heroName: Juustoukko
-  heroSprite: {fileID: -127738096878908423, guid: 62125765afe458148beedd127507e010, type: 3}
+  heroSprite: {fileID: 0}
   manaPoolIcon: {fileID: 5277609131733322071, guid: 2320141d5379c6b49a8cfba7f940541d, type: 3}
   health: 100
   mana: 3
   strength: 1
   luck: 1
+  satiety: 0

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChosenEnemy: {fileID: 0}
-  playerPrefab: {fileID: 3331217340476473481, guid: 69fa1d87292c46047b9c0773158b3fb4, type: 3}
+  playerPrefab: {fileID: 7162504021528511839, guid: c333728fff481d940adcbdee4fde8066, type: 3}
   playerPosition: {fileID: 0}
   allHeroes: []
   playerHero: {fileID: 0}
@@ -61,8 +61,7 @@ MonoBehaviour:
   handManager: {fileID: 0}
   drawPileManager: {fileID: 0}
   discardManager: {fileID: 0}
-  sceneUIManager: {fileID: 0}
-  resultPopUp: {fileID: 0}
+  battleSceneUIManager: {fileID: 0}
   state: 0
 --- !u!1001 &7551699786422508740
 PrefabInstance:

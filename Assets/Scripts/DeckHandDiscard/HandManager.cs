@@ -26,8 +26,6 @@ public class HandManager : MonoBehaviour
     private Dictionary<CardInteractionState, Action<CardState>> stateHandlers
         = new();
 
-    
-
     public void AddCardToHand(CardData cardData)
     {
         if (cardsInHand.Count < handMaxSize)
