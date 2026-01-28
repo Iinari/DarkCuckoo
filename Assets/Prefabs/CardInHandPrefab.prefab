@@ -180,7 +180,7 @@ MonoBehaviour:
   descriptionText: {fileID: 2260073704432166548}
   cardTypeText: {fileID: 2705872042258090517}
   cardPlayManager: {fileID: 0}
-  cardPlay: {x: 0, y: 600}
+  cardPlay: {x: 0, y: 400}
 --- !u!61 &7238158716194166764
 BoxCollider2D:
   m_ObjectHideFlags: 0

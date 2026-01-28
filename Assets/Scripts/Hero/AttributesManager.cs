@@ -25,8 +25,8 @@ public class AttributesManager : MonoBehaviour
     }
 
     //Attributes
-    public int fullHealth = 0;
-    public int hp = 0;
+    public float fullHealth = 0;
+    public float hp = 0;
     public int fullMana = 0;
     public int mp = 0;
     public float strength = 0;
@@ -34,23 +34,23 @@ public class AttributesManager : MonoBehaviour
     public float satiety = 0;
 
     //Max values for attributes
-    private readonly int maxHealth = 100000;
+    private readonly float maxHealth = 100000;
     private readonly int maxMana = 100;
     private readonly float maxStrengtht = 200f;
     private readonly float maxLuck = 100f;
     private readonly float maxSatiety = 100f;
 
     //Min values for attributes
-    private readonly int minMaxHealth = 1;
-    private readonly int minHp = 0;
+    private readonly float minMaxHealth = 1;
+    private readonly float minHp = 0;
     private readonly int minMana = 0;
     private readonly float minStrength = 0;
     private readonly float minLuck = 0;
     private readonly float minSatiety = 0;
 
     //Stored value
-    public int s_Health;
-    public int s_hp;
+    public float s_Health;
+    public float s_hp;
     public int s_Mana;
     public int s_mp;
     public float s_Strength;

@@ -27,7 +27,6 @@ public class HeroManager : MonoBehaviour
         }
 
 
-
         if (newHero.GetComponent<Hero>() == null)
         {
             Debug.Log("instantiated object didn't have Hero component");

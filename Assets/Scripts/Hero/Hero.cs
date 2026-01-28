@@ -23,6 +23,8 @@ public class Hero : BattleUnit
 
     public Image manaPoolIcon;
 
+    public Image roundHpBar;
+
     public CardPlayManager cardPlayManager;
 
     public AttributesManager attributesManager;
@@ -33,7 +35,9 @@ public class Hero : BattleUnit
     {
         heroMPTxt.text = attributesManager.mp.ToString();
         heroHPTxt.text = attributesManager.hp.ToString();
-        hpSlider.value = attributesManager.hp;
+
+        float hpProsent = attributesManager.hp / attributesManager.fullHealth;
+        roundHpBar.fillAmount = hpProsent;
     }
 
 
@@ -57,8 +61,7 @@ public class Hero : BattleUnit
 
         manaPoolIcon.sprite = heroData.manaPoolIcon;
 
-        hpSlider.maxValue = heroData.health;
-        hpSlider.value = heroCurrentHealth;
+        roundHpBar.fillAmount = attributesManager.hp;
 
         attributesManager.LoadPlayerHeroData(heroData);
     }
@@ -75,6 +78,15 @@ public class Hero : BattleUnit
         {
             Debug.Log("Hero died");
         }
+    }
+
+    public void UpdateVisuals()
+    {
+        heroMPTxt.text = attributesManager.mp.ToString();
+        heroHPTxt.text = attributesManager.hp.ToString();
+        
+        float hpProsent = attributesManager.hp / attributesManager.fullHealth;
+        roundHpBar.fillAmount = hpProsent;
     }
 
 }
