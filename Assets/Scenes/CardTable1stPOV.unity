@@ -688,7 +688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &474150983
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1698,6 +1698,10 @@ PrefabInstance:
       propertyPath: popUp
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1451605200686595864, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: playerHero
+      value: 
+      objectReference: {fileID: 5873522981297793817, guid: c333728fff481d940adcbdee4fde8066, type: 3}
     - target: {fileID: 1451605200686595864, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
       propertyPath: ChosenEnemy
       value: 

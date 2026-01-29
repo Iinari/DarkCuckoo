@@ -38,6 +38,9 @@ public class Hero : BattleUnit
 
         float hpProsent = attributesManager.hp / attributesManager.fullHealth;
         roundHpBar.fillAmount = hpProsent;
+
+        float mpProsent = attributesManager.mp / attributesManager.fullMana;
+        manaPoolIcon.fillAmount = mpProsent;
     }
 
 

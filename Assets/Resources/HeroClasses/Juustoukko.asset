@@ -15,7 +15,7 @@ MonoBehaviour:
   HeroClass: 2
   heroName: Juustoukko
   heroSprite: {fileID: 0}
-  manaPoolIcon: {fileID: 5277609131733322071, guid: 2320141d5379c6b49a8cfba7f940541d, type: 3}
+  manaPoolIcon: {fileID: 2771881626281271924, guid: aa731bf6541f4a04d8809651e0fcb70c, type: 3}
   health: 100
   mana: 3
   strength: 1
