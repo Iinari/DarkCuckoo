@@ -101,4 +101,6 @@ namespace SnIProductions
 
         Playing
     }
+
+    public enum BattleState { Start, PlayerTurn, EnemyTurn, Won, Lost }
 }

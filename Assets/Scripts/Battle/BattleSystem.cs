@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum BattleState { Start, PlayerTurn, EnemyTurn, Won, Lost}
+
 
 public class BattleSystem : MonoBehaviour
 {
@@ -36,6 +36,8 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state = BattleState.Start;
 
+    [SerializeField] GameObject moonCycle;
+
 
     void Start()
     {
@@ -48,6 +50,9 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.PlayerTurn;
         RestoreMana();
         deckManager.StartPlayersTurn();
+
+        //Replace this later with better system 
+        moonCycle.GetComponent<MoonCycle>().UpdateMoon();
     }
 
     public void EnemyTurn() 
