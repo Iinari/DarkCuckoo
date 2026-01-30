@@ -592,6 +592,10 @@ PrefabInstance:
       propertyPath: rewardCount
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8910627948065930097, guid: 714a13f6d7e19ef4db612e6a3a146844, type: 3}
+      propertyPath: cardCanvasPrefab
+      value: 
+      objectReference: {fileID: 5183912123170672298, guid: 4363122bb79e68c4cb43047f68f11a1a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

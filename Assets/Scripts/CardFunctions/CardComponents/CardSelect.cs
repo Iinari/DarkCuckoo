@@ -1,16 +1,28 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CardSelect : MonoBehaviour
+public class CardSelect : MonoBehaviour,
+    IPointerDownHandler
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private CardInteractionState state;
 
-    // Update is called once per frame
-    void Update()
+    private Card card;
+
+    [SerializeField] private DeckManager deckManager;
+
+    void Awake()
     {
-        
+        state = GetComponent<CardInteractionState>();
+        card = GetComponent<Card>();
+
+        deckManager = FindFirstObjectByType<DeckManager>();
+    }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (deckManager != null)
+        {
+            deckManager.AddCardToDeck(card.cardData);
+        }
+        Debug.Log(card.cardData.cardName + " Was Clicked.");
     }
 }

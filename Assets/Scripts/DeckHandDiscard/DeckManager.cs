@@ -18,7 +18,10 @@ public class DeckManager : MonoBehaviour
 
     private void Start()
     {
-        LoadStartingDeck();
+        if (deck.Count == 0)
+        {
+            LoadStartingDeck();
+        } 
     }
 
     public void LoadStartingDeck()
@@ -41,7 +44,7 @@ public class DeckManager : MonoBehaviour
                 //Checks how many copies for the starting cards should be made and creates the copies
                 for (int j = 0; j < copiesOfStartingCards; j++)
                 {
-                    deck.Add(card);
+                    AddCardToDeck(card);
                 }
             }
         }
