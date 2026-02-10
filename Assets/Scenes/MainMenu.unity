@@ -255,6 +255,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7440998544692662985, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 271183114240
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440998544692662985, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:74a5a092da801784782529ed58777883
+      objectReference: {fileID: 0}
     - target: {fileID: 7451413168709109894, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_text
       value: New Game
@@ -590,7 +598,6 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
     m_Quality: 3
     m_FrameInfluence: 0.1
@@ -598,6 +605,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1001 &1197183733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -705,6 +713,14 @@ PrefabInstance:
     - target: {fileID: 6577673412043504906, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_Name
       value: Button (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440998544692662985, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 817835143168
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440998544692662985, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:74a5a092da801784782529ed58777883
       objectReference: {fileID: 0}
     - target: {fileID: 7451413168709109894, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_text
@@ -1087,6 +1103,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7440998544692662985, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 941617442816
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440998544692662985, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:74a5a092da801784782529ed58777883
+      objectReference: {fileID: 0}
     - target: {fileID: 7451413168709109894, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_text
       value: Quit
@@ -1135,7 +1159,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!199 &2123494286
 ParticleSystemRenderer:
-  serializedVersion: 6
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1154,6 +1178,8 @@ ParticleSystemRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1175,9 +1201,11 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -1209,7 +1237,6 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
-  m_MaskInteraction: 0
 --- !u!198 &2123494287
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -6105,6 +6132,14 @@ PrefabInstance:
     - target: {fileID: 6577673412043504906, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_Name
       value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440998544692662985, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 682099077120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440998544692662985, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:74a5a092da801784782529ed58777883
       objectReference: {fileID: 0}
     - target: {fileID: 7451413168709109894, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_text
