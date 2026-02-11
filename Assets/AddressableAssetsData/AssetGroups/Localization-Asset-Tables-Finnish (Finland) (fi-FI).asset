@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Asset-Tables-Finnish (Finland) (fi-FI)
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Localization-Asset-Tables-Finnish (Finland) (fi-FI)
+  m_GUID: 259910c22d5aa2f4aa6ef56fbe545cdd
+  m_SerializeEntries:
+  - m_GUID: 92c622770256254489c7e283cacb3278
+    m_Address: MyAssets_fi-FI
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fi-FI
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 9b8864e858b199c4d8db17e81afac06a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7b150f4b1af99074b97c7bbd44008122, type: 2}
+    - {fileID: 11400000, guid: b4c2a566d0dd6924db2c5f1d6c2bee60, type: 2}
