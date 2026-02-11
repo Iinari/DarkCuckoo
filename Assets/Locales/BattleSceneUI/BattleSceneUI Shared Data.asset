@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: BattleSceneUI Shared Data
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
   m_TableCollectionName: BattleSceneUI
-  m_TableCollectionNameGuidString: 00000000000000000000000000000000
-  m_Entries: []
+  m_TableCollectionNameGuidString: 2997cda8bded58e4b8f5fe1654056764
+  m_Entries:
+  - m_Id: 9546625024
+    m_Key: BattleScene.endTurn
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

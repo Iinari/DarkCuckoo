@@ -16,6 +16,7 @@ MonoBehaviour:
   - rid: 6014626808164253894
   - rid: 6014626808164253895
   - rid: 6014626808164253896
+  - rid: 6014626808164253928
   m_AvailableLocales:
     rid: 6014626808164253897
   m_AssetDatabase:
@@ -205,3 +206,7 @@ MonoBehaviour:
         - default
         - d
         - 
+    - rid: 6014626808164253928
+      type: {class: PlayerPrefLocaleSelector, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
+      data:
+        m_PlayerPreferenceKey: selected-locale

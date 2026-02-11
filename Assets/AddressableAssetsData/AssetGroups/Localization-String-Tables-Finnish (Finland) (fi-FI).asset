@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Finnish (Finland) (fi-FI)
   m_GUID: 16200ff767ea5204ab69b806d03339b0
   m_SerializeEntries:
+  - m_GUID: 0113bad67fc4f4d4ab469f3662e53215
+    m_Address: BattleSceneUI_fi-FI
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fi-FI
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: abf6d3f927cbe83409335e520da26a97
     m_Address: Menu Labels_fi-FI
     m_ReadOnly: 1

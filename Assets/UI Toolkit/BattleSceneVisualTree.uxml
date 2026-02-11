@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/BattleSceneStyle.uss?fileID=7433441132597879392&amp;guid=92d34d224028a4d4cbfd6f271e476b75&amp;type=3#BattleSceneStyle"/>
+    <ui:VisualElement name="Container" style="flex-grow: 1; width: auto; height: auto; background-image: none;">
+        <ui:Button text="Button" name="Button" class="button" style="right: auto; width: 140px; height: 140px; bottom: auto; top: 722px; left: 1736px; white-space: pre; background-color: rgba(255, 255, 255, 0); background-image: url(&quot;project://database/Assets/Art/UI/Sliders%20and%20Bards/RoundBlueFill.png?fileID=5378925731344953920&amp;guid=a552c8098ab87724fb476d1c617e74cf&amp;type=3#RoundBlueFill_0&quot;); background-size: 100% 100%; -unity-background-image-tint-color: rgb(255, 255, 255); color: rgb(255, 237, 237);">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:2997cda8bded58e4b8f5fe1654056764" entry="Id(9546625024)"/>
+            </Bindings>
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

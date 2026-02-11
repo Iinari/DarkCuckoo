@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: 34b45e9ffeb24aa4d88bd38dc9c00661
   m_SerializeEntries:
+  - m_GUID: 2997cda8bded58e4b8f5fe1654056764
+    m_Address: Assets/Locales/BattleSceneUI/BattleSceneUI Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 74a5a092da801784782529ed58777883
     m_Address: Assets/Locales/Menu Labels Shared Data.asset
     m_ReadOnly: 1
