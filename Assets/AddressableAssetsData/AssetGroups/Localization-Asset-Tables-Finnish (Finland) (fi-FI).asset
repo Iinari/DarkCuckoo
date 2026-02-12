@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: 259910c22d5aa2f4aa6ef56fbe545cdd
   m_SerializeEntries:
   - m_GUID: 92c622770256254489c7e283cacb3278
-    m_Address: MyAssets_fi-FI
+    m_Address: DefaultFont_fi-FI
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fi-FI

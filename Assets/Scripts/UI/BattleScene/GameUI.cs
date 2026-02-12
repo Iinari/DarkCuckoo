@@ -10,7 +10,7 @@ public class GameUI : MonoBehaviour
 
     [SerializeField] private Button endTurnBtn;
 
-    private VisualElement handContainer;
+    [SerializeField] private VisualElement handContainer;
 
     private void Awake()
     {

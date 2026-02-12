@@ -20,12 +20,14 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fi-FI
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: abf6d3f927cbe83409335e520da26a97
     m_Address: Menu Labels_fi-FI
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fi-FI
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 9b8864e858b199c4d8db17e81afac06a, type: 2}

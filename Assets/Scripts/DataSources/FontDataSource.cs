@@ -9,10 +9,10 @@ public class FontDataSource : ScriptableObject
     LocalizedFont m_Font;
     
     [CreateProperty] 
-    public Font font { get; set; }
+    public Font defaultFont { get; set; }
 
     private void OnEnable()
     {
-        m_Font.AssetChanged += f => font = f;
+        m_Font.AssetChanged += f => defaultFont = f;
     }
 }

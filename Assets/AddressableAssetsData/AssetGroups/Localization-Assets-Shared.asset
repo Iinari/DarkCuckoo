@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: 34b45e9ffeb24aa4d88bd38dc9c00661
   m_SerializeEntries:
   - m_GUID: 2997cda8bded58e4b8f5fe1654056764
-    m_Address: Assets/Locales/BattleSceneUI/BattleSceneUI Shared Data.asset
+    m_Address: Assets/Locales/BattleSceneUI Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -29,6 +29,13 @@ MonoBehaviour:
     m_Address: Assets/Locales/Menu Labels Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfd9d718757bcf444bdb2f3781ed07c8
+    m_Address: XTypewriter-nAgg0 SDF
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Locale-fi-FI
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 9b8864e858b199c4d8db17e81afac06a, type: 2}

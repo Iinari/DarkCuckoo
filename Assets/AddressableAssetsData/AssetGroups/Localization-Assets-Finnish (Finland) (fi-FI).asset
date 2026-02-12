@@ -14,13 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Localization-Assets-Finnish (Finland) (fi-FI)
   m_GUID: e24396ee2f156c24cadddb208fdec493
-  m_SerializeEntries:
-  - m_GUID: f4eec857a4fdf2f43be0e9f3d1a984e7
-    m_Address: Unity
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-fi-FI
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 9b8864e858b199c4d8db17e81afac06a, type: 2}
   m_SchemaSet:

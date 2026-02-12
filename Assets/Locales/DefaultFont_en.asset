@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97269afb30aa84742ae3f3342603618a, type: 3}
-  m_Name: MyAssets_fi-FI
+  m_Name: DefaultFont_en
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.AssetTable
   m_LocaleId:
-    m_Code: fi-FI
+    m_Code: en
   m_SharedData: {fileID: 11400000, guid: 5d24e6c87e7bb5b4f964d07d31f92114, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
   - m_Id: 99648663552
-    m_Localized: f4eec857a4fdf2f43be0e9f3d1a984e7
+    m_Localized: dfd9d718757bcf444bdb2f3781ed07c8
     m_Metadata:
       m_Items: []
   references:
