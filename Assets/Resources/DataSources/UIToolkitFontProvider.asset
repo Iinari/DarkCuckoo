@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898dd3fade6de474ba0b1d5b265fc443, type: 3}
-  m_Name: FontDataSource
-  m_EditorClassIdentifier: Assembly-CSharp::FontDataSource
-  m_Font:
+  m_Name: UIToolkitFontProvider
+  m_EditorClassIdentifier: Assembly-CSharp::UIToolkitFontProvider
+  localizedFont:
     m_TableReference:
       m_TableCollectionName: GUID:5d24e6c87e7bb5b4f964d07d31f92114
     m_TableEntryReference:
-      m_KeyId: 99648663552
+      m_KeyId: 692939588497408
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0

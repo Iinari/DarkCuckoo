@@ -1084,6 +1084,7 @@ MonoBehaviour:
   discardCards: []
   discardPilePosition: {fileID: 1202773157}
   discardPilePrefab: {fileID: 3342303316336810372, guid: 2616482b4df964d42a1be8c50f0b8f79, type: 3}
+  discardPileHeader: Discard
 --- !u!1 &1202773156
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,6 +2382,7 @@ MonoBehaviour:
   drawPile: []
   drawPilePosition: {fileID: 1300839348}
   drawPilePrefab: {fileID: 3342303316336810372, guid: 2616482b4df964d42a1be8c50f0b8f79, type: 3}
+  drawPileTxt: Deck
 --- !u!1001 &463116548420603
 PrefabInstance:
   m_ObjectHideFlags: 0

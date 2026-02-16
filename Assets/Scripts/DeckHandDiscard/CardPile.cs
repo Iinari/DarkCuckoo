@@ -26,24 +26,4 @@ public class CardPile : MonoBehaviour
         }
         
     }
-
-    public void FirstPileUpdate(int drawPileCount, string header)
-    {
-        pileHeader.text = header;
-        for (int i = 0; i < flippedCards.Count; i++)
-        {
-            flippedCards[i].SetActive(drawPileCount - 1 >= i);
-        }
-
-        //Depending on the type of the card pile, activate button(s) needed
-        switch (header)
-        {
-            case "Deck":
-                btnActivateDiscard.gameObject.SetActive(false);
-                break;
-            case "Discard":
-                btnActivateDrawPile.gameObject.SetActive(false);
-                break;
-        }
-    }
 }

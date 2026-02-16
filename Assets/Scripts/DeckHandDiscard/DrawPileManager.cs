@@ -25,8 +25,6 @@ public class DrawPileManager : MonoBehaviour
 
     private CardPile drawPileVisual;
 
-    private string drawPileTxt = "Deck";
-
     public void MakeDrawPile(List<CardData> cardsToAdd)
     {
         drawPile.AddRange(cardsToAdd);
@@ -35,7 +33,7 @@ public class DrawPileManager : MonoBehaviour
         GameObject visualDeck = Instantiate(drawPilePrefab, drawPilePosition.position, Quaternion.identity, drawPilePosition);
 
         drawPileVisual = visualDeck.GetComponent<CardPile>();
-        drawPileVisual.FirstPileUpdate(drawPile.Count, drawPileTxt);
+        drawPileVisual.UpdatePileVisuals(drawPile.Count);
     }
 
     public void BattleSetUp(int setMaxHandSize)

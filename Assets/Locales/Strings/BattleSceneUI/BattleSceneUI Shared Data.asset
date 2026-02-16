@@ -19,6 +19,14 @@ MonoBehaviour:
     m_Key: BattleScene.endTurn
     m_Metadata:
       m_Items: []
+  - m_Id: 2213911328059392
+    m_Key: BattleScene.discard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2214156443185152
+    m_Key: BattleScene.drawPile
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

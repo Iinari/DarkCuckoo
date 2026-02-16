@@ -91,6 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RewardManager
   cardCanvasPrefab: {fileID: 7289119591468304313, guid: 65b4174d1cb79f240806ef4febfa2420, type: 3}
   contentBorder: {fileID: 3219525942665029186}
+  rewardCount: 0
+  allRewardCards: []
 --- !u!1 &3219525942665029186
 GameObject:
   m_ObjectHideFlags: 0

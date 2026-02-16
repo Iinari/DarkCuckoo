@@ -16,12 +16,17 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 5d24e6c87e7bb5b4f964d07d31f92114
   m_Entries:
   - m_Id: 99648663552
+    m_Key: ID_TMP_FONT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 692939588497408
     m_Key: ID_FONT
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items:
     - rid: 6014626828092440763
+    - rid: 6014626873976291328
   m_KeyGenerator:
     rid: 6014626828092440762
   references:
@@ -41,3 +46,13 @@ MonoBehaviour:
           - fi-FI
         m_TypeString: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
+    - rid: 6014626873976291328
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 692939588497408
+          m_TableCodes:
+          - en
+          - fi-FI
+        m_TypeString: UnityEngine.Font, UnityEngine.TextRenderingModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null

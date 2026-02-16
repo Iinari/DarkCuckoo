@@ -10,16 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: BattleSceneUI_fi-FI
+  m_Name: BattleSceneUI_en
   m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
   m_LocaleId:
-    m_Code: fi-FI
+    m_Code: en
   m_SharedData: {fileID: 11400000, guid: 2997cda8bded58e4b8f5fe1654056764, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
   - m_Id: 9546625024
-    m_Localized: Lopeta vuoro
+    m_Localized: End Turn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2213911328059392
+    m_Localized: Discard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2214156443185152
+    m_Localized: Draw
     m_Metadata:
       m_Items: []
   references:

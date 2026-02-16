@@ -14,15 +14,13 @@ public class DiscardManager : MonoBehaviour
 
     private CardPile discardPileVisual;
 
-    private string discardPileHeader = "Discard";
-
     private void Awake()
     {
         GameObject visualDiscard = Instantiate(discardPilePrefab, discardPilePosition.position, Quaternion.identity, discardPilePosition);
 
         discardPileVisual = visualDiscard.GetComponent<CardPile>();
 
-        discardPileVisual.FirstPileUpdate(discardCards.Count, discardPileHeader);
+        discardPileVisual.UpdatePileVisuals(discardCards.Count);
     }
 
     private void UpdateDiscardCount()
