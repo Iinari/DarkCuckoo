@@ -100,9 +100,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1543777929960926645, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:c262f96baf7105847aed53e711ed512d
+      objectReference: {fileID: 0}
     - target: {fileID: 5459397879036685226, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
       propertyPath: m_Name
-      value: CardCanvas Variant
+      value: CardForSelection
       objectReference: {fileID: 0}
     - target: {fileID: 6793102089888967547, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
       propertyPath: m_LocalScale.x
@@ -126,9 +130,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5459397879036685226, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8756833626388723835}
-    - targetCorrespondingSourceObject: {fileID: 5459397879036685226, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
-      insertIndex: -1
       addedObject: {fileID: -151754904514549262}
     - targetCorrespondingSourceObject: {fileID: 5459397879036685226, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
       insertIndex: -1
@@ -140,39 +141,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7640974660526145519}
   m_SourcePrefab: {fileID: 100100000, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
---- !u!114 &31651161793703755 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 883597772943280715, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
-  m_PrefabInstance: {fileID: 879145232815187200}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1533051169830653905 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1834412026238970577, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
-  m_PrefabInstance: {fileID: 879145232815187200}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3428972888992375632 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2568583693907560016, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
-  m_PrefabInstance: {fileID: 879145232815187200}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4592708526600612064 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3715414700742315488, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
@@ -183,28 +151,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5459397879036685226, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
   m_PrefabInstance: {fileID: 879145232815187200}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8756833626388723835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5183912123170672298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd587487ba3c544d93bb7428529005f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Card
-  cardData: {fileID: 0}
-  cardImage: {fileID: 7167843976585576878}
-  nameText: {fileID: 31651161793703755}
-  costText: {fileID: 8698534786159920335}
-  manaCost: 0
-  damageText: {fileID: 0}
-  descriptionText: {fileID: 1533051169830653905}
-  cardTypeText: {fileID: 3428972888992375632}
-  cardPlayManager: {fileID: 0}
-  cardPlay: {x: 0, y: 0}
 --- !u!114 &-151754904514549262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd192269442a8e842a3075f91e15aee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardSelect
+  deckManager: {fileID: 0}
 --- !u!114 &2013290690349809604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,25 +203,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f73b5c8fa632145aa74d001869fe3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisplayedCardHover
---- !u!114 &7167843976585576878 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8019246210347164846, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
-  m_PrefabInstance: {fileID: 879145232815187200}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8698534786159920335 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8395904477015417295, guid: 1d85ebf04529aeb418f044d2f9c30aef, type: 3}
-  m_PrefabInstance: {fileID: 879145232815187200}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

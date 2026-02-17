@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Cards_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: c262f96baf7105847aed53e711ed512d, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 6014626947230335189
+  m_TableData:
+  - m_Id: 2530927308800
+    m_Localized: Punch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530939891712
+    m_Localized: Slap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530939891713
+    m_Localized: Kick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530939891714
+    m_Localized: Tiny Heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530944086016
+    m_Localized: Heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530944086017
+    m_Localized: Huge Heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530944086018
+    m_Localized: Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530944086019
+    m_Localized: Double Slap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7678282035200
+    m_Localized: Deal {} damage
+    m_Metadata:
+      m_Items:
+      - rid: 6014626947230335189
+  - m_Id: 7920284987392
+    m_Localized: Deal {} damage
+    m_Metadata:
+      m_Items:
+      - rid: 6014626947230335189
+  - m_Id: 8088967311360
+    m_Localized: Deal {} damage
+    m_Metadata:
+      m_Items:
+      - rid: 6014626947230335189
+  - m_Id: 8277291560960
+    m_Localized: Heal {}
+    m_Metadata:
+      m_Items:
+      - rid: 6014626947230335189
+  - m_Id: 8339648278528
+    m_Localized: Heal {}
+    m_Metadata:
+      m_Items:
+      - rid: 6014626947230335189
+  - m_Id: 8465443844096
+    m_Localized: Heal {}
+    m_Metadata:
+      m_Items:
+      - rid: 6014626947230335189
+  - m_Id: 8530153566208
+    m_Localized: Deal {} damage
+    m_Metadata:
+      m_Items:
+      - rid: 6014626947230335189
+  - m_Id: 8560935563264
+    m_Localized: Deal {} damage
+    m_Metadata:
+      m_Items:
+      - rid: 6014626947230335189
+  references:
+    version: 2
+    RefIds:
+    - rid: 6014626947230335189
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 8560935563264
+        - id: 8530153566208
+        - id: 8465443844096
+        - id: 7678282035200
+        - id: 7920284987392
+        - id: 8088967311360
+        - id: 8277291560960
+        - id: 8339648278528

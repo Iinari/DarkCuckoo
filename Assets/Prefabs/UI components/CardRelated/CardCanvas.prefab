@@ -436,6 +436,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -596,6 +597,7 @@ GameObject:
   - component: {fileID: 5393522653813001319}
   - component: {fileID: 6943270509987900739}
   - component: {fileID: 2826838371675520475}
+  - component: {fileID: 7910866854442952890}
   m_Layer: 0
   m_Name: CardCanvas
   m_TagString: Untagged
@@ -689,6 +691,28 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7910866854442952890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5459397879036685226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd587487ba3c544d93bb7428529005f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Card
+  cardData: {fileID: 0}
+  cardImage: {fileID: 8019246210347164846}
+  nameText: {fileID: 883597772943280715}
+  costText: {fileID: 8395904477015417295}
+  manaCost: 0
+  damageText: {fileID: 0}
+  descriptionText: {fileID: 1834412026238970577}
+  cardTypeText: {fileID: 2568583693907560016}
+  cardPlayManager: {fileID: 0}
+  cardPlay: {x: 0, y: 0}
 --- !u!1 &5954873645238284080
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +818,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1100,6 +1125,7 @@ GameObject:
   - component: {fileID: 5400943199538239816}
   - component: {fileID: 9035860420642120333}
   - component: {fileID: 1834412026238970577}
+  - component: {fileID: 1543777929960926645}
   m_Layer: 0
   m_Name: DescriptionTxt
   m_TagString: Untagged
@@ -1192,6 +1218,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1225,6 +1252,34 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1543777929960926645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139934762656071192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &8423646783352394493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,6 +1383,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

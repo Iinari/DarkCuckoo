@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Cards Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Cards
+  m_TableCollectionNameGuidString: c262f96baf7105847aed53e711ed512d
+  m_Entries:
+  - m_Id: 2530927308800
+    m_Key: 1.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7678282035200
+    m_Key: 1.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530939891712
+    m_Key: 2.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7920284987392
+    m_Key: 2.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530939891713
+    m_Key: 3.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8088967311360
+    m_Key: 3.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530939891714
+    m_Key: 4.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8277291560960
+    m_Key: 4.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530944086016
+    m_Key: 5.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8339648278528
+    m_Key: 5.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530944086017
+    m_Key: 6.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8465443844096
+    m_Key: 6.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530944086018
+    m_Key: 7.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8530153566208
+    m_Key: 7.description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2530944086019
+    m_Key: 8.name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8560935563264
+    m_Key: 8.description
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 6014626947230335187
+  references:
+    version: 2
+    RefIds:
+    - rid: 6014626947230335187
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1771253633605

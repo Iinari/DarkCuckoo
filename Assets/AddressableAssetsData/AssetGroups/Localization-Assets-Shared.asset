@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c262f96baf7105847aed53e711ed512d
+    m_Address: Assets/Locales/Locales/CardBasics Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dfd9d718757bcf444bdb2f3781ed07c8
     m_Address: XTypewriter-nAgg0 SDF
     m_ReadOnly: 1
