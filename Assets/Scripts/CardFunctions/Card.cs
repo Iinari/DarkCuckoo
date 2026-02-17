@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization.SmartFormat.Utilities;
+using UnityEngine.Localization;
 
 //Script for displaying a single card, for the whole hand see HandManager.cs
 public class Card : MonoBehaviour
@@ -28,18 +30,24 @@ public class Card : MonoBehaviour
 
     public Vector2 cardPlay;
 
+    private CardStringLocalizer[] localizers;
+
+    private CardTypeLocalizer cardTypeLocalizer;
+
+    private void Awake()
+    {
+        localizers = GetComponentsInChildren<CardStringLocalizer>();
+        cardTypeLocalizer = GetComponentInChildren<CardTypeLocalizer>();
+    }
 
     public void UpdateCardDisplay()
     {
-        nameText.text = cardData.cardName;
         costText.text = cardData.cost.ToString();
         manaCost = cardData.cost;
-        descriptionText.text = cardData.description;
+   
         cardImage.sprite = cardData.image;
-        cardTypeText.text = cardData.type.ToString();
 
-        UpdateCardDescription();
-
+        LocalizationUpdate();
     }
 
     public void UpdateCardDescription()
@@ -54,6 +62,16 @@ public class Card : MonoBehaviour
                 break;
 
         }
+    }
+
+    public void LocalizationUpdate()
+    {
+        for (int i = 0; i < localizers.Length; i++)
+        {
+            localizers[i].ConstructKey(cardData.ID);
+        }
+
+        cardTypeLocalizer.ConstructTypeKey(cardData.type);
     }
      
 }

@@ -28,6 +28,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92241aef36975d0429f615c3960d176f
+    m_Address: CardTypes_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fc23ab4d6d09dab49bf257bce15a98ed
     m_Address: Menu Labels_en
     m_ReadOnly: 1

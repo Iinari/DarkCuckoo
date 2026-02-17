@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 8395833529078765620}
   - component: {fileID: 7768480128631155010}
   - component: {fileID: 2568583693907560016}
+  - component: {fileID: 5114857486085991415}
   m_Layer: 0
   m_Name: CardType
   m_TagString: Untagged
@@ -470,6 +471,31 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5114857486085991415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3490660511732179718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d9a165fd50f6544a9eae3643d60dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardTypeLocalizer
+  localizedString:
+    m_TableReference:
+      m_TableCollectionName: GUID:1d58a913306c4144cba3aaa925ccf4c0
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  txtUI: {fileID: 2568583693907560016}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &3715414700742315488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1151,7 @@ GameObject:
   - component: {fileID: 5400943199538239816}
   - component: {fileID: 9035860420642120333}
   - component: {fileID: 1834412026238970577}
-  - component: {fileID: 1543777929960926645}
+  - component: {fileID: 3645095256760159782}
   m_Layer: 0
   m_Name: DescriptionTxt
   m_TagString: Untagged
@@ -1252,7 +1278,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1543777929960926645
+--- !u!114 &3645095256760159782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1261,22 +1287,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8139934762656071192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Script: {fileID: 11500000, guid: a708590e80f345c4da6792e8368d98cf, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Components.LocalizeStringEvent
-  m_StringReference:
+  m_EditorClassIdentifier: Assembly-CSharp::CardLocalizer
+  localizedString:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:c262f96baf7105847aed53e711ed512d
     m_TableEntryReference:
       m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls: []
+  keyWithoutID: .description
+  txtUI: {fileID: 1834412026238970577}
   references:
     version: 2
     RefIds: []
@@ -1291,6 +1315,7 @@ GameObject:
   - component: {fileID: 8924160611783473566}
   - component: {fileID: 5383768271625456396}
   - component: {fileID: 883597772943280715}
+  - component: {fileID: 5439332712608876234}
   m_Layer: 0
   m_Name: NameTxt
   m_TagString: Untagged
@@ -1417,3 +1442,29 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5439332712608876234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8423646783352394493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a708590e80f345c4da6792e8368d98cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardLocalizer
+  localizedString:
+    m_TableReference:
+      m_TableCollectionName: GUID:c262f96baf7105847aed53e711ed512d
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  keyWithoutID: .name
+  txtUI: {fileID: 883597772943280715}
+  references:
+    version: 2
+    RefIds: []

@@ -35,6 +35,12 @@ MonoBehaviour:
     - Locale-fi-FI
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2649cd7cb8d3e0458fbb6768ceaedaa
+    m_Address: CardTypes_fi-FI
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fi-FI
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 9b8864e858b199c4d8db17e81afac06a, type: 2}
   m_SchemaSet:

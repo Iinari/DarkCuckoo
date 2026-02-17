@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: 34b45e9ffeb24aa4d88bd38dc9c00661
   m_SerializeEntries:
+  - m_GUID: 1d58a913306c4144cba3aaa925ccf4c0
+    m_Address: Assets/Locales/Strings/CardTypes Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2997cda8bded58e4b8f5fe1654056764
     m_Address: Assets/Locales/BattleSceneUI Shared Data.asset
     m_ReadOnly: 1
