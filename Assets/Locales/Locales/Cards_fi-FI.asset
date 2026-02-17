@@ -20,11 +20,11 @@ MonoBehaviour:
     - rid: 6014626947230335190
   m_TableData:
   - m_Id: 2530927308800
-    m_Localized: Lyonti
+    m_Localized: "Ly\xF6nti"
     m_Metadata:
       m_Items: []
   - m_Id: 2530939891712
-    m_Localized: Lapsy
+    m_Localized: "L\xE4psy"
     m_Metadata:
       m_Items: []
   - m_Id: 2530939891713
@@ -44,25 +44,25 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2530944086018
-    m_Localized: Hyokkays
+    m_Localized: "Hy\xF6kk\xE4ys"
     m_Metadata:
       m_Items: []
   - m_Id: 2530944086019
-    m_Localized: Tupla lapsy
+    m_Localized: "Tupla l\xE4psy"
     m_Metadata:
       m_Items: []
   - m_Id: 7678282035200
-    m_Localized: Tee {} vahinkoa
+    m_Localized: Tee {amount} vahinkoa
     m_Metadata:
       m_Items:
       - rid: 6014626947230335190
   - m_Id: 7920284987392
-    m_Localized: Tee {} vahinkoa
+    m_Localized: Tee {amount} vahinkoa
     m_Metadata:
       m_Items:
       - rid: 6014626947230335190
   - m_Id: 8088967311360
-    m_Localized: Tee {} vahinkoa
+    m_Localized: Tee {amount} vahinkoa
     m_Metadata:
       m_Items:
       - rid: 6014626947230335190
@@ -82,12 +82,12 @@ MonoBehaviour:
       m_Items:
       - rid: 6014626947230335190
   - m_Id: 8530153566208
-    m_Localized: Tee {} vahinkoa
+    m_Localized: Tee {amount} vahinkoa
     m_Metadata:
       m_Items:
       - rid: 6014626947230335190
   - m_Id: 8560935563264
-    m_Localized: Tee {} vahinkoa
+    m_Localized: Tee {amount} vahinkoa
     m_Metadata:
       m_Items:
       - rid: 6014626947230335190

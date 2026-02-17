@@ -68,10 +68,9 @@ public class Card : MonoBehaviour
     {
         for (int i = 0; i < localizers.Length; i++)
         {
-            localizers[i].ConstructKey(cardData.ID);
+            localizers[i].ConstructKey(cardData);
         }
-
-        cardTypeLocalizer.ConstructTypeKey(cardData.type);
+        cardTypeLocalizer.ConstructKey(cardData);
     }
-     
+ 
 }

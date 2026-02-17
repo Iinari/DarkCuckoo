@@ -52,17 +52,17 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7678282035200
-    m_Localized: Deal {} damage
+    m_Localized: Deal {amount} damage
     m_Metadata:
       m_Items:
       - rid: 6014626947230335189
   - m_Id: 7920284987392
-    m_Localized: Deal {} damage
+    m_Localized: Deal {amount} damage
     m_Metadata:
       m_Items:
       - rid: 6014626947230335189
   - m_Id: 8088967311360
-    m_Localized: Deal {} damage
+    m_Localized: Deal {amount} damage
     m_Metadata:
       m_Items:
       - rid: 6014626947230335189
@@ -82,12 +82,12 @@ MonoBehaviour:
       m_Items:
       - rid: 6014626947230335189
   - m_Id: 8530153566208
-    m_Localized: Deal {} damage
+    m_Localized: Deal {amount} damage
     m_Metadata:
       m_Items:
       - rid: 6014626947230335189
   - m_Id: 8560935563264
-    m_Localized: Deal {} damage
+    m_Localized: Deal {amount} damage
     m_Metadata:
       m_Items:
       - rid: 6014626947230335189

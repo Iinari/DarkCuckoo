@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using SnIProductions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -8,17 +9,18 @@ public class CardStringLocalizer : MonoBehaviour
     public LocalizedString localizedString;
 
     public string keyWithoutID;
-
-    private string stringTableKey;
-
     public TMP_Text txtUI;
 
     public string TranslatedValue { get; private set; }
 
-    void Start()
+    void OnEnable()
     {
-        // Register to get an update when the string is changed.
         localizedString.StringChanged += ValueChanged;
+    }
+
+    void OnDisable()
+    {
+        localizedString.StringChanged -= ValueChanged;
     }
 
     void ValueChanged(string value)
@@ -27,9 +29,17 @@ public class CardStringLocalizer : MonoBehaviour
         txtUI.text = value;
     }
 
-    public void ConstructKey(int cardID)
+    public virtual void ConstructKey(CardData cardData)
     {
-        stringTableKey = cardID.ToString() + keyWithoutID;
-        localizedString = new LocalizedString(localizedString.TableReference, stringTableKey); 
+        string key = cardData.ID.ToString() + keyWithoutID;
+        localizedString.TableEntryReference = key;
+
+        Refresh();
     }
+
+    void Refresh()
+    {
+        localizedString.RefreshString();
+    }
+
 }
