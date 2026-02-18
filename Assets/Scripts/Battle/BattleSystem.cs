@@ -32,7 +32,7 @@ public class BattleSystem : MonoBehaviour
     public DrawPileManager drawPileManager;
     public DiscardManager discardManager;
 
-    public BattleSceneUIManager battleSceneUIManager;
+    private BattleScenePopUpManager popUpManager;
 
     public BattleState state = BattleState.Start;
 
@@ -149,9 +149,9 @@ public class BattleSystem : MonoBehaviour
 
         if (CheckWasDmgLethal())
         {
-            if (battleSceneUIManager != null)
+            if (popUpManager != null)
             {
-                battleSceneUIManager.OpenResultScreen(true);
+                popUpManager.OpenResultScreen(true);
             }
         }
     }
@@ -173,9 +173,9 @@ public class BattleSystem : MonoBehaviour
 
     public void EnemyDied()
     {
-        if (battleSceneUIManager != null)
+        if (popUpManager != null)
         {
-            battleSceneUIManager.OpenResultScreen(false);
+            popUpManager.OpenResultScreen(false);
         }
     }
 
@@ -191,7 +191,7 @@ public class BattleSystem : MonoBehaviour
         drawPileManager = FindFirstObjectByType<DrawPileManager>();
         discardManager = FindFirstObjectByType<DiscardManager>();
 
-        battleSceneUIManager = FindFirstObjectByType<BattleSceneUIManager>();
+        popUpManager = GetComponent<BattleScenePopUpManager>();
 
         if (enemyManager == null)
         {
@@ -263,12 +263,7 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        if(battleSceneUIManager == null)
-        {
-            Debug.Log("BattleSceneUIManager is null on BattleSystem");
-        }
-
-        battleSceneUIManager.SceneUISetUp();
+        popUpManager.SceneUISetUp();
 
         deckManager.BattleSetup();
 

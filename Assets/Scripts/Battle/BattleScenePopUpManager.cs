@@ -2,13 +2,15 @@ using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class BattleSceneUIManager : MonoBehaviour
+public class BattleScenePopUpManager : MonoBehaviour
 {
-    [SerializeField] GameObject drawPileDisplayPrefab;
+    //Gameobjects of pop ups
+    [SerializeField] GameObject cardDisplayPrefab; //Both draw and discard display use the same prefab
     [SerializeField] GameObject resultPrefab;
 
+    //Scripts of pop ups
     private ResultPopUp resultPopUp;
-    private CardPopUpDisplay drawPileDisplay;
+    private CardPopUpDisplay cardPileDisplay;
 
     public Transform BattleTransform;
 
@@ -16,12 +18,11 @@ public class BattleSceneUIManager : MonoBehaviour
     {
         GameObject results = Instantiate(resultPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
         resultPopUp = results.GetComponent<ResultPopUp>();
-        results.gameObject.SetActive(false);
+        results.SetActive(false);
         
-        GameObject drawPile = Instantiate(drawPileDisplayPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
-        drawPileDisplay = drawPile.GetComponent<CardPopUpDisplay>();
-        drawPile.gameObject.SetActive(false);
-
+        GameObject cardDisplay = Instantiate(cardDisplayPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
+        cardPileDisplay = cardDisplay.GetComponent<CardPopUpDisplay>();
+        cardDisplay.SetActive(false);
     }
 
     public void OpenResultScreen(bool playerDied)
@@ -44,30 +45,32 @@ public class BattleSceneUIManager : MonoBehaviour
         }
     }
 
+    //Called by player clicking drawpile
     public void ActivateDrawPileDisplay()
     {
         TryGetDrawPileDisplayRef();
-        if (drawPileDisplay != null)
+        if (cardPileDisplay != null)
         {
-            drawPileDisplay.OpenCardDisplay(false);
+            cardPileDisplay.OpenCardDisplay(false);
         }
     }
 
+    //Called by player clicking discard pile
     public void ActivateDiscardDisplay()
     {
         TryGetDrawPileDisplayRef();
-        if (drawPileDisplay != null)
+        if (cardPileDisplay != null)
         {
-            drawPileDisplay.OpenCardDisplay(true);
+            cardPileDisplay.OpenCardDisplay(true);
         }
     }
 
     public void TryGetDrawPileDisplayRef()
     {
-        if (drawPileDisplay == null)
+        if (cardPileDisplay == null)
         {
-            drawPileDisplay = FindAnyObjectByType<CardPopUpDisplay>(FindObjectsInactive.Include);
-            if (drawPileDisplay == null)
+            cardPileDisplay = FindAnyObjectByType<CardPopUpDisplay>(FindObjectsInactive.Include);
+            if (cardPileDisplay == null)
             {
                 Debug.Log("DrawPileDisplay ref is null");
             }

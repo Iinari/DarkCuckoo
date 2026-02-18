@@ -1287,17 +1287,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301097445}
   m_CullTransparentMesh: 1
---- !u!114 &1311095254 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1492215623688721889, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
-  m_PrefabInstance: {fileID: 1454462031}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f0d9280b9979384895df1f3170ee51f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BattleSceneUIManager
 --- !u!1001 &1405086034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1525,7 +1514,7 @@ PrefabInstance:
     - target: {fileID: 1451605200686595864, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
       propertyPath: sceneUIManager
       value: 
-      objectReference: {fileID: 1311095254}
+      objectReference: {fileID: 0}
     - target: {fileID: 1451605200686595864, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
       propertyPath: playerHeroManager
       value: 
@@ -1550,6 +1539,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 3051419840158488796, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: resultPrefab
+      value: 
+      objectReference: {fileID: 5608080532543762218, guid: fba9f168d1f82174cb48f7948720c367, type: 3}
+    - target: {fileID: 3051419840158488796, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: BattleTransform
+      value: 
+      objectReference: {fileID: 1535723442}
+    - target: {fileID: 3051419840158488796, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: cardDisplayPrefab
+      value: 
+      objectReference: {fileID: 2451048023132925714, guid: beabae4f119029d41b74fe80d155806b, type: 3}
+    - target: {fileID: 3051419840158488796, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: cardPileDisplayPrefab
+      value: 
+      objectReference: {fileID: 3342303316336810372, guid: 2616482b4df964d42a1be8c50f0b8f79, type: 3}
+    - target: {fileID: 3051419840158488796, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: drawPileDisplayPrefab
+      value: 
+      objectReference: {fileID: 2451048023132925714, guid: beabae4f119029d41b74fe80d155806b, type: 3}
     - target: {fileID: 8060873990032492923, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
