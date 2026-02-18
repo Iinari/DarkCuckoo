@@ -30,13 +30,13 @@ public class Card : MonoBehaviour
 
     public Vector2 cardPlay;
 
-    private CardStringLocalizer[] localizers;
+    private CardLocalizer[] localizers;
 
     private CardTypeLocalizer cardTypeLocalizer;
 
     private void Awake()
     {
-        localizers = GetComponentsInChildren<CardStringLocalizer>();
+        localizers = GetComponentsInChildren<CardLocalizer>();
         cardTypeLocalizer = GetComponentInChildren<CardTypeLocalizer>();
     }
 
@@ -70,7 +70,5 @@ public class Card : MonoBehaviour
         {
             localizers[i].ConstructKey(cardData);
         }
-        cardTypeLocalizer.ConstructKey(cardData);
     }
- 
 }

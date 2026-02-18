@@ -67,17 +67,17 @@ MonoBehaviour:
       m_Items:
       - rid: 6014626947230335189
   - m_Id: 8277291560960
-    m_Localized: Heal {}
+    m_Localized: Heal {amount}
     m_Metadata:
       m_Items:
       - rid: 6014626947230335189
   - m_Id: 8339648278528
-    m_Localized: Heal {}
+    m_Localized: Heal {amount}
     m_Metadata:
       m_Items:
       - rid: 6014626947230335189
   - m_Id: 8465443844096
-    m_Localized: Heal {}
+    m_Localized: Heal {amount}
     m_Metadata:
       m_Items:
       - rid: 6014626947230335189

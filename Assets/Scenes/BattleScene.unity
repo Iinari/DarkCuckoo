@@ -2533,7 +2533,7 @@ PrefabInstance:
     - target: {fileID: 3718807129400404403, guid: 9d38872c7fc91824ca6209786622d114, type: 3}
       propertyPath: cardPrefab
       value: 
-      objectReference: {fileID: 806793255898277477, guid: a791e10e93e888341ab3f298237b9aa1, type: 3}
+      objectReference: {fileID: 725160627208715568, guid: 57b69b338485c314a9eaed706c19981e, type: 3}
     - target: {fileID: 3718807129400404403, guid: 9d38872c7fc91824ca6209786622d114, type: 3}
       propertyPath: handTransform
       value: 

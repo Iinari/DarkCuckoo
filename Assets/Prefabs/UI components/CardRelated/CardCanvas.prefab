@@ -1299,8 +1299,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  keyWithoutID: .description
   txtUI: {fileID: 1834412026238970577}
+  keyString: .description
   references:
     version: 2
     RefIds: []
@@ -1463,8 +1463,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  keyWithoutID: .name
   txtUI: {fileID: 883597772943280715}
+  keyString: .name
   references:
     version: 2
     RefIds: []

@@ -4,42 +4,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
 
-public class CardStringLocalizer : MonoBehaviour
+public class CardStringLocalizer : CardLocalizer
 {
-    public LocalizedString localizedString;
-
-    public string keyWithoutID;
-    public TMP_Text txtUI;
-
-    public string TranslatedValue { get; private set; }
-
-    void OnEnable()
+    public string keyString;
+    public override void ConstructKey(CardData cardData)
     {
-        localizedString.StringChanged += ValueChanged;
-    }
+        string key = cardData.ID + keyString;
+        SetKey(key);
 
-    void OnDisable()
-    {
-        localizedString.StringChanged -= ValueChanged;
-    }
-
-    void ValueChanged(string value)
-    {
-        TranslatedValue = value;
-        txtUI.text = value;
-    }
-
-    public virtual void ConstructKey(CardData cardData)
-    {
-        string key = cardData.ID.ToString() + keyWithoutID;
-        localizedString.TableEntryReference = key;
-
-        Refresh();
-    }
-
-    void Refresh()
-    {
         localizedString.RefreshString();
     }
-
 }

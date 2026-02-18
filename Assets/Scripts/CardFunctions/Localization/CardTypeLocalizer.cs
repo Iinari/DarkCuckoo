@@ -4,15 +4,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
 
-public class CardTypeLocalizer : CardStringLocalizer
+
+public class CardTypeLocalizer : CardLocalizer
 {
-    private string stringTableKey;
-
-
     public override void ConstructKey(CardData cardData)
     {
-        stringTableKey = "type." + cardData.type.ToString();
-        localizedString = new LocalizedString(localizedString.TableReference, stringTableKey);
+        string key = "type." + cardData.type.ToString();
+        SetKey(key);
+
+        localizedString.RefreshString();
     }
-      
 }

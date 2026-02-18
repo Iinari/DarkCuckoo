@@ -3,45 +3,53 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
 
-public class CardDescrLocalizer : CardStringLocalizer
+public class CardDescrLocalizer : CardLocalizer
 {
-    private int currentValue;
+    public string keyString;
 
-    private CardArgs args = new CardArgs();
+    private int currentAmount;
 
-    void OnEnable()
+    [System.Serializable]
+    public class CardArgs
     {
-        localizedString.StringChanged += ValueChanged;
+        public int amount;
     }
 
-    void OnDisable()
-    {
-        localizedString.StringChanged -= ValueChanged;
-    }
+    private CardArgs args = new();
 
-    void ValueChanged(string value)
+    protected override void OnEnable()
     {
-        txtUI.text = value;
+        base.OnEnable();
+
+        args.amount = currentAmount;
+        localizedString.Arguments = new object[] { args };
     }
 
     public override void ConstructKey(CardData cardData)
     {
-        string key = cardData.ID.ToString() + keyWithoutID;
-        localizedString.TableEntryReference = key;
+        if (keyString != null) 
+        {
+            string key = cardData.ID + keyString;
+            SetKey(key);
+        }
+        else
+        {
+            string key = cardData.ID + ".description";
+            SetKey(key);
+        }
 
         DescriptionLocalization(cardData);
     }
 
-    public void SetValue(int value)
+    public void SetAmount(int amount)
     {
-        currentValue = value;
+        currentAmount = amount;
         Refresh();
     }
 
     void Refresh()
     {
-        args.amount = currentValue;
-
+        args.amount = currentAmount;
         localizedString.Arguments = new object[] { args };
         localizedString.RefreshString();
     }
@@ -51,10 +59,10 @@ public class CardDescrLocalizer : CardStringLocalizer
         switch (cardData.type)
         {
             case CardType.Attack:
-                SetValue(cardData.GetDamage());
+                SetAmount(cardData.GetDamage());
                 break;
             case CardType.Skill:
-                SetValue(cardData.GetHealPower());
+                SetAmount(cardData.GetHealPower());
                 break;
 
         }
