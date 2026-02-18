@@ -16,7 +16,6 @@ public class CardInteractionState : MonoBehaviour
 
         CurrentState = newState;
 
-        //Debug.Log(newState);
         OnStateChanged?.Invoke(CurrentState);
     }
 

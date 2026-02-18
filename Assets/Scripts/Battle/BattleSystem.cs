@@ -34,30 +34,26 @@ public class BattleSystem : MonoBehaviour
 
     private BattleScenePopUpManager popUpManager;
 
-    public BattleState state = BattleState.Start;
+    private BattleStateStatus state;
 
-    [SerializeField] GameObject moonCycle;
 
 
     void Start()
     {
-        state = BattleState.Start;
         SetupBattle();
     }
 
     public void PlayerTurn()
     {
-        state = BattleState.PlayerTurn;
+        state.SetState(BattleState.PlayerTurn);
         RestoreMana();
         deckManager.StartPlayersTurn();
 
-        //Replace this later with better system 
-        moonCycle.GetComponent<MoonCycle>().UpdateMoon();
     }
 
     public void EnemyTurn() 
     {
-        state = BattleState.EnemyTurn;
+        state.SetState(BattleState.EnemyTurn);
         deckManager.EndPlayersTurn();
 
         if (enemiesInBattle.Count <= 0)
@@ -192,6 +188,7 @@ public class BattleSystem : MonoBehaviour
         discardManager = FindFirstObjectByType<DiscardManager>();
 
         popUpManager = GetComponent<BattleScenePopUpManager>();
+        state = GetComponent<BattleStateStatus>();
 
         if (enemyManager == null)
         {
@@ -270,7 +267,6 @@ public class BattleSystem : MonoBehaviour
         ChooseEnemy();
         ChoosePlayerHero();
 
-        state = BattleState.PlayerTurn;
         PlayerTurn();
     }
 

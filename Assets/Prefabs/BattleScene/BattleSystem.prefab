@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8060873990032492923}
   - component: {fileID: 1451605200686595864}
+  - component: {fileID: 3576414374248618405}
   - component: {fileID: 3051419840158488796}
+  - component: {fileID: 6243198126277306910}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -61,9 +63,18 @@ MonoBehaviour:
   handManager: {fileID: 0}
   drawPileManager: {fileID: 0}
   discardManager: {fileID: 0}
-  battleSceneUIManager: {fileID: 0}
-  state: 0
-  moonCycle: {fileID: 0}
+--- !u!114 &3576414374248618405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b131de9a7c8474f48986d85d5b6e6f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleStateStatus
 --- !u!114 &3051419840158488796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +87,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f0d9280b9979384895df1f3170ee51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleSceneUIManager
-  drawPileDisplayPrefab: {fileID: 0}
+  cardDisplayPrefab: {fileID: 0}
   resultPrefab: {fileID: 0}
   BattleTransform: {fileID: 0}
+--- !u!114 &6243198126277306910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea8ede74977b6149a235c893d96c1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoonCycle
+  moonImg: {fileID: 0}
+  cycleTxt: {fileID: 0}
+  moonCycleLength: 10
+  moonCycleCurrent: 10

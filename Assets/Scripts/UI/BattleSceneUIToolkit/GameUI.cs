@@ -10,16 +10,12 @@ public class GameUI : MonoBehaviour
 
     [SerializeField] private Button endTurnBtn;
 
-    [SerializeField] private VisualElement handContainer;
-
     private void Awake()
     {
         document = GetComponent<UIDocument>();
 
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         root.pickingMode = PickingMode.Ignore;
-
-        handContainer = document.rootVisualElement.Q("HandContainer");
 
         endTurnBtn = root.Q<Button>("BtnEndTurn");
 
@@ -31,12 +27,4 @@ public class GameUI : MonoBehaviour
         FindFirstObjectByType<BattleSystem>().EnemyTurn();
     }
 
-    public void AddCard(CardData data)
-    {
-        var card = cardTemplate.Instantiate();
-        card.Q<Label>("Title").text = data.cardName;
-
-
-        handContainer.Add(card);
-    }
 }
