@@ -13,6 +13,10 @@ GameObject:
   - component: {fileID: 3576414374248618405}
   - component: {fileID: 3051419840158488796}
   - component: {fileID: 6243198126277306910}
+  - component: {fileID: 5364382133837406922}
+  - component: {fileID: 8477696608621555893}
+  - component: {fileID: 3203659804801972030}
+  - component: {fileID: 2213639756933797701}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -57,7 +61,6 @@ MonoBehaviour:
   allEnemies: []
   enemiesInBattle: []
   heroManager: {fileID: 3794127281476440023, guid: 9d33ce8961c6b7b47bb179ded32c3761, type: 3}
-  enemyManager: {fileID: 8761238537541054614, guid: 7645014c88336f44bba958a65848eb3d, type: 3}
   cardPlayManager: {fileID: 6850809577535598148, guid: 8154834079e1e864bb4b1954fd1fea61, type: 3}
   deckManager: {fileID: 0}
   handManager: {fileID: 0}
@@ -102,7 +105,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea8ede74977b6149a235c893d96c1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoonCycle
-  moonImg: {fileID: 0}
-  cycleTxt: {fileID: 0}
   moonCycleLength: 10
   moonCycleCurrent: 10
+  moonPosition: {fileID: 0}
+  moonPrefab: {fileID: 0}
+--- !u!114 &5364382133837406922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f457a76a5feb0b344a1dbc88694d0cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPicker
+  ChosenEnemy: {fileID: 0}
+  allEnemies: []
+--- !u!114 &8477696608621555893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ea21835eba6f14cb2035f2fd92851d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTurnManager
+--- !u!114 &3203659804801972030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7063983b1feb73c48a7c6e8d24655902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EncounterEnemyTracker
+--- !u!114 &2213639756933797701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f11e7603beca14a84ea33014c512ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDisplayManager
+  enemyReferences: []
+  enemyPositions: []
+  enemyPrefab: {fileID: 0}

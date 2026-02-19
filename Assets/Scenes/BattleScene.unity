@@ -791,6 +791,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602c3023b917ea0418b72f867e0bfc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &857059381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 857059382}
+  m_Layer: 5
+  m_Name: MoonPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &857059382
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857059381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1535723442}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 53.610107, y: 257.7}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &944102504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1360,18 @@ PrefabInstance:
       propertyPath: cycleTxt
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2213639756933797701, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 7545693069157738872, guid: 78645844348f4ce43bcd159e5a7e5369, type: 3}
+    - target: {fileID: 2213639756933797701, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: enemyPositions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2213639756933797701, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: 'enemyPositions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2074775679}
     - target: {fileID: 3051419840158488796, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
       propertyPath: resultPrefab
       value: 
@@ -1353,6 +1400,22 @@ PrefabInstance:
       propertyPath: cycleTxt
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6243198126277306910, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: moonPrefab
+      value: 
+      objectReference: {fileID: 5065565569870983053, guid: e3af42ac2eee9fa48aae55fe6313469d, type: 3}
+    - target: {fileID: 6243198126277306910, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: moonPosition
+      value: 
+      objectReference: {fileID: 857059382}
+    - target: {fileID: 7038658140473153650, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: enemyPositions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7038658140473153650, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: 'enemyPositions.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2074775679}
     - target: {fileID: 8060873990032492923, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1549,6 +1612,7 @@ RectTransform:
   - {fileID: 474150983}
   - {fileID: 1524714265}
   - {fileID: 2094368915}
+  - {fileID: 857059382}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

@@ -10,11 +10,6 @@ public class GameManager : MonoBehaviour
 
     public OptionsManager OptionsManager { get; private set; }
 
-    public DeckManager DeckManager { get; private set; }
-
-    //AttributesManager here??
-
-
 
     private void Awake()
     {
@@ -37,9 +32,7 @@ public class GameManager : MonoBehaviour
     {
         AudioManager = GetComponentInChildren<AudioManager>();
         OptionsManager = GetComponentInChildren<OptionsManager>();
-        DeckManager = GetComponentInChildren<DeckManager>();
-        
-
+    
         if (AudioManager == null )
         {
             GameObject prefab = Resources.Load<GameObject>("Prefabs/AudioManager");

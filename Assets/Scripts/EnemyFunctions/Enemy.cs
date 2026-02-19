@@ -29,6 +29,11 @@ public class Enemy : BattleUnit
 
     public BoxCollider2D boxCollider;
 
+    private BattleStateStatus battleStateStatus;
+
+    private void Awake()
+    {
+    }
 
     public void UpdateEnemyDisplay()
     {
@@ -63,11 +68,15 @@ public class Enemy : BattleUnit
         }
     }
 
-    public void TakeTurn(BattleSystem battleSystem)
+    public void TakeTurn()
     {
         int dmg = Random.Range(enemyData.enemyMinDmg, enemyData.enemyMaxDmg);
-        battleSystem.TakeDamage(-dmg);
-        battleSystem.PlayerTurn();
-    }
 
+        if (battleSystem != null)
+        {
+            battleSystem.TakeDamage(-dmg);
+        }
+        FindFirstObjectByType<BattleSystem>().TakeDamage(-dmg);
+        
+    }
 }

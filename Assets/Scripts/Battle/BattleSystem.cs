@@ -25,7 +25,7 @@ public class BattleSystem : MonoBehaviour
 
     //Manager classes
     public HeroManager heroManager;
-    public EnemyManager enemyManager;
+    private EnemyDisplayManager enemyDisplayManager;
     public CardPlayManager cardPlayManager;
     public DeckManager deckManager;
     public HandManager handManager;
@@ -36,7 +36,7 @@ public class BattleSystem : MonoBehaviour
 
     private BattleStateStatus state;
 
-
+    private BattleComponent[] battleComponents;
 
     void Start()
     {
@@ -51,45 +51,6 @@ public class BattleSystem : MonoBehaviour
 
     }
 
-    public void EnemyTurn() 
-    {
-        state.SetState(BattleState.EnemyTurn);
-        deckManager.EndPlayersTurn();
-
-        if (enemiesInBattle.Count <= 0)
-        {
-            enemiesInBattle.AddRange(GetEncounterEnemies());
-        }
-
-        for (int i = 0; i < enemiesInBattle.Count; i++) 
-        {
-            enemiesInBattle[i].battleSystem = this;
-            enemiesInBattle[i].TakeTurn(this);
-        }
-    }
-
-
-    public void ChooseEnemy()
-    {
-        //Enemy can be chosen in Scene, if enemy is not set set randon enemy from the list
-        if (ChosenEnemy == null)
-        {
-            //This is just a testing phase code, later this needs logic for choosing the enemy for right type/level etc.
-            EnemyData[] enemies = Resources.LoadAll<EnemyData>("Enemies");
-            allEnemies.AddRange(enemies);
-
-            if (allEnemies.Count > 0)
-            {
-                Utility.Shuffle(allEnemies);
-                CreateUnit(allEnemies[0]);
-            }
-        }
-        else
-        {
-            CreateUnit(ChosenEnemy);
-        }
-        
-    }
 
     public void ChoosePlayerHero()
     {
@@ -118,7 +79,7 @@ public class BattleSystem : MonoBehaviour
                     heroManager.DisplayHero(heroData, playerPrefab, playerPosition);
                     break;
                 case (EnemyData enemyData):
-                    enemyManager.DisplayEnemy(enemyData, enemyPrefab, enemyPosition);
+                    
                     break;
                 default:
                     Debug.Log("Given data for CreateUnit() method in BattleSystem script wasn't hero or enemy");
@@ -152,10 +113,6 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public List<Enemy> GetEncounterEnemies()
-    {
-        return enemyManager.enemyList;
-    }
 
     public bool CheckWasDmgLethal()
     {
@@ -179,7 +136,7 @@ public class BattleSystem : MonoBehaviour
     public void SetupBattle()
     {
 
-        enemyManager = FindFirstObjectByType<EnemyManager>();
+        enemyDisplayManager = GetComponentInChildren<EnemyDisplayManager>();
         heroManager = FindFirstObjectByType<HeroManager>();
         cardPlayManager = FindFirstObjectByType<CardPlayManager>();
         deckManager = FindFirstObjectByType<DeckManager>();
@@ -190,7 +147,7 @@ public class BattleSystem : MonoBehaviour
         popUpManager = GetComponent<BattleScenePopUpManager>();
         state = GetComponent<BattleStateStatus>();
 
-        if (enemyManager == null)
+        if (enemyDisplayManager == null)
         {
             GameObject prefab = Resources.Load<GameObject>("Prefabs/EnemyManager");
             if (prefab == null)
@@ -200,7 +157,7 @@ public class BattleSystem : MonoBehaviour
             else
             {
                 Instantiate(prefab, transform.position, Quaternion.identity, transform);
-                enemyManager = GetComponentInChildren<EnemyManager>();
+                enemyDisplayManager = FindFirstObjectByType<EnemyDisplayManager>();
             }
         }
 
@@ -241,8 +198,7 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                Instantiate(prefab, transform.position, Quaternion.identity, transform);
-                enemyManager = GetComponentInChildren<EnemyManager>();
+                //!!
             }
         }
 
@@ -264,7 +220,13 @@ public class BattleSystem : MonoBehaviour
 
         deckManager.BattleSetup();
 
-        ChooseEnemy();
+        battleComponents = GetComponentsInChildren<BattleComponent>();
+
+        for (int i = 0; i < battleComponents.Length; i++)
+        {
+            battleComponents[i].BattleSetUp();
+        }
+
         ChoosePlayerHero();
 
         PlayerTurn();

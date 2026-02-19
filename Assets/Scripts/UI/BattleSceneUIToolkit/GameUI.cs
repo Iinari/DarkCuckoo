@@ -24,7 +24,7 @@ public class GameUI : MonoBehaviour
 
     private void EndTurnButtonClicked(ClickEvent clickEvent)
     {
-        FindFirstObjectByType<BattleSystem>().EnemyTurn();
+        FindFirstObjectByType<BattleStateStatus>().SetState(BattleState.EnemyTurn);
     }
 
 }
