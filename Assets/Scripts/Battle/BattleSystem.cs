@@ -7,30 +7,16 @@ using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
 {
-    //These are values that tester might want to change in editor, that is why these are on top
-    public EnemyData ChosenEnemy;
-
     //variables for displaying and instatiate player hero
     public GameObject playerPrefab;
     public Transform playerPosition;
     public List<HeroData> allHeroes = new();
     public Hero playerHero;
 
-    //variables for displaying and instatiate enemy
-    public GameObject enemyPrefab;
-    public Transform enemyPosition;
-    public List<EnemyData> allEnemies = new();
-    public List<Enemy> enemiesInBattle;
-    private int enemyCount;
-
     //Manager classes
     public HeroManager heroManager;
-    private EnemyDisplayManager enemyDisplayManager;
     public CardPlayManager cardPlayManager;
     public DeckManager deckManager;
-    public HandManager handManager;
-    public DrawPileManager drawPileManager;
-    public DiscardManager discardManager;
 
     private BattleScenePopUpManager popUpManager;
 
@@ -42,15 +28,6 @@ public class BattleSystem : MonoBehaviour
     {
         SetupBattle();
     }
-
-    public void PlayerTurn()
-    {
-        state.SetState(BattleState.PlayerTurn);
-        RestoreMana();
-        deckManager.StartPlayersTurn();
-
-    }
-
 
     public void ChoosePlayerHero()
     {
@@ -78,21 +55,12 @@ public class BattleSystem : MonoBehaviour
                 case (HeroData heroData):
                     heroManager.DisplayHero(heroData, playerPrefab, playerPosition);
                     break;
-                case (EnemyData enemyData):
-                    
-                    break;
+ 
                 default:
                     Debug.Log("Given data for CreateUnit() method in BattleSystem script wasn't hero or enemy");
                     break;
             }
         }
-    }
-
-    //Restoring mana for test purposes, later cards/items that restore mana are implemented
-    public void RestoreMana()
-    {
-        //AttributesManager is a class that handles all players attributes
-        playerHero.attributesManager.RestoreAttribute(AttributesManager.Attribute.MP);
     }
 
     public void TakeDamage(int incomingDmg)
@@ -119,10 +87,6 @@ public class BattleSystem : MonoBehaviour
         return playerHero.attributesManager.hp == 0;
     }
 
-    public void AllEnemiesDied()
-    {
-
-    }
 
     public void EnemyDied()
     {
@@ -135,31 +99,12 @@ public class BattleSystem : MonoBehaviour
     //Only to be called in Start()
     public void SetupBattle()
     {
-
-        enemyDisplayManager = GetComponentInChildren<EnemyDisplayManager>();
         heroManager = FindFirstObjectByType<HeroManager>();
         cardPlayManager = FindFirstObjectByType<CardPlayManager>();
         deckManager = FindFirstObjectByType<DeckManager>();
-        handManager = FindFirstObjectByType<HandManager>();
-        drawPileManager = FindFirstObjectByType<DrawPileManager>();
-        discardManager = FindFirstObjectByType<DiscardManager>();
 
         popUpManager = GetComponent<BattleScenePopUpManager>();
         state = GetComponent<BattleStateStatus>();
-
-        if (enemyDisplayManager == null)
-        {
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/EnemyManager");
-            if (prefab == null)
-            {
-                Debug.Log("EnemyManager Prefab not found");
-            }
-            else
-            {
-                Instantiate(prefab, transform.position, Quaternion.identity, transform);
-                enemyDisplayManager = FindFirstObjectByType<EnemyDisplayManager>();
-            }
-        }
 
         if (heroManager == null)
         {
@@ -202,24 +147,6 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        if (handManager == null)
-        {
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/HandManager");
-            if (prefab == null)
-            {
-                Debug.Log("handManager Prefab not found");
-            }
-            else
-            {
-                Instantiate(prefab, transform.position, Quaternion.identity, transform);
-                handManager = GetComponentInChildren<HandManager>();
-            }
-        }
-
-        popUpManager.SceneUISetUp();
-
-        deckManager.BattleSetup();
-
         battleComponents = GetComponentsInChildren<BattleComponent>();
 
         for (int i = 0; i < battleComponents.Length; i++)
@@ -229,7 +156,7 @@ public class BattleSystem : MonoBehaviour
 
         ChoosePlayerHero();
 
-        PlayerTurn();
+        state.SetState(BattleState.PlayerTurn);
     }
 
     

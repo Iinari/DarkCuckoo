@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class BattleScenePopUpManager : MonoBehaviour
+public class BattleScenePopUpManager : BattleComponent
 {
     //Gameobjects of pop ups
     [SerializeField] GameObject cardDisplayPrefab; //Both draw and discard display use the same prefab
@@ -14,12 +14,12 @@ public class BattleScenePopUpManager : MonoBehaviour
 
     public Transform BattleTransform;
 
-    public void SceneUISetUp()
+    public override void BattleSetUp()
     {
         GameObject results = Instantiate(resultPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
         resultPopUp = results.GetComponent<ResultPopUp>();
         results.SetActive(false);
-        
+
         GameObject cardDisplay = Instantiate(cardDisplayPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
         cardPileDisplay = cardDisplay.GetComponent<CardPopUpDisplay>();
         cardDisplay.SetActive(false);

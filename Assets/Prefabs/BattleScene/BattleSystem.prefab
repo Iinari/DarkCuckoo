@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 8477696608621555893}
   - component: {fileID: 3203659804801972030}
   - component: {fileID: 2213639756933797701}
+  - component: {fileID: 4526806643919390481}
+  - component: {fileID: 4563350208874991665}
+  - component: {fileID: 832653959493676370}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -51,21 +54,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2ecc4446858e345a77071c61fbb1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChosenEnemy: {fileID: 0}
   playerPrefab: {fileID: 7162504021528511839, guid: c333728fff481d940adcbdee4fde8066, type: 3}
   playerPosition: {fileID: 0}
   allHeroes: []
   playerHero: {fileID: 0}
-  enemyPrefab: {fileID: 7545693069157738872, guid: 78645844348f4ce43bcd159e5a7e5369, type: 3}
-  enemyPosition: {fileID: 0}
-  allEnemies: []
-  enemiesInBattle: []
   heroManager: {fileID: 3794127281476440023, guid: 9d33ce8961c6b7b47bb179ded32c3761, type: 3}
   cardPlayManager: {fileID: 6850809577535598148, guid: 8154834079e1e864bb4b1954fd1fea61, type: 3}
   deckManager: {fileID: 0}
-  handManager: {fileID: 0}
-  drawPileManager: {fileID: 0}
-  discardManager: {fileID: 0}
 --- !u!114 &3576414374248618405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +157,46 @@ MonoBehaviour:
   enemyReferences: []
   enemyPositions: []
   enemyPrefab: {fileID: 0}
+--- !u!114 &4526806643919390481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab41332243b1d7a4d9209702f8cb49c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerTurnManager
+--- !u!114 &4563350208874991665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dcf6411473b6634ea86781e3cd40947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DiscardManager
+  discardCards: []
+  discardPilePosition: {fileID: 0}
+  discardPilePrefab: {fileID: 0}
+--- !u!114 &832653959493676370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602c3023b917ea0418b72f867e0bfc20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeckManager
+  deck: []
+  copiesOfStartingCards: 0
+  maxHandSize: 10
+  startingHandSize: 5

@@ -4,7 +4,7 @@ using SnIProductions;
 using UnityEngine;
 
 //Class for handling players deck, all of it. When cards are added or removed completely (not discarded) it should be done by DeckManager
-public class DeckManager : MonoBehaviour
+public class DeckManager : BattleComponent
 {
     public List<CardData> deck = new(); //Player's cards
 
@@ -22,6 +22,15 @@ public class DeckManager : MonoBehaviour
         {
             LoadStartingDeck();
         } 
+    }
+
+    public override void BattleSetUp()
+    {
+        GetManagerReferences();
+
+        handManager.BattleSetup(maxHandSize);
+        drawPileManager.MakeDrawPile(deck);
+        drawPileManager.BattleSetUp(maxHandSize);
     }
 
     public void LoadStartingDeck()
@@ -60,15 +69,6 @@ public class DeckManager : MonoBehaviour
     { 
         deck.Remove(card);
     }**/
-
-    public void BattleSetup()
-    {
-        GetManagerReferences();
-
-        handManager.BattleSetup(maxHandSize);
-        drawPileManager.MakeDrawPile(deck);
-        drawPileManager.BattleSetUp(maxHandSize);
-    }
 
     public void StartPlayersTurn()
     {
