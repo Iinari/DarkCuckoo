@@ -37,7 +37,7 @@ public class PlayerTurnManager : MonoBehaviour
         }
         if (player != null)
         {
-            player.attributesManager.RestoreAttribute(AttributesManager.Attribute.MP);
+            player.GetComponent<AttributesManager>().RestoreAttribute(AttributesManager.Attribute.MP);
         }
         
     }

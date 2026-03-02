@@ -547,6 +547,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3331217340476473481, guid: 69fa1d87292c46047b9c0773158b3fb4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5873522981297793817}
+    - targetCorrespondingSourceObject: {fileID: 3331217340476473481, guid: 69fa1d87292c46047b9c0773158b3fb4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 370746341934886385}
+    - targetCorrespondingSourceObject: {fileID: 3331217340476473481, guid: 69fa1d87292c46047b9c0773158b3fb4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2089060329162053359}
+    - targetCorrespondingSourceObject: {fileID: 3331217340476473481, guid: 69fa1d87292c46047b9c0773158b3fb4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6496106647783740055}
   m_SourcePrefab: {fileID: 100100000, guid: 69fa1d87292c46047b9c0773158b3fb4, type: 3}
 --- !u!224 &6170868610334703809 stripped
 RectTransform:
@@ -597,3 +606,54 @@ MonoBehaviour:
   roundHpBar: {fileID: 3240780207638876378}
   cardPlayManager: {fileID: 6850809577535598148, guid: 8154834079e1e864bb4b1954fd1fea61, type: 3}
   attributesManager: {fileID: 2548149843841707798, guid: 89f426963205ebb4fb740d1709b0d605, type: 3}
+--- !u!114 &370746341934886385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162504021528511839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a69c83ff35712545b6c352031b855bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitHealthWatch
+--- !u!114 &2089060329162053359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162504021528511839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739389dbe63e7294881524b3fd8d8145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitHealthState
+--- !u!114 &6496106647783740055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162504021528511839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe46ce499deba044f9fa44a23fe53d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttributesManager
+  fullHealth: 0
+  hp: 0
+  fullMana: 0
+  mp: 0
+  strength: 0
+  luck: 0
+  satiety: 0
+  s_Health: 0
+  s_hp: 0
+  s_Mana: 0
+  s_mp: 0
+  s_Strength: 0
+  s_Luck: 0
+  s_Satiety: 0
+  playerHeroData: {fileID: 0}

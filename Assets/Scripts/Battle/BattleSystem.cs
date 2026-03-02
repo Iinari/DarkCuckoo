@@ -25,31 +25,6 @@ public class BattleSystem : MonoBehaviour
         SetupBattle();
     }
 
-    public void TakeDamage(int incomingDmg)
-    {
-        if (playerHero == null)
-        {
-            Debug.Log("No reference to playerHero in BattleSystem while trying to decrease player health");
-        }
-
-        playerHero.attributesManager.ModifyAttribute(AttributesManager.Attribute.HP, incomingDmg);
-
-        if (CheckWasDmgLethal())
-        {
-            if (popUpManager != null)
-            {
-                popUpManager.OpenResultScreen(true);
-            }
-        }
-    }
-
-
-    public bool CheckWasDmgLethal()
-    {
-        return playerHero.attributesManager.hp == 0;
-    }
-
-
     public void EnemyDied()
     {
         if (popUpManager != null)
@@ -84,7 +59,7 @@ public class BattleSystem : MonoBehaviour
 
         for (int i = 0; i < battleComponents.Length; i++)
         {
-            battleComponents[i].BattleSetUp();
+            battleComponents[i].BattleSetUp(this);
         }
 
         state.SetState(BattleState.PlayerTurn);

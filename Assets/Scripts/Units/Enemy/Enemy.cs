@@ -74,9 +74,9 @@ public class Enemy : BattleUnit
 
         if (battleSystem != null)
         {
-            battleSystem.TakeDamage(-dmg);
+            battleSystem.playerHero.GetComponent<UnitHealthWatch>().TakeDamage(-dmg);
         }
-        FindFirstObjectByType<BattleSystem>().TakeDamage(-dmg);
-        
+        FindFirstObjectByType<BattleSystem>().playerHero.GetComponent<UnitHealthWatch>().TakeDamage(-dmg);
+
     }
 }

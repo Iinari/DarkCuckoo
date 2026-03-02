@@ -1,3 +1,4 @@
+using SnIProductions;
 using System;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -14,7 +15,9 @@ public class BattleScenePopUpManager : BattleComponent
 
     public Transform BattleTransform;
 
-    public override void BattleSetUp()
+    private UnitHealthState state;
+
+    public override void BattleSetUp(BattleSystem battleSystem)
     {
         GameObject results = Instantiate(resultPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
         resultPopUp = results.GetComponent<ResultPopUp>();
@@ -23,6 +26,21 @@ public class BattleScenePopUpManager : BattleComponent
         GameObject cardDisplay = Instantiate(cardDisplayPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
         cardPileDisplay = cardDisplay.GetComponent<CardPopUpDisplay>();
         cardDisplay.SetActive(false);
+
+        state = battleSystem.playerHero.GetComponent<UnitHealthState>();
+        state.OnStateChanged += OnStateChanged;
+    }
+
+    private void OnStateChanged(HealthState newState)
+    {
+        if (newState == HealthState.Dead) 
+        {
+            if (resultPopUp != null)
+            {
+                resultPopUp.OpenDeathScreen();
+            }
+            else Debug.Log("ResultPopUp Null");
+        }
     }
 
     public void OpenResultScreen(bool playerDied)

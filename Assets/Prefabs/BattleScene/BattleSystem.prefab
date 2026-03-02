@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8060873990032492923}
   - component: {fileID: 1451605200686595864}
   - component: {fileID: 3576414374248618405}
-  - component: {fileID: 3051419840158488796}
   - component: {fileID: 6243198126277306910}
   - component: {fileID: 5364382133837406922}
   - component: {fileID: 8477696608621555893}
@@ -22,6 +21,7 @@ GameObject:
   - component: {fileID: 832653959493676370}
   - component: {fileID: 7471391027021152464}
   - component: {fileID: 1658475810554266700}
+  - component: {fileID: 3051419840158488796}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -73,21 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b131de9a7c8474f48986d85d5b6e6f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleStateStatus
---- !u!114 &3051419840158488796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1797475281684728371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f0d9280b9979384895df1f3170ee51f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BattleSceneUIManager
-  cardDisplayPrefab: {fileID: 0}
-  resultPrefab: {fileID: 0}
-  BattleTransform: {fileID: 0}
 --- !u!114 &6243198126277306910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,3 +214,18 @@ MonoBehaviour:
   playedCard: {fileID: 0}
   lastTarget: {fileID: 0}
   playerHero: {fileID: 0}
+--- !u!114 &3051419840158488796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f0d9280b9979384895df1f3170ee51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleSceneUIManager
+  cardDisplayPrefab: {fileID: 0}
+  resultPrefab: {fileID: 0}
+  BattleTransform: {fileID: 0}

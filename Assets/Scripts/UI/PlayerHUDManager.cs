@@ -14,7 +14,7 @@ public class PlayerHUDManager : BattleComponent
     public GameObject prefab;
 
     private List<HeroData> allHeroes = new();
-    public override void BattleSetUp()
+    public override void BattleSetUp(BattleSystem battleSystem)
     {
         playerData = LoadPlayerData()[0];
 
@@ -29,6 +29,7 @@ public class PlayerHUDManager : BattleComponent
         {
             newHero.GetComponent<Hero>().HeroDisplayFirstUpdate(playerData);
             PlayerHero = newHero.GetComponent<Hero>();
+            battleSystem.playerHero = PlayerHero;
         }
     }
 

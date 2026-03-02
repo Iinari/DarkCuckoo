@@ -11,7 +11,7 @@ public class EnemyPicker : BattleComponent
 
     public List<EnemyData> allEnemies = new();
 
-    public override void BattleSetUp()
+    public override void BattleSetUp(BattleSystem battleSystem)
     {
         //Enemy can be chosen in Scene, if enemy is not set set randon enemy from the list
         if (ChosenEnemy == null)

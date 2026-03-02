@@ -29,18 +29,20 @@ public class Hero : BattleUnit
 
     public AttributesManager attributesManager;
 
-    private BattleSystem battleSystem;
 
     private void Update()
     {
-        heroMPTxt.text = attributesManager.mp.ToString();
-        heroHPTxt.text = attributesManager.hp.ToString();
+        if (heroData != null) 
+        {
+            heroMPTxt.text = attributesManager.mp.ToString();
+            heroHPTxt.text = attributesManager.hp.ToString();
 
-        float hpProsent = attributesManager.hp / attributesManager.fullHealth;
-        roundHpBar.fillAmount = hpProsent;
+            float hpProsent = attributesManager.hp / attributesManager.fullHealth;
+            roundHpBar.fillAmount = hpProsent;
 
-        float mpProsent = attributesManager.mp / attributesManager.fullMana;
-        manaPoolIcon.fillAmount = mpProsent;
+            float mpProsent = attributesManager.mp / attributesManager.fullMana;
+            manaPoolIcon.fillAmount = mpProsent;
+        }
     }
 
 
@@ -48,15 +50,13 @@ public class Hero : BattleUnit
     {
         cardPlayManager = FindFirstObjectByType<CardPlayManager>();
         cardPlayManager.playerHero = this;
-        attributesManager = FindFirstObjectByType<AttributesManager>();
-        battleSystem = FindFirstObjectByType<BattleSystem>();
-        battleSystem.playerHero = this;
+
+        attributesManager = GetComponent<AttributesManager>();
     }
 
     public void HeroDisplayFirstUpdate(HeroData newHeroData)
     {
         heroData = newHeroData;
-
  
         heroNameTxt.text = heroData.heroName;
         heroCurrentHealth = heroData.health;

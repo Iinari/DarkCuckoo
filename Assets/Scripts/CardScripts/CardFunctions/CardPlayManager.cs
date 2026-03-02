@@ -90,7 +90,7 @@ public class CardPlayManager : MonoBehaviour
 
     public void DecreaseMP(int mpAmount)
     {
-        playerHero.attributesManager.ModifyAttribute(AttributesManager.Attribute.MP, -mpAmount);
+        playerHero.GetComponent<AttributesManager>().ModifyAttribute(AttributesManager.Attribute.MP, -mpAmount);
     }
 
     public void PlaySkillCard(Card card)
@@ -99,7 +99,7 @@ public class CardPlayManager : MonoBehaviour
         int heal = card.cardData.GetHealPower();
         if (heal > 0) 
         {
-            playerHero.attributesManager.ModifyAttribute(AttributesManager.Attribute.HP, heal);
+            playerHero.GetComponent<AttributesManager>().ModifyAttribute(AttributesManager.Attribute.HP, heal);
         }
 
         int block = card.cardData.GetBlockPower();
