@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 7471391027021152464}
   - component: {fileID: 1658475810554266700}
   - component: {fileID: 3051419840158488796}
+  - component: {fileID: 3329708685143097853}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -56,11 +57,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2ecc4446858e345a77071c61fbb1c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 7162504021528511839, guid: c333728fff481d940adcbdee4fde8066, type: 3}
-  playerPosition: {fileID: 0}
-  allHeroes: []
   playerHero: {fileID: 0}
-  heroManager: {fileID: 3794127281476440023, guid: 9d33ce8961c6b7b47bb179ded32c3761, type: 3}
+  popUpManager: {fileID: 0}
 --- !u!114 &3576414374248618405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,3 +227,18 @@ MonoBehaviour:
   cardDisplayPrefab: {fileID: 0}
   resultPrefab: {fileID: 0}
   BattleTransform: {fileID: 0}
+--- !u!114 &3329708685143097853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a523a0e21b9614681dedb239bee8cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DrawPileManager
+  drawPile: []
+  drawPilePosition: {fileID: 0}
+  drawPilePrefab: {fileID: 0}

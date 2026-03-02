@@ -1083,7 +1083,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2143311723}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DrawPileManager, Assembly-CSharp
         m_MethodName: DrawCard
         m_Mode: 2
@@ -1257,6 +1257,14 @@ PrefabInstance:
       propertyPath: drawPileDisplayPrefab
       value: 
       objectReference: {fileID: 2451048023132925714, guid: beabae4f119029d41b74fe80d155806b, type: 3}
+    - target: {fileID: 3329708685143097853, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: drawPilePrefab
+      value: 
+      objectReference: {fileID: 237202456331801554, guid: 26afd98ea72f68b46a34528b8e645974, type: 3}
+    - target: {fileID: 3329708685143097853, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+      propertyPath: drawPilePosition
+      value: 
+      objectReference: {fileID: 1300839348}
     - target: {fileID: 4563350208874991665, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
       propertyPath: discardPilePrefab
       value: 
@@ -2077,57 +2085,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3969048741685287255, guid: e82c93aea3847b1469074edc6361c7a8, type: 3}
   m_PrefabInstance: {fileID: 1735944649}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2143311721
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2143311722}
-  - component: {fileID: 2143311723}
-  m_Layer: 5
-  m_Name: DrawPileManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2143311722
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143311721}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: 540}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2143311723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143311721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82a523a0e21b9614681dedb239bee8cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drawPile: []
-  drawPilePosition: {fileID: 1300839348}
-  drawPilePrefab: {fileID: 237202456331801554, guid: 26afd98ea72f68b46a34528b8e645974, type: 3}
 --- !u!1001 &463116548420603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2365,7 +2322,6 @@ SceneRoots:
   - {fileID: 1823863166}
   - {fileID: 2074775679}
   - {fileID: 568836344}
-  - {fileID: 2143311722}
   - {fileID: 6608417254681342598}
   - {fileID: 1454462031}
   - {fileID: 950504794}
