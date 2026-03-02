@@ -15,52 +15,14 @@ public class BattleSystem : MonoBehaviour
 
     //Manager classes
     public HeroManager heroManager;
-    public CardPlayManager cardPlayManager;
-    public DeckManager deckManager;
-
     private BattleScenePopUpManager popUpManager;
 
     private BattleStateStatus state;
-
     private BattleComponent[] battleComponents;
 
     void Start()
     {
         SetupBattle();
-    }
-
-    public void ChoosePlayerHero()
-    {
-
-        HeroData[] playerHeroes = Resources.LoadAll<HeroData>("HeroClasses");
-        allHeroes.AddRange(playerHeroes);
-
-        if (allHeroes.Count > 0)
-        {
-            Utility.Shuffle(allHeroes);
-            CreateUnit(allHeroes[0]);
-        }
-    }
-
-    public void CreateUnit(UnitData unitData)
-    {
-        if (unitData == null)
-        {
-            Debug.Log("No data passed to CreateUnit method in BattleSystem");
-        }
-        else
-        {
-            switch (unitData)
-            {
-                case (HeroData heroData):
-                    heroManager.DisplayHero(heroData, playerPrefab, playerPosition);
-                    break;
- 
-                default:
-                    Debug.Log("Given data for CreateUnit() method in BattleSystem script wasn't hero or enemy");
-                    break;
-            }
-        }
     }
 
     public void TakeDamage(int incomingDmg)
@@ -100,9 +62,7 @@ public class BattleSystem : MonoBehaviour
     public void SetupBattle()
     {
         heroManager = FindFirstObjectByType<HeroManager>();
-        cardPlayManager = FindFirstObjectByType<CardPlayManager>();
-        deckManager = FindFirstObjectByType<DeckManager>();
-
+     
         popUpManager = GetComponent<BattleScenePopUpManager>();
         state = GetComponent<BattleStateStatus>();
 
@@ -120,41 +80,12 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        if (cardPlayManager == null)
-        {
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/CardPlayManager");
-            if (prefab == null)
-            {
-                Debug.Log("CardPlayManager Prefab not found");
-            }
-            else
-            {
-                Instantiate(prefab, transform.position, Quaternion.identity, transform);
-                cardPlayManager = GetComponentInChildren<CardPlayManager>();
-            }
-        }
-
-        if (deckManager == null)
-        {
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/EnemyManager");
-            if (prefab == null)
-            {
-                Debug.Log("EnemyManager Prefab not found");
-            }
-            else
-            {
-                //!!
-            }
-        }
-
         battleComponents = GetComponentsInChildren<BattleComponent>();
 
         for (int i = 0; i < battleComponents.Length; i++)
         {
             battleComponents[i].BattleSetUp();
         }
-
-        ChoosePlayerHero();
 
         state.SetState(BattleState.PlayerTurn);
     }

@@ -53,8 +53,11 @@ public class Hero : BattleUnit
         battleSystem.playerHero = this;
     }
 
-    public void HeroDisplayFirstUpdate()
+    public void HeroDisplayFirstUpdate(HeroData newHeroData)
     {
+        heroData = newHeroData;
+
+ 
         heroNameTxt.text = heroData.heroName;
         heroCurrentHealth = heroData.health;
         heroHPTxt.text = heroData.health.ToString();

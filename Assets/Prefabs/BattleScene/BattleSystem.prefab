@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 4526806643919390481}
   - component: {fileID: 4563350208874991665}
   - component: {fileID: 832653959493676370}
+  - component: {fileID: 7471391027021152464}
+  - component: {fileID: 1658475810554266700}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -59,8 +61,6 @@ MonoBehaviour:
   allHeroes: []
   playerHero: {fileID: 0}
   heroManager: {fileID: 3794127281476440023, guid: 9d33ce8961c6b7b47bb179ded32c3761, type: 3}
-  cardPlayManager: {fileID: 6850809577535598148, guid: 8154834079e1e864bb4b1954fd1fea61, type: 3}
-  deckManager: {fileID: 0}
 --- !u!114 &3576414374248618405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,3 +200,32 @@ MonoBehaviour:
   copiesOfStartingCards: 0
   maxHandSize: 10
   startingHandSize: 5
+--- !u!114 &7471391027021152464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee4807539f6c344baceb0f3bc8a8353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHUDManager
+  playerPosition: {fileID: 0}
+  prefab: {fileID: 0}
+--- !u!114 &1658475810554266700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ab39835c6791f4ca7796414bb1e8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardPlayManager
+  playedCard: {fileID: 0}
+  lastTarget: {fileID: 0}
+  playerHero: {fileID: 0}
