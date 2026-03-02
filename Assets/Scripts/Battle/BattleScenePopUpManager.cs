@@ -17,7 +17,7 @@ public class BattleScenePopUpManager : BattleComponent
 
     private UnitHealthState state;
 
-    public override void BattleSetUp(BattleSystem battleSystem)
+    public override void BattleSetUp(BattleInitiator battleSystem)
     {
         GameObject results = Instantiate(resultPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
         resultPopUp = results.GetComponent<ResultPopUp>();

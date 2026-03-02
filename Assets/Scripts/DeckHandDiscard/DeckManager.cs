@@ -24,7 +24,7 @@ public class DeckManager : BattleComponent
         } 
     }
 
-    public override void BattleSetUp(BattleSystem battleSystem)
+    public override void BattleSetUp(BattleInitiator battleSystem)
     {
         GetManagerReferences();
 

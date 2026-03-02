@@ -23,7 +23,7 @@ public class Enemy : BattleUnit
 
     public Rarity enemyRarity;
 
-    public BattleSystem battleSystem;
+    public BattleInitiator battleSystem;
 
     public SpriteRenderer spriteRenderer;
 
@@ -58,12 +58,12 @@ public class Enemy : BattleUnit
         {
             if (battleSystem != null)
             {
-                battleSystem.EnemyDied();
+                battleSystem.popUpManager.OpenResultScreen(false);
             }
             else
             {
-                battleSystem = FindFirstObjectByType<BattleSystem>();
-                battleSystem.EnemyDied();
+                battleSystem = FindFirstObjectByType<BattleInitiator>();
+                battleSystem.popUpManager.OpenResultScreen(false);
             }
         }
     }
@@ -76,7 +76,7 @@ public class Enemy : BattleUnit
         {
             battleSystem.playerHero.GetComponent<UnitHealthWatch>().TakeDamage(-dmg);
         }
-        FindFirstObjectByType<BattleSystem>().playerHero.GetComponent<UnitHealthWatch>().TakeDamage(-dmg);
+        FindFirstObjectByType<BattleInitiator>().playerHero.GetComponent<UnitHealthWatch>().TakeDamage(-dmg);
 
     }
 }

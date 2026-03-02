@@ -35,7 +35,7 @@ public class HeroManager : MonoBehaviour
         {
             newHero.GetComponent<Hero>().heroData = heroData;
             //newHero.GetComponent<Hero>().HeroDisplayFirstUpdate();
-            PlayerHero = newHero.GetComponent<Hero>();
+            
         }
     }
 }

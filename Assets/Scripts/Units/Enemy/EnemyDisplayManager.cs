@@ -23,7 +23,7 @@ public class EnemyDisplayManager : BattleComponent
         encounterEnemyTracker = GetComponent<EncounterEnemyTracker>();
     }
 
-    public override void BattleSetUp(BattleSystem battleSystem)
+    public override void BattleSetUp(BattleInitiator battleSystem)
     {
         encounterEnemyTracker = GetComponent<EncounterEnemyTracker>();
     }

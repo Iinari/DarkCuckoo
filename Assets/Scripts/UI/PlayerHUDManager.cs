@@ -14,7 +14,7 @@ public class PlayerHUDManager : BattleComponent
     public GameObject prefab;
 
     private List<HeroData> allHeroes = new();
-    public override void BattleSetUp(BattleSystem battleSystem)
+    public override void BattleSetUp(BattleInitiator battleSystem)
     {
         playerData = LoadPlayerData()[0];
 
