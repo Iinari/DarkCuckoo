@@ -5,7 +5,7 @@ using SnIProductions;
 using UnityEditor.ShaderGraph.Internal;
 using Unity.Properties;
 
-public class MoonCycle : MonoBehaviour
+public class MoonCycle : MonoBehaviour, IDataPersistence
 {
     public float moonCycleLength = 10;
 
@@ -22,6 +22,8 @@ public class MoonCycle : MonoBehaviour
 
     private MoonVisual moonRef;
 
+    private bool hasBeenUpdated = false;
+
     private void Awake()
     {
         state = GetComponent<BattleStateStatus>();
@@ -31,6 +33,15 @@ public class MoonCycle : MonoBehaviour
         moonRef = moon.GetComponent<MoonVisual>();
     }
 
+    public void LoadData(GameData data)
+    {
+        moonCycleCurrent = data.moonCycle;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.moonCycle = moonCycleCurrent;
+    }
     private void OnStateChanged(BattleState newState)
     {
         if (newState == BattleState.PlayerTurn)
@@ -40,7 +51,11 @@ public class MoonCycle : MonoBehaviour
     }
     public void UpdateMoon()
     {
-        moonCycleCurrent++;
+        if (hasBeenUpdated)
+        {
+            moonCycleCurrent++;
+        }
+        
         if (moonCycleCurrent > moonCycleLength)
         {
             moonCycleCurrent = moonCycleMin;
@@ -54,11 +69,12 @@ public class MoonCycle : MonoBehaviour
         {
             moonRef.FillMoon(moonCycleMin, moonCycleCurrent);
         }
+
+        hasBeenUpdated = true;
     }
 
     void OnDestroy()
     {
         state.OnStateChanged -= OnStateChanged;
     }
-
 }
