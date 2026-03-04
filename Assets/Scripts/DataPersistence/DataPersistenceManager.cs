@@ -11,6 +11,7 @@ public class DataPersistenceManager : MonoBehaviour
 {
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
+    [SerializeField] private bool useEncryption;
 
     private GameData gameData;
 
@@ -30,7 +31,6 @@ public class DataPersistenceManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        Debug.Log("DataPersistenceManager woke");
     }
 
     //This is done for the editor testing purposes real game always already has DataPersistenceManager existing
@@ -42,6 +42,7 @@ public class DataPersistenceManager : MonoBehaviour
             GameObject obj = new GameObject("DataPersistenceManager");
             obj.AddComponent<DataPersistenceManager>();
             obj.GetComponent<DataPersistenceManager>().fileName = "data.json";
+            obj.GetComponent<DataPersistenceManager>().useEncryption = true;
         }
     }
 
@@ -57,7 +58,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
         LoadGame();
     }
 

@@ -12,7 +12,7 @@ public class MoonCycle : MonoBehaviour, IDataPersistence
     private float moonCycleMin = 0;
 
     [CreateProperty]
-    public float moonCycleCurrent = 10;
+    public float moonCycleCurrent;
 
     private BattleStateStatus state;
 

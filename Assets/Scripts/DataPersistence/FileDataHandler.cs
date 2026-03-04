@@ -8,14 +8,20 @@ public class FileDataHandler
 
     private string dataFileName = "";
 
-    public FileDataHandler(string dataDirPath, string dataFileName)
+    private bool useEncryption = false;
+
+    private readonly string encryptionKey = "salainensana";
+
+    public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)
     {
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
+        this.useEncryption = useEncryption;
     }
 
     public GameData Load()
     {
+        //Combine paths, PathCombine works on differen OS's
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 
         GameData loadedData = null;
@@ -23,6 +29,7 @@ public class FileDataHandler
         {
             try
             {
+                //load the serialized data from the file
                 string dataToLoad;
                 using (FileStream stream = new FileStream(fullPath, FileMode.Open))
                 {
@@ -31,6 +38,13 @@ public class FileDataHandler
                         dataToLoad = reader.ReadToEnd();
                     }
                 }
+
+                //decrypt the data
+                if (useEncryption) 
+                {
+                    dataToLoad = EncryptDecrypt(dataToLoad);
+                }
+
                 loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
             }
             catch (Exception e) 
@@ -43,13 +57,23 @@ public class FileDataHandler
 
     public void Save(GameData data) 
     {
+        //Combine paths, PathCombine works on differen OS's
         string fullPath = Path.Combine(dataDirPath, dataFileName);
         try
         {
+            //create directory the file will be written to if it doesn't already exist
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
+            //serialize the C# game data object into Json
             string dataToStore = JsonUtility.ToJson(data, true);
 
+            //encrypt the data
+            if (useEncryption)
+            {
+                dataToStore = EncryptDecrypt(dataToStore);
+            }
+
+            //write the serialized data to the file
             using(FileStream stream = new FileStream(fullPath, FileMode.Create))
             {
                 using (StreamWriter writer = new StreamWriter(stream))
@@ -62,5 +86,18 @@ public class FileDataHandler
         {
             Debug.LogError("Error occured when trying to save data to file: " + fullPath + "\n" + e);
         }
+    }
+
+
+    //XOR encryption
+    private string EncryptDecrypt(string data)
+    {
+        string modifiedData = "";
+
+        for (int i = 0; i < data.Length; i++) 
+        {
+            modifiedData += (char)(data[i] ^ encryptionKey[i % encryptionKey.Length]);
+        }
+        return modifiedData;
     }
 }

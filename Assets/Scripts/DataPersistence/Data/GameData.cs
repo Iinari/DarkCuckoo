@@ -6,5 +6,5 @@ public class GameData
 {
     public List<int> cardIds;
 
-    public float moonCycle;
+    public float moonCycle = 10;
 }
