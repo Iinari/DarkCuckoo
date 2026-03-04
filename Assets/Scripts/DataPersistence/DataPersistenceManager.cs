@@ -3,6 +3,9 @@ using UnityEngine;
 using System.Linq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -11,7 +14,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private GameData gameData;
 
-    private List<IDataPersistence> dataPersistenceObjects;
+    private List<IDataPersistence> dataPersistenceObjects = new();
 
     private FileDataHandler dataHandler;
 
@@ -27,14 +30,50 @@ public class DataPersistenceManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        Debug.Log("DataPersistenceManager woke");
     }
 
-    private void Start()
+    //This is done for the editor testing purposes real game always already has DataPersistenceManager existing
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void AutoCreate()
+    {
+        if (Instance == null)
+        {
+            GameObject obj = new GameObject("DataPersistenceManager");
+            obj.AddComponent<DataPersistenceManager>();
+            obj.GetComponent<DataPersistenceManager>().fileName = "data.json";
+        }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }
+
+    public void RegisterDataPersistenceObject(IDataPersistence obj)
+    {
+        if (!dataPersistenceObjects.Contains(obj))
+        {
+            dataPersistenceObjects.Add(obj);
+        }         
+    }
+
+    public void UnregisterDataPersistenceObject(IDataPersistence obj)
+    {
+        dataPersistenceObjects.Remove(obj);
+    }
+
 
     public void NewGame()
     {
@@ -50,19 +89,20 @@ public class DataPersistenceManager : MonoBehaviour
             Debug.Log("No data was found. Initializing data to defaults.");
             NewGame();
         }
-
-        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        else
         {
-            dataPersistenceObj.LoadData(gameData);
-        }
-
+            foreach (var obj in dataPersistenceObjects)
+            {
+                obj.LoadData(gameData);
+            }
+        }    
     }
 
     public void SaveGame() 
     {
-        foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
+        foreach (var obj in dataPersistenceObjects)
         {
-            dataPersistenceObj.SaveData(ref gameData);
+            obj.SaveData(ref gameData);
         }
 
         dataHandler.Save(gameData);
@@ -73,10 +113,10 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }
 
-    private List<IDataPersistence> FindAllDataPersistenceObjects()
+    /*private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         return FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
            .OfType<IDataPersistence>()
            .ToList();
-    }
+    }*/
 }

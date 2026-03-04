@@ -8,6 +8,14 @@ public class LevelLoader : MonoBehaviour
 
     public float transitionTime = 1.0f;
 
+    public enum Scene
+    {
+        BattleScene
+    }
+    public void LoadBattleScene()
+    {
+        SceneManager.LoadScene("BattleScene");
+    }
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
@@ -21,14 +29,5 @@ public class LevelLoader : MonoBehaviour
 
         SceneManager.LoadScene(levelIndex);
 
-    }
-
-    //Reloads the current scene, for testing
-    public void ReloadThisLevel()
-    {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-
-        //StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
     }
 }

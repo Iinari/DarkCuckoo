@@ -33,6 +33,23 @@ public class MoonCycle : MonoBehaviour, IDataPersistence
         moonRef = moon.GetComponent<MoonVisual>();
     }
 
+    private void OnEnable()
+    {
+        if (DataPersistenceManager.Instance == null)
+        {
+            Debug.LogError("DataPersistenceManager Instance is NULL!");
+        }
+        else
+        {
+            DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        DataPersistenceManager.Instance?.UnregisterDataPersistenceObject(this);
+    }
+
     public void LoadData(GameData data)
     {
         moonCycleCurrent = data.moonCycle;
@@ -77,4 +94,5 @@ public class MoonCycle : MonoBehaviour, IDataPersistence
     {
         state.OnStateChanged -= OnStateChanged;
     }
+    
 }
