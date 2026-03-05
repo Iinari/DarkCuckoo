@@ -18,7 +18,7 @@ MonoBehaviour:
   isInStartDeck: 0
   description: Deal # damage
   cost: 3
-  spriteName: 
+  spriteName: SteamyMug
   rarity: 2
-  image: {fileID: 0}
+  image: {fileID: -4042854293088263694, guid: 5202b1f3a0f18224f9776942caf4128f, type: 3}
   damage: 20

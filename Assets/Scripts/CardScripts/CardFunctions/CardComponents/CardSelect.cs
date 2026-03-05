@@ -23,6 +23,6 @@ public class CardSelect : MonoBehaviour,
         {
             deckManager.AddCardToDeck(card.cardData);
         }
-        Debug.Log(card.cardData.cardName + " Was Clicked.");
+        FindAnyObjectByType<DataPersistenceManager>().SaveGame();
     }
 }

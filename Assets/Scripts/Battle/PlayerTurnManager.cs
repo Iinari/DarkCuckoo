@@ -4,14 +4,23 @@ using UnityEngine;
 public class PlayerTurnManager : MonoBehaviour
 {
     private BattleStateStatus state;
-    private DeckManager deckManager;
     private Hero player;
+
+    private DeckManager deckManager;
+    private DrawPileManager drawPileManager;
+    private HandManager handManager;
+    private DiscardManager discardManager;
 
     private void Awake()
     {
         state = GetComponent<BattleStateStatus>();
-        deckManager = GetComponent<DeckManager>();
+        
         player = FindFirstObjectByType<Hero>();
+
+        deckManager = GetComponentInChildren<DeckManager>();
+        drawPileManager = GetComponentInChildren<DrawPileManager>();
+        handManager = GetComponentInChildren<HandManager>();
+        discardManager = GetComponentInChildren<DiscardManager>();
         
         state.OnStateChanged += OnStateChanged;
     }
@@ -30,7 +39,7 @@ public class PlayerTurnManager : MonoBehaviour
 
     public void StartPlayerTurn()
     {
-        deckManager.StartPlayersTurn();
+        drawPileManager.StartPlayerTurn();
         if (player == null) 
         {
             TryGetPlayerRef();
@@ -44,7 +53,13 @@ public class PlayerTurnManager : MonoBehaviour
 
     public void EndPlayerTurn()
     {
-        deckManager.EndPlayersTurn();
+        for (int i = 0; i < handManager.cardsInHand.Count; i++)
+        {
+            discardManager.AddToDiscard(handManager.cardsInHand[i].GetComponent<Card>().cardData);
+            Destroy(handManager.cardsInHand[i]);
+        }
+        handManager.cardsInHand.Clear();
+        handManager.UpdateHandVisuals();
     }
 
     public void TryGetPlayerRef()

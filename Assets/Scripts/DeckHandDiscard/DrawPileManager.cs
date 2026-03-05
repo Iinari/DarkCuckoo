@@ -15,6 +15,8 @@ public class DrawPileManager : MonoBehaviour
 
     private int currentHandSize;
 
+    private int drawCount;
+
     private HandManager handManager;
 
     private DiscardManager discardManager;
@@ -36,14 +38,14 @@ public class DrawPileManager : MonoBehaviour
         drawPileVisual.UpdatePileVisuals(drawPile.Count);
     }
 
-    public void BattleSetUp(int setMaxHandSize)
+    public void BattleSetUp(int setMaxHandSize, int drawAmount)
     {
         if (handManager == null)
         {
             handManager = FindFirstObjectByType<HandManager>();
         }
         maxHandSize = setMaxHandSize;
-        
+        drawCount = drawAmount;
     }
 
     public void DrawCard(HandManager handManager)
@@ -98,7 +100,7 @@ public class DrawPileManager : MonoBehaviour
            
         }
     }
-    public void StartPlayerTurn(int drawCount)
+    public void StartPlayerTurn()
     {
         for (int i = 0; i < drawCount; i++)
         {
