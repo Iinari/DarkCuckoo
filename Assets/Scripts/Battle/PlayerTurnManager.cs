@@ -53,12 +53,12 @@ public class PlayerTurnManager : MonoBehaviour
 
     public void EndPlayerTurn()
     {
-        for (int i = 0; i < handManager.cardsInHand.Count; i++)
+        for (int i = 0; i < handManager.handCardObjs.Count; i++)
         {
-            discardManager.AddToDiscard(handManager.cardsInHand[i].GetComponent<Card>().cardData);
-            Destroy(handManager.cardsInHand[i]);
+            discardManager.AddToDiscard(handManager.handCardObjs[i].GetComponent<Card>().cardData);
+            Destroy(handManager.handCardObjs[i]);
         }
-        handManager.cardsInHand.Clear();
+        handManager.handCardObjs.Clear();
         handManager.UpdateHandVisuals();
     }
 

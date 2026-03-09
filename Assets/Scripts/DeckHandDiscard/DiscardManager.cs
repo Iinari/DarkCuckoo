@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using SnIProductions;
 
-public class DiscardManager : MonoBehaviour
+public class DiscardManager : MonoBehaviour, IDataPersistence
 {
     public List<CardData> discardCards = new();
 
@@ -23,7 +23,34 @@ public class DiscardManager : MonoBehaviour
         discardPileVisual.UpdatePileVisuals(discardCards.Count);
     }
 
-    private void UpdateDiscardCount()
+    private void OnEnable()
+    {
+        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
+    }
+
+    private void OnDisable()
+    {
+        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
+    }
+
+    public void LoadData(GameData data)
+    {
+        discardCards = data.cardsInDiscard;
+        discardPileVisual.UpdatePileVisuals(discardCards.Count);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.cardsInDiscard = discardCards;
+    }
+
+    public void ResetToDefault(ref GameData data)
+    {
+        data.cardsInDiscard.Clear();
+        discardPileVisual.UpdatePileVisuals(discardCards.Count);
+    }
+
+        private void UpdateDiscardCount()
     {
         if (discardPileVisual != null)
         {

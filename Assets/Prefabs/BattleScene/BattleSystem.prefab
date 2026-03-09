@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 1658475810554266700}
   - component: {fileID: 3051419840158488796}
   - component: {fileID: 3329708685143097853}
+  - component: {fileID: 2451387457762226766}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -227,6 +228,18 @@ MonoBehaviour:
   drawPile: []
   drawPilePosition: {fileID: 0}
   drawPilePrefab: {fileID: 0}
+--- !u!114 &2451387457762226766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797475281684728371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2df0343fcc4db794f96813736e3480d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCardsDataHandler
 --- !u!1001 &1745841007149808871
 PrefabInstance:
   m_ObjectHideFlags: 0

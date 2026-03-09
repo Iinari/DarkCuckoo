@@ -12,6 +12,11 @@ public class DataPersistenceManager : MonoBehaviour
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
+    [SerializeField] private bool useSavedData; //For TESTING when there is no need to get saved states
+
+    public bool IsLoadingGame { get; private set; }
+
+    public bool HasLoadedData { get; private set; }
 
     private GameData gameData;
 
@@ -43,6 +48,7 @@ public class DataPersistenceManager : MonoBehaviour
             obj.AddComponent<DataPersistenceManager>();
             obj.GetComponent<DataPersistenceManager>().fileName = "data.json";
             obj.GetComponent<DataPersistenceManager>().useEncryption = true;
+            obj.GetComponent<DataPersistenceManager>().useSavedData = true;
         }
     }
 
@@ -79,24 +85,29 @@ public class DataPersistenceManager : MonoBehaviour
     public void NewGame()
     {
         this.gameData = new GameData();
+        SetHasLoadedData(false);
     }
 
     public void LoadGame()
     {
-        gameData = dataHandler.Load();
+        if (useSavedData) 
+        {
+            gameData = dataHandler.Load();
 
-        if (this.gameData == null)
-        {
-            Debug.Log("No data was found. Initializing data to defaults.");
-            NewGame();
-        }
-        else
-        {
-            foreach (var obj in dataPersistenceObjects)
+            if (this.gameData == null)
             {
-                obj.LoadData(gameData);
+                Debug.Log("No data was found. Initializing data to defaults.");
+                NewGame();
             }
-        }    
+            else
+            {
+                SetHasLoadedData(true);
+                foreach (var obj in dataPersistenceObjects)
+                {
+                    obj.LoadData(gameData);
+                }
+            }
+        }   
     }
 
     public void SaveGame() 
@@ -112,6 +123,26 @@ public class DataPersistenceManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         SaveGame();
+    }
+
+    public void ResetSavedDataToDefault() 
+    {
+        foreach (var obj in dataPersistenceObjects)
+        {
+            obj.ResetToDefault(ref gameData);
+        }
+
+        dataHandler.Save(gameData);
+    }
+
+    public void SetIsLoadingGame(bool isLoading)
+    {
+        IsLoadingGame = isLoading;
+    }
+
+    public void SetHasLoadedData(bool hasLoadedData)
+    {
+        HasLoadedData = hasLoadedData;
     }
 
     /*private List<IDataPersistence> FindAllDataPersistenceObjects()

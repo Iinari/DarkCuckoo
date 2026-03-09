@@ -5,7 +5,7 @@ using TMPro;
 using UnityEditor.Overlays;
 using UnityEngine;
 
-public class DrawPileManager : MonoBehaviour
+public class DrawPileManager : MonoBehaviour, IDataPersistence
 {
     public List<CardData> drawPile = new();
 
@@ -14,8 +14,6 @@ public class DrawPileManager : MonoBehaviour
     private int maxHandSize;
 
     private int currentHandSize;
-
-    private int drawCount;
 
     private HandManager handManager;
 
@@ -27,14 +25,49 @@ public class DrawPileManager : MonoBehaviour
 
     private CardPile drawPileVisual;
 
+    void Awake()
+    {
+        GameObject visualDeck = Instantiate(drawPilePrefab, drawPilePosition.position, Quaternion.identity, drawPilePosition);
+        drawPileVisual = visualDeck.GetComponent<CardPile>();    
+
+        handManager = GetComponentInChildren<HandManager>();
+    }
+    private void OnEnable()
+    {
+        DataPersistenceManager.Instance?.RegisterDataPersistenceObject(this);
+    }
+
+    private void OnDisable()
+    {
+        DataPersistenceManager.Instance?.UnregisterDataPersistenceObject(this);
+    }
+
+    public void LoadData(GameData data)
+    {
+        drawPile = data.cardsInDrawPile;
+        drawPileVisual.UpdatePileVisuals(drawPile.Count);
+        Debug.Log("Drawpile count: " + drawPile.Count);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.cardsInDrawPile = drawPile;
+    }
+
+    public void ResetToDefault(ref GameData data)
+    {
+        drawPileVisual.UpdatePileVisuals(drawPile.Count);
+    }
+
+
     public void MakeDrawPile(List<CardData> cardsToAdd)
     {
+
+        Debug.Log("deck length in draw pile manager: " + cardsToAdd.Count);
+        drawPile.Clear();
         drawPile.AddRange(cardsToAdd);
         Utility.Shuffle(drawPile);
 
-        GameObject visualDeck = Instantiate(drawPilePrefab, drawPilePosition.position, Quaternion.identity, drawPilePosition);
-
-        drawPileVisual = visualDeck.GetComponent<CardPile>();
         drawPileVisual.UpdatePileVisuals(drawPile.Count);
     }
 
@@ -45,10 +78,10 @@ public class DrawPileManager : MonoBehaviour
             handManager = FindFirstObjectByType<HandManager>();
         }
         maxHandSize = setMaxHandSize;
-        drawCount = drawAmount;
+        
     }
 
-    public void DrawCard(HandManager handManager)
+    public void DrawCard()
     {
         if (drawPile.Count == 0)
         {
@@ -57,8 +90,8 @@ public class DrawPileManager : MonoBehaviour
         
         if (handManager != null && drawPile.Count != 0)
         {
-            currentHandSize = handManager.cardsInHand.Count;
-            if (currentHandSize < maxHandSize)
+            currentHandSize = handManager.handCardObjs.Count;
+            if (currentHandSize < handManager.handMaxSize)
             {
                 CardData nextCard = drawPile[currentIndex];
                 handManager.AddCardToHand(nextCard);
@@ -67,7 +100,7 @@ public class DrawPileManager : MonoBehaviour
                 if (drawPile.Count > 0) currentIndex %= drawPile.Count;
 
             }
-            else if (handManager.cardsInHand.Count == maxHandSize)
+            else if (handManager.handCardObjs.Count == handManager.handMaxSize)
             {
                 Debug.Log("Hand is already full");
             }
@@ -102,9 +135,10 @@ public class DrawPileManager : MonoBehaviour
     }
     public void StartPlayerTurn()
     {
-        for (int i = 0; i < drawCount; i++)
+        Debug.Log("Starting a players turn");
+        for (int i = 0; i < handManager.handStartSize; i++)
         {
-            DrawCard(handManager);
+            DrawCard();
         }
     }
 }

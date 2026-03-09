@@ -9,10 +9,12 @@ public class MoonCycle : MonoBehaviour, IDataPersistence
 {
     public float moonCycleLength = 10;
 
-    private float moonCycleMin = 0;
+    private readonly float moonCycleMin = 0;
 
     [CreateProperty]
     public float moonCycleCurrent;
+
+    private readonly float moonCycleDefault = 0;
 
     private BattleStateStatus state;
 
@@ -47,18 +49,27 @@ public class MoonCycle : MonoBehaviour, IDataPersistence
 
     private void OnDisable()
     {
-        DataPersistenceManager.Instance?.UnregisterDataPersistenceObject(this);
+        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
     }
 
     public void LoadData(GameData data)
     {
         moonCycleCurrent = data.moonCycle;
+        UpdateVisuals();
     }
 
     public void SaveData(ref GameData data)
     {
         data.moonCycle = moonCycleCurrent;
     }
+
+    public void ResetToDefault(ref GameData data)
+    {
+        moonCycleCurrent = moonCycleDefault;
+
+        UpdateVisuals();
+    }
+
     private void OnStateChanged(BattleState newState)
     {
         if (newState == BattleState.PlayerTurn)
@@ -77,15 +88,7 @@ public class MoonCycle : MonoBehaviour, IDataPersistence
         {
             moonCycleCurrent = moonCycleMin;
         }
-        if (moonCycleCurrent != moonCycleMin)
-        {
-            float moonProsent = moonCycleCurrent / moonCycleLength;
-            moonRef.FillMoon(moonProsent, moonCycleCurrent);
-        }
-        else
-        {
-            moonRef.FillMoon(moonCycleMin, moonCycleCurrent);
-        }
+        UpdateVisuals();
 
         hasBeenUpdated = true;
     }
@@ -95,4 +98,16 @@ public class MoonCycle : MonoBehaviour, IDataPersistence
         state.OnStateChanged -= OnStateChanged;
     }
     
+    public void UpdateVisuals()
+    {
+        if (moonCycleCurrent != moonCycleMin)
+        {
+            float moonProsent = moonCycleCurrent / moonCycleLength;
+            moonRef.FillMoon(moonProsent, moonCycleCurrent);
+        }
+        else
+        {
+            moonRef.FillMoon(moonCycleMin, moonCycleCurrent);
+        }
+    }
 }

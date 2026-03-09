@@ -18,15 +18,31 @@ public class BattleInitiator : MonoBehaviour
 
     void Start()
     {
-        SetupBattle();
-    }
-
-    //Only to be called in Start()
-    public void SetupBattle()
-    {
         popUpManager = GetComponent<BattleScenePopUpManager>();
         state = GetComponent<BattleStateStatus>();
 
+
+        if (DataPersistenceManager.Instance.HasLoadedData)
+        {
+            Debug.Log("Battle loaded — skipping initialization flow");
+
+            ResumeBattle();
+            return;
+        }
+        else
+        {
+            Debug.Log("New battle");
+            SetupNewBattle();
+        }
+        
+    }
+
+ 
+
+
+    //Only to be called in Start()
+    public void SetupNewBattle()
+    {
         battleComponents = GetComponentsInChildren<BattleComponent>();
 
         for (int i = 0; i < battleComponents.Length; i++)
@@ -35,5 +51,16 @@ public class BattleInitiator : MonoBehaviour
         }
 
         state.SetState(BattleState.PlayerTurn);
+    }
+
+    //Maybe useless when save system is correclty implemented 
+    public void ResumeBattle()
+    {
+        battleComponents = GetComponentsInChildren<BattleComponent>();
+
+        for (int i = 0; i < battleComponents.Length; i++)
+        {
+            battleComponents[i].BattleSetUp(this);
+        }
     }
 }

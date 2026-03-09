@@ -16,7 +16,6 @@ public class CardPile : MonoBehaviour
 
     public Button btnActivateDiscard;
 
-    
     public void UpdatePileVisuals(int cardCount)
     {
         pileCounter.text = cardCount.ToString();

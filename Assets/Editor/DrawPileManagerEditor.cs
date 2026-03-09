@@ -17,7 +17,7 @@ public class DrawPileManagerEditor : Editor
             HandManager handManager = FindFirstObjectByType<HandManager>();
             if (handManager != null)
             {
-                drawPileManager.DrawCard(handManager);
+                drawPileManager.DrawCard();
             }
         }
     }

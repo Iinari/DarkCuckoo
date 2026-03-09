@@ -7,11 +7,13 @@ public class GameData
 {
     public List<CardData> cardsInDeck;
 
-    public List<CardData> cardsInHand;
+    public List<int> cardsInHand;
 
     public List<CardData> cardsInDrawPile;
 
     public List<CardData> cardsInDiscard;
 
-    public float moonCycle = 10;
+    public float moonCycle;
+
+    public int battleState;
 }
