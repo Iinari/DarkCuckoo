@@ -5,13 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class GameData 
 {
-    public List<CardData> cardsInDeck;
+    public List<int> cardsInDeck;
 
     public List<int> cardsInHand;
 
-    public List<CardData> cardsInDrawPile;
+    public List<int> cardsInDrawPile;
 
-    public List<CardData> cardsInDiscard;
+    public List<int> cardsInDiscard;
 
     public float moonCycle;
 

@@ -7,7 +7,7 @@ using UnityEngine;
 //Class for handling players deck, all of it. When cards are added or removed completely (not discarded) it should be done by DeckManager
 public class DeckManager : MonoBehaviour, IDataPersistence
 {
-    public List<CardData> deck = new(); //Player's cards
+    public List<int> deck = new(); //Player's cards
 
     public int maxHandSize = 10;
     public int startingHandSize = 5;
@@ -69,13 +69,13 @@ public class DeckManager : MonoBehaviour, IDataPersistence
 
     public void AddCardToDeck(CardData card)
     {
-        deck.Add(card);
+        deck.Add(card.ID);
     }
 
     
     public void RemoveCardFromDeck(CardData card) 
     { 
-        deck.Remove(card);
+        deck.Remove(card.ID);
     }
 
 

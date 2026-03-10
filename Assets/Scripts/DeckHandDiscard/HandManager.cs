@@ -37,7 +37,7 @@ public class HandManager : MonoBehaviour, IDataPersistence
 
     private void OnDisable()
     {
-        DataPersistenceManager.Instance?.UnregisterDataPersistenceObject(this);
+        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
     }
 
     public void LoadData(GameData data)
@@ -45,8 +45,6 @@ public class HandManager : MonoBehaviour, IDataPersistence
         ClearHand();
 
         if (data.cardsInHand == null) return;
-
-        Debug.Log("Hand cards: " + data.cardsInHand.Count);
 
         foreach (var id in data.cardsInHand)
         {
@@ -201,7 +199,6 @@ public class HandManager : MonoBehaviour, IDataPersistence
         {
             UnregisterCard(handCardObjs[0]);
         }
-
     }
 
     private void CreateHandCard(CardData cardData)

@@ -24,8 +24,6 @@ public class BattleInitiator : MonoBehaviour
 
         if (DataPersistenceManager.Instance.HasLoadedData)
         {
-            Debug.Log("Battle loaded — skipping initialization flow");
-
             ResumeBattle();
             return;
         }
@@ -33,8 +31,7 @@ public class BattleInitiator : MonoBehaviour
         {
             Debug.Log("New battle");
             SetupNewBattle();
-        }
-        
+        } 
     }
 
  

@@ -47,7 +47,7 @@ public class CardPopUpDisplay : PopUp
         gameObject.SetActive(false);
     }
 
-    public void GenerateCardView(List<CardData> drawPile, bool isDrawPile)
+    public void GenerateCardView(List<int> drawPile, bool isDrawPile)
     {
         if(isDrawPile)
         Utility.Shuffle(drawPile);
@@ -63,11 +63,11 @@ public class CardPopUpDisplay : PopUp
                 latestHBox = Instantiate(HBoxPrefab, contentBorderTransform.position, Quaternion.identity, contentBorderTransform);
             }
 
-            CreateSingularCardDisplay(latestHBox, drawPile[i]);
+            CreateSingularCardDisplay(latestHBox, CardDatabase.Instance.GetCard(drawPile[i]));
         }
     }
 
-    public List<CardData> GetCardsFromDrawPileManager()
+    public List<int> GetCardsFromDrawPileManager()
     {
         if (drawPileManager == null)
         {
@@ -76,7 +76,7 @@ public class CardPopUpDisplay : PopUp
         return drawPileManager.drawPile;
     }
 
-    public List<CardData> GetCardsFromDiscardManager()
+    public List<int> GetCardsFromDiscardManager()
     {
         if (discardManager == null)
         {

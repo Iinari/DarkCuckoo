@@ -6,7 +6,7 @@ using UnityEngine;
 public class DefaultDeckCreator : MonoBehaviour
 {
     public int copiesOfStartingCards = 3;
-    public List<CardData> LoadStartingDeck()
+    public List<int> LoadStartingDeck()
     {
         CardData[] cards = Resources.LoadAll<CardData>("ImportedCards");
 
@@ -15,7 +15,7 @@ public class DefaultDeckCreator : MonoBehaviour
         {
             copiesOfStartingCards = 3;
         }
-        List<CardData> deck = new();
+        List<int> deck = new();
         //Goes through all imported cards to check which are in starting hand.
         //NOTETOSELF: Should Importer put starting cards in different folder?
         foreach (CardData card in cards)
@@ -25,7 +25,7 @@ public class DefaultDeckCreator : MonoBehaviour
                 //Checks how many copies for the starting cards should be made and creates the copies
                 for (int j = 0; j < copiesOfStartingCards; j++)
                 {
-                    deck.Add(card);
+                    deck.Add(card.ID);
                 }
             }
         }

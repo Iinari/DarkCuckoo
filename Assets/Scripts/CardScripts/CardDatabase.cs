@@ -6,7 +6,7 @@ public class CardDatabase : MonoBehaviour
 {
     public static CardDatabase Instance;
 
-    private Dictionary<int, CardData> cardLookup = new();
+    public Dictionary<int, CardData> cardLookup = new();
 
     private void Awake()
     {
@@ -22,7 +22,6 @@ public class CardDatabase : MonoBehaviour
 
     public CardData GetCard(int id)
     {
-
         if (!cardLookup.TryGetValue(id, out var card))
         {
             Debug.LogError("Card not found: " + id);

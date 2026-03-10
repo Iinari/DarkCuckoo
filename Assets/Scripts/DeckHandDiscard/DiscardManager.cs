@@ -6,7 +6,7 @@ using SnIProductions;
 
 public class DiscardManager : MonoBehaviour, IDataPersistence
 {
-    public List<CardData> discardCards = new();
+    public List<int> discardCards = new();
 
     public Transform discardPilePosition;
 
@@ -63,7 +63,7 @@ public class DiscardManager : MonoBehaviour, IDataPersistence
     {
         if (card != null)
         {
-            discardCards.Add(card);
+            discardCards.Add(card.ID);
             UpdateDiscardCount();
         }
         else Debug.Log("AddToDiscard failed due to null card value");
@@ -73,7 +73,7 @@ public class DiscardManager : MonoBehaviour, IDataPersistence
     {
         if (discardCards.Count > 0)
         {
-            CardData cardToReturn = discardCards[discardCards.Count - 1];
+            CardData cardToReturn = CardDatabase.Instance.GetCard(discardCards[discardCards.Count - 1]);
             discardCards.RemoveAt(discardCards.Count - 1);
             UpdateDiscardCount();
             return cardToReturn;
@@ -84,7 +84,7 @@ public class DiscardManager : MonoBehaviour, IDataPersistence
         }
 
     }
-
+    /*
     public bool PullSelectedCardFromDiscard(CardData card)
     {
         if (discardCards.Count > 0 && discardCards.Contains(card))
@@ -97,13 +97,13 @@ public class DiscardManager : MonoBehaviour, IDataPersistence
         {
             return false;
         }
-    }
+    }*/
 
-    public List<CardData> PullAllFromDiscard() 
+    public List<int> PullAllFromDiscard() 
     {
         if (discardCards.Count > 0) 
         {
-            List<CardData> cardsToReturn = new(discardCards);
+            List<int> cardsToReturn = new(discardCards);
             discardCards.Clear();
             UpdateDiscardCount();
             return cardsToReturn;
@@ -115,7 +115,7 @@ public class DiscardManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void DiscardHand(List<CardData> cardsToDiscard)
+    public void DiscardHand(List<int> cardsToDiscard)
     {
         if (cardsToDiscard != null)
         {
