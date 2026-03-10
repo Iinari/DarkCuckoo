@@ -9,9 +9,6 @@ public class DeckManager : MonoBehaviour, IDataPersistence
 {
     public List<int> deck = new(); //Player's cards
 
-    public int maxHandSize = 10;
-    public int startingHandSize = 5;
-
     private HandManager handManager;
     private DrawPileManager drawPileManager;
     private DiscardManager discardManager;
@@ -22,6 +19,48 @@ public class DeckManager : MonoBehaviour, IDataPersistence
         discardManager = GetComponentInChildren<DiscardManager>();
         handManager = GetComponentInChildren<HandManager>();
     }
+
+    //Add a new card to deck
+    public void AddCardToDeck(CardData card)
+    {
+        deck.Add(card.ID);
+    }
+
+    //Removing card from deck
+    public void RemoveCardFromDeck(CardData card)
+    {
+        deck.Remove(card.ID);
+    }
+
+    public void GetManagerReferences()
+    {
+        if (drawPileManager == null)
+        {
+            drawPileManager = FindFirstObjectByType<DrawPileManager>();
+        }
+        if (handManager == null)
+        {
+            handManager = FindFirstObjectByType<HandManager>();
+        }
+        if (discardManager == null)
+        {
+            discardManager = FindFirstObjectByType<DiscardManager>();
+        }
+    }
+
+    //FOR TEST PURPOSES 
+    public void ResetDeck()
+    {
+        deck = GetComponent<DefaultDeckCreator>().LoadStartingDeck();
+        FindAnyObjectByType<DataPersistenceManager>().SaveGame();
+    }
+
+    public void ResetAll()
+    {
+        FindAnyObjectByType<DataPersistenceManager>().ResetSavedDataToDefault();
+    }
+
+    //SAVING AND LOADING
 
     private void OnEnable()
     {
@@ -42,7 +81,6 @@ public class DeckManager : MonoBehaviour, IDataPersistence
             Debug.Log("No data on existing deck");
             deck = GetComponent<DefaultDeckCreator>().LoadStartingDeck();
         }
-        else Debug.Log("Deck size: " + deck.Count);
     }
 
     public void SaveData(ref GameData data)
@@ -56,53 +94,5 @@ public class DeckManager : MonoBehaviour, IDataPersistence
         data.cardsInDeck = deck;
         GetManagerReferences();
         drawPileManager.MakeDrawPile(deck);
-    }
-
-    /*public void BattleSetUp()
-    {
-        GetManagerReferences();
-
-        handManager.BattleSetup(maxHandSize);
-        drawPileManager.MakeDrawPile(deck);
-        drawPileManager.BattleSetUp(maxHandSize, startingHandSize);
-    }*/
-
-    public void AddCardToDeck(CardData card)
-    {
-        deck.Add(card.ID);
-    }
-
-    
-    public void RemoveCardFromDeck(CardData card) 
-    { 
-        deck.Remove(card.ID);
-    }
-
-
-    public void GetManagerReferences()
-    {
-        if (drawPileManager == null)
-        {
-            drawPileManager = FindFirstObjectByType<DrawPileManager>();
-        }
-        if (handManager == null)
-        {
-            handManager = FindFirstObjectByType<HandManager>();
-        }
-        if (discardManager == null)
-        {
-            discardManager = FindFirstObjectByType<DiscardManager>();
-        }
-    }
-
-    public void ResetDeck()
-    {
-        deck = GetComponent<DefaultDeckCreator>().LoadStartingDeck();
-        FindAnyObjectByType<DataPersistenceManager>().SaveGame();
-    }
-
-    public void ResetAll()
-    {
-        FindAnyObjectByType<DataPersistenceManager>().ResetSavedDataToDefault();
     }
 }

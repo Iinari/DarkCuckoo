@@ -20,64 +20,18 @@ public class HandManager : MonoBehaviour, IDataPersistence
 
     public float verticalSpacing = 100f; //Determines vertical spacing on hand
 
-    public int handStartSize; //Determines how many cards are drwan at start
+    public int handStartSize; //Determines how many cards are drwan at start, this value might change during run
+    private readonly int defaulthandSize = 5; //Same as above, but this never changes
 
-    public int handMaxSize; // Determines how many cards can be held
-
-    private int defaulthandSize = 5;
-    private int defaultMaxhandSize = 10;
+    public int handMaxSize; // Determines how many cards can be held, this value might change during run
+    private readonly int defaultMaxhandSize = 10; //Same as above, but this never changes
 
     private Dictionary<CardInteractionState, Action<CardState>> stateHandlers
         = new();
 
-    private void OnEnable()
+    public void BattleSetup(int setMaxHandSize)
     {
-        DataPersistenceManager.Instance?.RegisterDataPersistenceObject(this);
-    }
-
-    private void OnDisable()
-    {
-        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
-    }
-
-    public void LoadData(GameData data)
-    {
-        ClearHand();
-
-        if (data.cardsInHand == null) return;
-
-        foreach (var id in data.cardsInHand)
-        {
-            CardData cardData = CardDatabase.Instance.GetCard(id);
-            AddCardToHand(cardData);
-        }
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        if (data.cardsInHand != null)
-        {
-            data.cardsInHand.Clear();
-
-            foreach (var obj in handCardObjs)
-            {
-                var card = obj.GetComponent<Card>();
-                data.cardsInHand.Add(card.cardData.ID);
-            }
-        }
-        else Debug.Log("GameData ref gave null");
-    }
-
-    public void ResetToDefault(ref GameData data)
-    {
-        ClearHand();
-
-        data.cardsInHand = new List<int>();
-
-        handStartSize = defaulthandSize;
-        handMaxSize = defaultMaxhandSize;
-
-        UpdateHandVisuals();
+        handMaxSize = setMaxHandSize;
     }
 
     public void AddCardToHand(CardData cardData)
@@ -87,15 +41,56 @@ public class HandManager : MonoBehaviour, IDataPersistence
         CreateHandCard(cardData);
     }
 
-    public void BattleSetup(int setMaxHandSize)
+    public void RegisterCard(GameObject card)
     {
-        handMaxSize = setMaxHandSize;
+        handCardObjs.Add(card);
+
+        if (card.TryGetComponent<CardInteractionState>(out var state))
+        {
+            void handler(CardState _) => UpdateHandVisuals();
+            stateHandlers[state] = handler;
+            state.OnStateChanged += handler;
+        }
+        UpdateHandVisuals();
     }
 
+    public void UnregisterCard(GameObject card)
+    {
+        var state = card.GetComponent<CardInteractionState>();
+        if (state != null && stateHandlers.TryGetValue(state, out var handler))
+        {
+            state.OnStateChanged -= handler;
+            stateHandlers.Remove(state);
+        }
+        handCardObjs.Remove(card);
+        UpdateHandVisuals();
 
+        Destroy(card);
+    }
+
+    private void CreateHandCard(CardData cardData)
+    {
+        GameObject newCard = Instantiate(cardPrefab, handTransform);
+
+        Card card = newCard.GetComponent<Card>();
+        card.cardData = cardData;
+        card.UpdateCardDisplay();
+
+        RegisterCard(newCard);
+    }
+
+    //Clear and unregister hand cards
+    private void ClearHand()
+    {
+        while (handCardObjs.Count > 0)
+        {
+            UnregisterCard(handCardObjs[0]);
+        }
+    }
+
+    //Adding or removing/discarding a card from hands affects the spread of other hand cards
     public void UpdateHandVisuals()
     {
-
         int cardCount = handCardObjs.Count;
         if (cardCount == 0) return;
 
@@ -121,6 +116,7 @@ public class HandManager : MonoBehaviour, IDataPersistence
         }
     }
 
+    //Hovering of one card effects the other cards in hand
     public void UpdateHovered(GameObject hoveredCard)
     {
         int cardCount = handCardObjs.Count;
@@ -166,56 +162,54 @@ public class HandManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void RegisterCard(GameObject card)
+    //SAVING AND LOADING
+    private void OnEnable()
     {
-        handCardObjs.Add(card);
+        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
+    }
 
-        if (card.TryGetComponent<CardInteractionState>(out var state))
+    private void OnDisable()
+    {
+        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
+    }
+
+    public void LoadData(GameData data)
+    {
+        ClearHand();
+
+        if (data.cardsInHand == null) return;
+
+        foreach (var id in data.cardsInHand)
         {
-            void handler(CardState _) => UpdateHandVisuals();
-            stateHandlers[state] = handler;
-            state.OnStateChanged += handler;
+            CardData cardData = CardDatabase.Instance.GetCard(id);
+            AddCardToHand(cardData);
         }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.cardsInHand != null)
+        {
+            data.cardsInHand.Clear();
+
+            foreach (var obj in handCardObjs)
+            {
+                var card = obj.GetComponent<Card>();
+                data.cardsInHand.Add(card.cardData.ID);
+            }
+        }
+        else Debug.Log("GameData ref gave null");
+    }
+
+    public void ResetToDefault(ref GameData data)
+    {
+        ClearHand();
+
+        data.cardsInHand = new List<int>();
+
+        handStartSize = defaulthandSize;
+        handMaxSize = defaultMaxhandSize;
+
         UpdateHandVisuals();
-    }
-
-    public void UnregisterCard(GameObject card)
-    {
-        var state = card.GetComponent<CardInteractionState>();
-        if (state != null && stateHandlers.TryGetValue(state, out var handler))
-        {
-            state.OnStateChanged -= handler;
-            stateHandlers.Remove(state);
-        }
-        handCardObjs.Remove(card);
-        UpdateHandVisuals();
-
-        Destroy(card);
-    }
-
-    private void ClearHand()
-    {
-        while (handCardObjs.Count > 0)
-        {
-            UnregisterCard(handCardObjs[0]);
-        }
-    }
-
-    private void CreateHandCard(CardData cardData)
-    {
-        GameObject newCard = Instantiate(cardPrefab, handTransform);
-
-        Card card = newCard.GetComponent<Card>();
-        card.cardData = cardData;
-        card.UpdateCardDisplay();
-
-        RegisterCard(newCard);
-    }
-
-    [ContextMenu("Reset Hand")]
-    private void DebugResetHand()
-    {
-        GameData data = new GameData();
-        ResetToDefault(ref data);
     }
 }

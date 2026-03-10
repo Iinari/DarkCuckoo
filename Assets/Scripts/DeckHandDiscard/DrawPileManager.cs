@@ -5,64 +5,44 @@ using TMPro;
 using UnityEditor.Overlays;
 using UnityEngine;
 
+//Part of BattleSystem prefab
 public class DrawPileManager : MonoBehaviour, IDataPersistence
 {
-    public List<int> drawPile = new();
+    public List<int> drawPile = new(); //ID's of cards in drawpile
 
-    private int maxHandSize;
+    public Transform drawPilePosition; //Position in UI, chosen in editor
 
-    private int currentHandSize;
+    public GameObject drawPilePrefab; //Prefab (called DrawPile) chosen in editor
 
-    private HandManager handManager;
+    private HandManager handManager; 
 
     private DiscardManager discardManager;
 
-    public Transform drawPilePosition;
-
-    public GameObject drawPilePrefab;
-
-    private CardPile drawPileVisual;
+    private CardPile drawPileVisual; //Reference to a component of the DrawPile prefab
 
     void Awake()
     {
+        //Create the draw pile game object based on prefab and given position
         GameObject visualDeck = Instantiate(drawPilePrefab, drawPilePosition.position, Quaternion.identity, drawPilePosition);
+
+        //Save references to variables
         drawPileVisual = visualDeck.GetComponent<CardPile>();    
-
         handManager = GetComponentInChildren<HandManager>();
+        discardManager = GetComponent<DiscardManager>();
     }
-    private void OnEnable()
+
+    //For the start of players turn draw as many cards as needed
+    public void StartPlayerTurn()
     {
-        DataPersistenceManager.Instance?.RegisterDataPersistenceObject(this);
+        for (int i = 0; i < handManager.handStartSize; i++)
+        {
+            DrawCard();
+        }
     }
 
-    private void OnDisable()
-    {
-        DataPersistenceManager.Instance?.UnregisterDataPersistenceObject(this);
-    }
-
-    public void LoadData(GameData data)
-    {
-        if (data.cardsInDrawPile == null) return;
-
-        drawPile = new List<int>(data.cardsInDrawPile);
-        drawPileVisual.UpdatePileVisuals(drawPile.Count);
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.cardsInDrawPile = new List<int>(drawPile);
-    }
-
-    public void ResetToDefault(ref GameData data)
-    {
-        drawPileVisual.UpdatePileVisuals(drawPile.Count);
-    }
-
-
+    //Fills up the drawpile with new cards. Used when card data is not loaded from save
     public void MakeDrawPile(List<int> cardsToAdd)
     {
-
-        Debug.Log("deck length in draw pile manager: " + cardsToAdd.Count);
         drawPile.Clear();
         foreach (int cardID in cardsToAdd)
         {
@@ -71,16 +51,6 @@ public class DrawPileManager : MonoBehaviour, IDataPersistence
         Utility.Shuffle(drawPile);
 
         drawPileVisual.UpdatePileVisuals(drawPile.Count);
-    }
-
-    public void BattleSetUp(int setMaxHandSize, int drawAmount)
-    {
-        if (handManager == null)
-        {
-            handManager = FindFirstObjectByType<HandManager>();
-        }
-        maxHandSize = setMaxHandSize;
-        
     }
 
     public void DrawCard()
@@ -104,8 +74,6 @@ public class DrawPileManager : MonoBehaviour, IDataPersistence
         int last = drawPile.Count - 1;
         int cardID = drawPile[last];
 
-        Debug.Log("Last ID: " + drawPile[last]);
-
         CardData cardData = CardDatabase.Instance.GetCard(cardID);
 
         if (cardData == null)
@@ -118,16 +86,7 @@ public class DrawPileManager : MonoBehaviour, IDataPersistence
 
         drawPile.RemoveAt(last);
 
-        UpdateDrawPileCount();
-    }
-
-    private void UpdateDrawPileCount()
-    {
-        if (drawPileVisual != null)
-        {
-            drawPileVisual.UpdatePileVisuals(drawPile.Count);
-        }
-        else Debug.Log("drawPileVisual is null in DrawPileManager");
+        drawPileVisual.UpdatePileVisuals(drawPile.Count);
     }
 
     private void RefillDeckFromDiscard()
@@ -143,11 +102,33 @@ public class DrawPileManager : MonoBehaviour, IDataPersistence
             Utility.Shuffle(drawPile);   
         }
     }
-    public void StartPlayerTurn()
+
+    //SAVING AND LOADING:
+    private void OnEnable()
     {
-        for (int i = 0; i < handManager.handStartSize; i++)
-        {
-            DrawCard();
-        }
+        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
+    }
+
+    private void OnDisable()
+    {
+        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
+    }
+
+    public void LoadData(GameData data)
+    {
+        if (data.cardsInDrawPile == null) return;
+
+        drawPile = new List<int>(data.cardsInDrawPile);
+        drawPileVisual.UpdatePileVisuals(drawPile.Count);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.cardsInDrawPile = new List<int>(drawPile);
+    }
+
+    public void ResetToDefault(ref GameData data)
+    {
+        drawPileVisual.UpdatePileVisuals(drawPile.Count);
     }
 }
