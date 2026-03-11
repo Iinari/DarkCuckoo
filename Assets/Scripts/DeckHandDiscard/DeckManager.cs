@@ -48,6 +48,14 @@ public class DeckManager : MonoBehaviour, IDataPersistence
         }
     }
 
+    public void InitializeStarterDeck()
+    {
+        deck.Clear();
+        deck = GetComponent<DefaultDeckCreator>().LoadStartingDeck();
+        GetManagerReferences();
+        drawPileManager.MakeDrawPile(deck);
+    }
+
     //FOR TEST PURPOSES 
     public void ResetDeck()
     {

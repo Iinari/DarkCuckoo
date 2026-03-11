@@ -18,12 +18,12 @@ public class EnemyDisplayManager : BattleComponent
 
     private EncounterEnemyTracker encounterEnemyTracker;
 
-    private void Awake()
+    public override void BattleSetUp(BattleInitiator battleSystem)
     {
         encounterEnemyTracker = GetComponent<EncounterEnemyTracker>();
     }
 
-    public override void BattleSetUp(BattleInitiator battleSystem)
+    public override void ResumeBattle(BattleInitiator battleSystem)
     {
         encounterEnemyTracker = GetComponent<EncounterEnemyTracker>();
     }

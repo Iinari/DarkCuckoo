@@ -14,6 +14,7 @@ public class PlayerHUDManager : BattleComponent
     public GameObject prefab;
 
     private List<HeroData> allHeroes = new();
+
     public override void BattleSetUp(BattleInitiator battleSystem)
     {
         playerData = LoadPlayerData()[0];
@@ -27,13 +28,20 @@ public class PlayerHUDManager : BattleComponent
         }
         else
         {
-            newHero.GetComponent<Hero>().HeroDisplayFirstUpdate(playerData);
             PlayerHero = newHero.GetComponent<Hero>();
-            battleSystem.playerHero = PlayerHero;
+            PlayerHero.SetHeroData(playerData);         
+            PlayerHero.GetComponent<AttributesManager>().SetPlayerHeroData(playerData);
         }
     }
 
-    public HeroData GetRandonmPlayerStats()
+    public override void ResumeBattle(BattleInitiator battleSystem)
+    {
+        //Instatiate the hero
+        GameObject newHero = Instantiate(prefab, playerPosition.position, Quaternion.identity, playerPosition);
+        PlayerHero = newHero.GetComponent<Hero>();
+    }
+
+        public HeroData GetRandonmPlayerStats()
     {
         HeroData[] playerHeroes = Resources.LoadAll<HeroData>("HeroClasses");
         allHeroes.AddRange(playerHeroes);

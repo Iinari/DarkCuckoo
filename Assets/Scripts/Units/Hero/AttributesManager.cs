@@ -3,144 +3,55 @@ using SnIProductions;
 using System.Collections.Generic;
 using TMPro;
 using static UnityEngine.Rendering.DebugUI;
+using System;
+using UnityEditor.ShaderGraph.Internal;
 
-public class AttributesManager : MonoBehaviour
+public class AttributesManager : MonoBehaviour, IDataPersistence
 {
-    //If new attribute is implemented it should be added to enum
-    public enum Attribute
-    {
-        Health,
+    private Dictionary<StatType, Stat> stats = new();
 
-        HP,
-
-        Mana,
-
-        MP,
-
-        Strength,
-
-        Luck,
-
-        Satiety
-    }
-
-    //Attributes
-    public float fullHealth = 0;
-    public float hp = 0;
-    public float fullMana = 0;
-    public float mp = 0;
-    public float strength = 0;
-    public float luck = 0;
-    public float satiety = 0;
-
-    //Max values for attributes
-    private readonly float maxHealth = 100000;
-    private readonly float maxMana = 100;
-    private readonly float maxStrengtht = 200f;
-    private readonly float maxLuck = 100f;
-    private readonly float maxSatiety = 100f;
-
-    //Min values for attributes
-    private readonly float minMaxHealth = 1;
-    private readonly float minHp = 0;
-    private readonly float minMana = 0;
-    private readonly float minStrength = 0;
-    private readonly float minLuck = 0;
-    private readonly float minSatiety = 0;
-
-    //Stored value
-    public float s_Health;
-    public float s_hp;
-    public float s_Mana;
-    public float s_mp;
-    public float s_Strength;
-    public float s_Luck;
-    public float s_Satiety;
+    public event Action<StatType, Stat> OnStatChanged;
 
     public HeroData playerHeroData = null;
 
-    public void ModifyAttribute(Attribute attribute, float value)
+
+    public void ModifyStat(StatType type, float value)
     {
-        switch (attribute) 
-        { 
-            case Attribute.Health:
-                fullHealth = Mathf.Clamp(maxHealth + (int)value, minMaxHealth, maxHealth);
-                break;
-
-            case Attribute.HP:
-                hp = Mathf.Clamp(hp + (int)value, minHp, fullHealth);
-                break;
-
-            case Attribute.Mana:
-                fullMana = Mathf.Clamp(maxMana + (int)value, minMana, maxMana); 
-                break;
-
-            case Attribute.MP:
-                mp = Mathf.Clamp(mp + (int)value, minMana, fullMana);
-                break;
-
-            case Attribute.Strength:
-                strength = Mathf.Clamp(strength + (int)value, minStrength,maxStrengtht);
-                break;
-
-            case Attribute.Luck:
-                luck = Mathf.Clamp(luck + (int)value, minLuck, maxLuck);
-                break;
-            case Attribute.Satiety:
-                satiety = Mathf.Clamp(satiety + (int)value, minSatiety, maxSatiety);
-                break;
-            default:
-                Debug.LogWarning($"Invalid attribute passed to ModifyAttribute: {attribute}");
-                break;
-        }
-
-    }
-
-    public void RestoreAttribute(Attribute attribute)
-    {
-        switch (attribute)
+        if (stats.TryGetValue(type, out Stat stat))
         {
-            case Attribute.Health:
-                fullHealth = s_Health;
-                break;
-            case Attribute.HP:
-                hp = fullHealth;
-                break;
-            case Attribute.Mana:
-                fullMana = s_Mana;
-                break;
-            case Attribute.MP:
-                mp = fullMana;
-                break;
-            case Attribute.Strength:
-                strength = s_Strength;
-                break;
-            case Attribute.Luck:
-                luck = s_Luck;
-                break;
-            case Attribute.Satiety:
-                satiety = s_Satiety;
-                break;
-            default:
-                Debug.LogWarning($"Invalid attribute passed to RestoreAttribute: {attribute}");
-                break;
+            stat.ModifyCurrent(value);
+
+            OnStatChanged?.Invoke(type, stat);
         }
     }
 
-    public void RestoreAllAttributes() 
+    public void RestoreStat(StatType type)
     {
-        fullHealth = s_Health;
-        //hp = fullHealth;
-        fullMana = s_Mana;
-        //mp = fullMana;
-        strength = s_Strength;
-        luck = s_Luck;
-        satiety = s_Satiety;
+        if (stats.TryGetValue(type, out Stat stat))
+        {
+            stat.Restore();
 
-        Debug.Log("Restored all");
+            OnStatChanged?.Invoke(type, stat);
+        }
     }
 
-    public void LoadPlayerHeroData(HeroData DataToLoad)
+    public float GetStat(StatType type)
+    {
+        if (stats.TryGetValue(type, out Stat stat))
+            return stat.current;
+
+        return 0;
+    }
+
+    public float GetMaxStat(StatType type)
+    {
+        if (stats.TryGetValue(type, out Stat stat))
+            return stat.max;
+
+        return 0;
+    }
+
+    public void SetPlayerHeroData(HeroData DataToLoad)
     {
         if (DataToLoad == null)
         {
@@ -149,60 +60,75 @@ public class AttributesManager : MonoBehaviour
         else
         {
             playerHeroData = DataToLoad;
+            stats.Clear();
 
-            fullHealth = DataToLoad.health;
-            hp = fullHealth;
-            fullMana = DataToLoad.mana;
-            mp = fullMana;
-            strength = DataToLoad.strength;
-            luck = DataToLoad.luck;
-            satiety = DataToLoad.satiety;
+            stats[StatType.Health] = new Stat(DataToLoad.health, DataToLoad.health);
+            stats[StatType.Mana] = new Stat(DataToLoad.mana, DataToLoad.mana);
 
-            StoreAllAttributes();
+            BroadcastAllStats();
         }
     }
 
-    public void StoreAttribute(Attribute attribute)
+    public void BroadcastAllStats()
     {
-        switch (attribute)
+        foreach (var pair in stats)
         {
-            case Attribute.Health:
-                s_Health = fullHealth;
-                break;
-            case Attribute.HP:
-                s_hp = hp;
-                break;
-            case Attribute.Mana:
-                s_Mana = fullMana;
-                break;
-            case Attribute.MP:
-                s_mp = mp;
-                break;
-            case Attribute.Strength:
-                s_Strength = strength;
-                break;
-            case Attribute.Luck:
-                s_Luck = luck;
-                break;
-            case Attribute.Satiety:
-                s_Satiety = satiety;
-                break;
-            default:
-                Debug.LogWarning($"Invalid attribute passed to StoreAttribute: {attribute}");
-                break;
+            OnStatChanged?.Invoke(pair.Key, pair.Value);
         }
-
     }
 
-    public void StoreAllAttributes()
+    public void InitializeDefaultStats()
     {
-        s_Health = fullHealth;
-        s_hp = hp;
-        s_Mana = fullMana;
-        s_mp = mp;
-        s_Strength = strength;
-        s_Luck = luck;
-        s_Satiety = satiety;
+        stats.Clear();
+
+        stats[StatType.Health] = new Stat(100, 100);
+        stats[StatType.Mana] = new Stat(3, 3);
+    }
+
+    //SAVING AND LOADING
+    private void OnEnable()
+    {
+        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
+    }
+
+    private void OnDisable()
+    {
+        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
+    }
+
+    public void LoadData(GameData data)
+    {
+
+        Debug.Log("LOAD DATA");
+        stats.Clear();
+
+        foreach (var s in data.playerStats)
+        {
+            stats[s.type] = new Stat(s.current, s.max);
+            Debug.Log(s.ToString());
+        }
+        BroadcastAllStats();
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerStats = new List<StatSaveData>();
+
+        foreach (var stat in stats)
+        {
+            data.playerStats.Add(new StatSaveData
+            {
+                type = stat.Key,
+                current = stat.Value.current,
+                max = stat.Value.max
+            });
+            Debug.Log("PlayerStats to save: " + stat.ToString());
+        }
+    }
+
+    public void ResetToDefault(ref GameData data)
+    {
+        SetPlayerHeroData(GetComponent<Hero>().heroData);
     }
 
 }

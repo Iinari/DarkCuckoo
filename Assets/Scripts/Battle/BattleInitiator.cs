@@ -21,21 +21,7 @@ public class BattleInitiator : MonoBehaviour
         popUpManager = GetComponent<BattleScenePopUpManager>();
         state = GetComponent<BattleStateStatus>();
 
-
-        if (DataPersistenceManager.Instance.HasLoadedData)
-        {
-            ResumeBattle();
-            return;
-        }
-        else
-        {
-            Debug.Log("New battle");
-            SetupNewBattle();
-        } 
     }
-
- 
-
 
     //Only to be called in Start()
     public void SetupNewBattle()

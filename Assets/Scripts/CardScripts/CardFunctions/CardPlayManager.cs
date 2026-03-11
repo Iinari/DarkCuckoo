@@ -76,21 +76,22 @@ public class CardPlayManager : MonoBehaviour
 
     public bool CheckHasEnoughMana(int cardCost)
     { 
-        if (playerHero.attributesManager.mp - cardCost >= 0)
+        if (playerHero.attributes.GetStat(StatType.Mana) - cardCost >= 0)
         {
-            return (playerHero.attributesManager.mp - cardCost >= 0);
+            return (playerHero.attributes.GetStat(StatType.Mana) - cardCost >= 0);
         }
         else
         {
             Debug.Log("NOT ENOUGH MANA");
-            return (playerHero.attributesManager.mp - cardCost >= 0);
+            return (playerHero.attributes.GetStat(StatType.Mana) - cardCost >= 0);
         }
         
     }
 
     public void DecreaseMP(int mpAmount)
     {
-        playerHero.GetComponent<AttributesManager>().ModifyAttribute(AttributesManager.Attribute.MP, -mpAmount);
+        playerHero.GetComponent<AttributesManager>().ModifyStat(StatType.Mana, -mpAmount);
+        //playerHero.GetComponent<AttributesManager>().ModifyAttribute(AttributesManager.Attribute.MP, -mpAmount);
     }
 
     public void PlaySkillCard(Card card)
@@ -99,7 +100,8 @@ public class CardPlayManager : MonoBehaviour
         int heal = card.cardData.GetHealPower();
         if (heal > 0) 
         {
-            playerHero.GetComponent<AttributesManager>().ModifyAttribute(AttributesManager.Attribute.HP, heal);
+            playerHero.GetComponent<AttributesManager>().ModifyStat(StatType.Health, heal);
+            //playerHero.GetComponent<AttributesManager>().ModifyAttribute(AttributesManager.Attribute.HP, heal);
         }
 
         int block = card.cardData.GetBlockPower();

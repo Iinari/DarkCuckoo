@@ -28,88 +28,91 @@ namespace SnIProductions
     public enum Rarity
     {
         Common,
-
         Rare,
-
         Epic,
-
         Legendary
     }
 
     public enum CardType
     {
         Attack,
-
         Skill,
-
         Power,
-
         Minion
     }
 
     public enum HeroClass
     {
         None,
-
         Exiled,
-
         Juustoukko
     }
 
     public enum DamageType
     {
         Physical,
-
         Magic
     }
 
     public enum DamageSubType
     {
         None,
-
         Fire,
-
         Arcane,
-
         Shadow
     }
 
     public enum EnemyActions
     {
         Attack,
-
         Heal,
-
         Debuff,
-
         Buff,
-
         Defend,
-
         Summon
     }
 
     public enum CardState
     {
         Default,
-
         Hovered,
-
         Dragging,
-
         Targeting,
-
         Playing
     }
 
-    public enum BattleState { Start, PlayerTurn, EnemyTurn, Won, Lost }
+    public enum BattleState 
+    { 
+        Start, 
+        PlayerTurn, 
+        EnemyTurn,
+        Won, 
+        Lost 
+    }
 
     public enum HealthState
     {
         Full,
-
         Alive,
-
         Dead
+    }
+
+    public enum StatType
+    {
+        Health,
+        Mana,
+        Strength,
+        Armot,
+        Luck
+    }
+
+    public enum GameState
+    {
+        Menu,
+        Map,
+        Encounter,
+        Battle,
+        Reward,
+        GameOver
     }
 }

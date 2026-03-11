@@ -30,7 +30,19 @@ public class BattleScenePopUpManager : BattleComponent
         state = battleSystem.playerHero.GetComponent<UnitHealthState>();
         state.OnStateChanged += OnStateChanged;
     }
+    public override void ResumeBattle(BattleInitiator battleSystem)
+    {
+        GameObject results = Instantiate(resultPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
+        resultPopUp = results.GetComponent<ResultPopUp>();
+        results.SetActive(false);
 
+        GameObject cardDisplay = Instantiate(cardDisplayPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
+        cardPileDisplay = cardDisplay.GetComponent<CardPopUpDisplay>();
+        cardDisplay.SetActive(false);
+
+        state = battleSystem.playerHero.GetComponent<UnitHealthState>();
+        state.OnStateChanged += OnStateChanged;
+    }
     private void OnStateChanged(HealthState newState)
     {
         if (newState == HealthState.Dead) 

@@ -31,8 +31,11 @@ public class Enemy : BattleUnit
 
     private BattleStateStatus battleStateStatus;
 
+    private Hero player;
+
     private void Awake()
     {
+        player = FindFirstObjectByType<Hero>();
     }
 
     public void UpdateEnemyDisplay()
@@ -72,11 +75,16 @@ public class Enemy : BattleUnit
     {
         int dmg = Random.Range(enemyData.enemyMinDmg, enemyData.enemyMaxDmg);
 
-        if (battleSystem != null)
+        if (player != null)
         {
-            battleSystem.playerHero.GetComponent<UnitHealthWatch>().TakeDamage(-dmg);
+            player.GetComponent<UnitHealthWatch>().TakeDamage(-dmg);
         }
-        FindFirstObjectByType<BattleInitiator>().playerHero.GetComponent<UnitHealthWatch>().TakeDamage(-dmg);
+
+        else
+        {
+            player = FindFirstObjectByType<Hero>();
+            player.GetComponent<UnitHealthWatch>().TakeDamage(-dmg);
+        }
 
     }
 }

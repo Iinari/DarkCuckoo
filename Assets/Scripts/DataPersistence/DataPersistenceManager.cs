@@ -16,7 +16,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public bool IsLoadingGame { get; private set; }
 
-    public bool HasLoadedData { get; private set; }
+    public bool HasLoadedGame { get; private set; }
 
     private GameData gameData;
 
@@ -65,7 +65,6 @@ public class DataPersistenceManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
-        LoadGame();
     }
 
     public void RegisterDataPersistenceObject(IDataPersistence obj)
@@ -142,7 +141,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SetHasLoadedData(bool hasLoadedData)
     {
-        HasLoadedData = hasLoadedData;
+        HasLoadedGame = hasLoadedData;
     }
 
     /*private List<IDataPersistence> FindAllDataPersistenceObjects()

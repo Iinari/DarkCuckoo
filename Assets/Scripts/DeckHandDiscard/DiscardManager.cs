@@ -46,7 +46,6 @@ public class DiscardManager : MonoBehaviour, IDataPersistence
 
     public void ResetToDefault(ref GameData data)
     {
-        data.cardsInDiscard.Clear();
         discardPileVisual.UpdatePileVisuals(discardCards.Count);
     }
 

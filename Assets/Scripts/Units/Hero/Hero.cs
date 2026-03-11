@@ -27,72 +27,77 @@ public class Hero : BattleUnit
 
     public CardPlayManager cardPlayManager;
 
-    public AttributesManager attributesManager;
+    public AttributesManager attributes;
 
-
-    private void Update()
+    void OnEnable()
     {
-        if (heroData != null) 
-        {
-            heroMPTxt.text = attributesManager.mp.ToString();
-            heroHPTxt.text = attributesManager.hp.ToString();
-
-            float hpProsent = attributesManager.hp / attributesManager.fullHealth;
-            roundHpBar.fillAmount = hpProsent;
-
-            float mpProsent = attributesManager.mp / attributesManager.fullMana;
-            manaPoolIcon.fillAmount = mpProsent;
-        }
+        attributes.OnStatChanged += UpdateStatUI;
     }
 
+    void OnDisable()
+    {
+        attributes.OnStatChanged -= UpdateStatUI;
+    }
+
+    void UpdateStatUI(StatType type, Stat stat)
+    {
+        switch (type)
+        {
+            case StatType.Health:
+                heroHPTxt.text = stat.current.ToString();
+                float hpProsent = stat.current / stat.max;
+                roundHpBar.fillAmount = hpProsent;
+                break;
+
+            case StatType.Mana:
+                heroMPTxt.text = stat.current.ToString();
+                float mpProsent = stat.current / stat.max;
+                manaPoolIcon.fillAmount = mpProsent;
+                break;
+        }
+    }
 
     private void Awake()
     {
         cardPlayManager = FindFirstObjectByType<CardPlayManager>();
         cardPlayManager.playerHero = this;
 
-        attributesManager = GetComponent<AttributesManager>();
+        attributes = GetComponent<AttributesManager>();
     }
 
-    public void HeroDisplayFirstUpdate(HeroData newHeroData)
+    public void SetHeroData(HeroData newHeroData)
     {
         heroData = newHeroData;
- 
-        heroNameTxt.text = heroData.heroName;
-        heroCurrentHealth = heroData.health;
+        
+        /*heroCurrentHealth = heroData.health;
         heroHPTxt.text = heroData.health.ToString();
 
         heroMPTxt.text = heroData.mana.ToString();
-        heroMP = heroData.mana;
+        heroMP = heroData.mana;*/
 
         manaPoolIcon.sprite = heroData.manaPoolIcon;
 
-        roundHpBar.fillAmount = attributesManager.hp;
+        //roundHpBar.fillAmount = attributes.hp;
 
-        attributesManager.LoadPlayerHeroData(heroData);
+        //attributes.LoadPlayerHeroData(heroData);
     }
+   
 
-    public void TakeDamage(float damage)
+    public void UpdateVisuals(StatType type, Stat stat)
     {
-        if (heroCurrentHealth > 0)
+        switch (type)
         {
-            heroCurrentHealth -= damage;
-            heroHPTxt.text = heroCurrentHealth.ToString();
-            hpSlider.value = heroCurrentHealth;
-        }
-        if (heroCurrentHealth <= 0)
-        {
-            Debug.Log("Hero died");
+            case StatType.Health:
+                heroHPTxt.text = stat.current.ToString();
+                float hpProsent = stat.current / stat.max;
+                roundHpBar.fillAmount = hpProsent;
+                break;
+
+            case StatType.Mana:
+                heroMPTxt.text = stat.current.ToString();
+                float mpProsent = stat.current / stat.max;
+                manaPoolIcon.fillAmount = mpProsent;
+                break;
         }
     }
-
-    public void UpdateVisuals()
-    {
-        heroMPTxt.text = attributesManager.mp.ToString();
-        heroHPTxt.text = attributesManager.hp.ToString();
-        
-        float hpProsent = attributesManager.hp / attributesManager.fullHealth;
-        roundHpBar.fillAmount = hpProsent;
-    }
-
 }

@@ -31,4 +31,25 @@ public class EnemyPicker : BattleComponent
             GetComponent<EnemyDisplayManager>().DisplayEnemy(ChosenEnemy);
         }
     }
+
+    public override void ResumeBattle(BattleInitiator battleSystem)
+    {
+        //Enemy can be chosen in Scene, if enemy is not set set randon enemy from the list
+        if (ChosenEnemy == null)
+        {
+            //This is just a testing phase code, later this needs logic for choosing the enemy for right type/level etc.
+            EnemyData[] enemies = Resources.LoadAll<EnemyData>("Enemies");
+            allEnemies.AddRange(enemies);
+
+            if (allEnemies.Count > 0)
+            {
+                Utility.Shuffle(allEnemies);
+                GetComponent<EnemyDisplayManager>().DisplayEnemy(allEnemies[0]);
+            }
+        }
+        else
+        {
+            GetComponent<EnemyDisplayManager>().DisplayEnemy(ChosenEnemy);
+        }
+    }
 }

@@ -20,11 +20,11 @@ public class UnitHealthWatch : MonoBehaviour
     {
         if (attributesManager != null)
         {
-            if (attributesManager.hp == attributesManager.fullHealth)
+            if (attributesManager.GetStat(StatType.Health) == attributesManager.GetMaxStat(StatType.Health))
             {
                 return;
             }
-            if (attributesManager.hp > 0)
+            if (attributesManager.GetStat(StatType.Health) > 0)
             {
                 State.SetState(HealthState.Alive);
                 return;
@@ -38,6 +38,7 @@ public class UnitHealthWatch : MonoBehaviour
 
     public void TakeDamage(float incomingDmg)
     {
-        attributesManager.ModifyAttribute(AttributesManager.Attribute.HP, incomingDmg);
+        attributesManager.ModifyStat(StatType.Health, incomingDmg);
+        //attributesManager.ModifyAttribute(AttributesManager.Attribute.HP, incomingDmg);
     }
 }
