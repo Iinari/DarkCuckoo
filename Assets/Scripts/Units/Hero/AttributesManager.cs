@@ -6,14 +6,16 @@ using static UnityEngine.Rendering.DebugUI;
 using System;
 using UnityEditor.ShaderGraph.Internal;
 
+//Class that handles Players Stats like health, mana, etc. 
 public class AttributesManager : MonoBehaviour, IDataPersistence
 {
-    private Dictionary<StatType, Stat> stats = new();
+    private Dictionary<StatType, Stat> stats = new(); //Dictionary for all the stats
 
-    public event Action<StatType, Stat> OnStatChanged;
+    public event Action<StatType, Stat> OnStatChanged; //Event that launches when stat is changed (for UI)
 
-    public HeroData playerHeroData = null;
+    public HeroData heroDefaultData; //Reference to player hero's default data. Data inside the HeroData should not be manipulated
 
+    //Increase or decrease given Stat
     public void ModifyStat(StatType type, float value)
     {
         if (stats.TryGetValue(type, out Stat stat))
@@ -24,6 +26,7 @@ public class AttributesManager : MonoBehaviour, IDataPersistence
         }
     }
 
+    //Restore given stat to it's maximum value
     public void RestoreStat(StatType type)
     {
         if (stats.TryGetValue(type, out Stat stat))
@@ -34,6 +37,7 @@ public class AttributesManager : MonoBehaviour, IDataPersistence
         }
     }
 
+    //Get stats current value
     public float GetStat(StatType type)
     {
         if (stats.TryGetValue(type, out Stat stat))
@@ -42,6 +46,7 @@ public class AttributesManager : MonoBehaviour, IDataPersistence
         return 0;
     }
 
+    //Get stats' maximum value
     public float GetMaxStat(StatType type)
     {
         if (stats.TryGetValue(type, out Stat stat))
@@ -50,6 +55,8 @@ public class AttributesManager : MonoBehaviour, IDataPersistence
         return 0;
     }
 
+    //When starting a new run this sets Stats from HeroData 
+    //!!! When new stats are implemented like Strength those should be added to stats[]
     public void SetPlayerHeroData(HeroData DataToLoad)
     {
         if (DataToLoad == null)
@@ -58,30 +65,23 @@ public class AttributesManager : MonoBehaviour, IDataPersistence
         }
         else
         {
-            playerHeroData = DataToLoad;
+            heroDefaultData = DataToLoad;
             stats.Clear();
 
-            stats[StatType.Health] = new Stat(DataToLoad.health, DataToLoad.health);
-            stats[StatType.Mana] = new Stat(DataToLoad.mana, DataToLoad.mana);
+            stats[StatType.Health] = new Stat(heroDefaultData.health, heroDefaultData.health);
+            stats[StatType.Mana] = new Stat(heroDefaultData.mana, heroDefaultData.mana);
 
             BroadcastAllStats();
         }
     }
 
+    //Manually call OnStatChanged, even though the Stat is not actually changed, used when loading from save
     public void BroadcastAllStats()
     {
         foreach (var pair in stats)
         {
             OnStatChanged?.Invoke(pair.Key, pair.Value);
         }
-    }
-
-    public void InitializeDefaultStats()
-    {
-        stats.Clear();
-
-        stats[StatType.Health] = new Stat(100, 100);
-        stats[StatType.Mana] = new Stat(3, 3);
     }
 
     //SAVING AND LOADING

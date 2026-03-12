@@ -1,10 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
+//Directs the game flow, when starting a new game or when game was loaded from a save
 public class BattleBootstrap : MonoBehaviour
 {
+    BattleInitiator battleInitiator;
+
     void Start()
     {
+        battleInitiator = FindFirstObjectByType<BattleInitiator>();
+
         if (DataPersistenceManager.Instance.HasLoadedGame)
         {
             StartCoroutine(LoadBattle());
@@ -19,11 +24,8 @@ public class BattleBootstrap : MonoBehaviour
     {
         yield return null;
 
-        SetupBattle();
-
-        //InitializeDefaultState();
-
-        //BroadcastInitialState();
+        DataPersistenceManager.Instance.ResetDataToDefault();
+        battleInitiator.SetupNewBattle();
     }
 
     IEnumerator LoadBattle()
@@ -31,47 +33,6 @@ public class BattleBootstrap : MonoBehaviour
         yield return null;
 
         DataPersistenceManager.Instance.LoadGame();
-
-        ResumeBattle();
-
-        //BroadcastInitialState();
-    }
-
-    void SetupBattle()
-    {
-        DataPersistenceManager.Instance.ResetSavedDataToDefault();
-
-        BattleInitiator battleInitiator = FindFirstObjectByType<BattleInitiator>();
-        battleInitiator.SetupNewBattle();
-        /*AttributesManager attributes = FindFirstObjectByType<AttributesManager>();
-        attributes.InitializeDefaultStats();
-
-        DeckManager deck = FindFirstObjectByType<DeckManager>();
-        deck.InitializeStarterDeck();*/
-    }
-
-    void ResumeBattle()
-    {
-        BattleInitiator battleInitiator = FindFirstObjectByType<BattleInitiator>();
         battleInitiator.ResumeBattle();
-    }
-
-    void InitializeDefaultState()
-    {
-
-        AttributesManager attributes = FindFirstObjectByType<AttributesManager>();
-        attributes.InitializeDefaultStats();
-
-        DeckManager deck = FindFirstObjectByType<DeckManager>();
-        deck.InitializeStarterDeck();
-    }
-
-    void BroadcastInitialState()
-    {
-        AttributesManager attributes = FindFirstObjectByType<AttributesManager>();
-        attributes.BroadcastAllStats();
-
-        HandManager hand = FindFirstObjectByType<HandManager>();
-        hand.UpdateHandVisuals();
     }
 }

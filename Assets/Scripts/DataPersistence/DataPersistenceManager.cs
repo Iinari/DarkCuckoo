@@ -124,7 +124,7 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }
 
-    public void ResetSavedDataToDefault() 
+    public void ResetDataToDefault() 
     {
         foreach (var obj in dataPersistenceObjects)
         {

@@ -65,7 +65,7 @@ public class DeckManager : MonoBehaviour, IDataPersistence
 
     public void ResetAll()
     {
-        FindAnyObjectByType<DataPersistenceManager>().ResetSavedDataToDefault();
+        FindAnyObjectByType<DataPersistenceManager>().ResetDataToDefault();
     }
 
     //SAVING AND LOADING
