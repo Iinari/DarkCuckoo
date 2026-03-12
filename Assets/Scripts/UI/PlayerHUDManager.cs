@@ -29,8 +29,8 @@ public class PlayerHUDManager : BattleComponent
         else
         {
             PlayerHero = newHero.GetComponent<Hero>();
-            PlayerHero.SetHeroData(playerData);         
-            PlayerHero.GetComponent<AttributesManager>().SetPlayerHeroData(playerData);
+            PlayerHero.SetHeroData(playerData);
+            GameSession.Instance.AttributesManager.SetPlayerHeroData(playerData);
         }
     }
 

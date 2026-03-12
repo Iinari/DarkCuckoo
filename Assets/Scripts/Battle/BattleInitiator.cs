@@ -43,7 +43,7 @@ public class BattleInitiator : MonoBehaviour
 
         for (int i = 0; i < battleComponents.Length; i++)
         {
-            battleComponents[i].BattleSetUp(this);
+            battleComponents[i].ResumeBattle(this);
         }
     }
 }

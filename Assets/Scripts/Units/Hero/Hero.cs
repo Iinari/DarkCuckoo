@@ -29,14 +29,39 @@ public class Hero : BattleUnit
 
     public AttributesManager attributes;
 
-    void OnEnable()
+    void Start()
     {
+        attributes = GameSession.Instance.AttributesManager;
+
         attributes.OnStatChanged += UpdateStatUI;
+
+        Refresh();
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
-        attributes.OnStatChanged -= UpdateStatUI;
+        if (attributes != null)
+            attributes.OnStatChanged -= UpdateStatUI;
+    }
+
+    void Refresh()
+    {
+        float hp = attributes.GetStat(StatType.Health);
+        float hpMax = attributes.GetMaxStat(StatType.Health);
+
+        if (hp > 0)
+        {
+            heroHPTxt.text = hp.ToString();
+            roundHpBar.fillAmount = hp / hpMax;
+        }
+
+        float mp = attributes.GetStat(StatType.Mana);
+        float mpMax = attributes.GetMaxStat(StatType.Mana);
+        if (mp > 0)
+        {
+            heroMPTxt.text = mp.ToString();
+            manaPoolIcon.fillAmount = mp / mpMax;
+        }  
     }
 
     void UpdateStatUI(StatType type, Stat stat)
@@ -62,7 +87,7 @@ public class Hero : BattleUnit
         cardPlayManager = FindFirstObjectByType<CardPlayManager>();
         cardPlayManager.playerHero = this;
 
-        attributes = GetComponent<AttributesManager>();
+        attributes = GameSession.Instance.AttributesManager;
     }
 
     public void SetHeroData(HeroData newHeroData)

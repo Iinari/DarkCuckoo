@@ -553,9 +553,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3331217340476473481, guid: 69fa1d87292c46047b9c0773158b3fb4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2089060329162053359}
-    - targetCorrespondingSourceObject: {fileID: 3331217340476473481, guid: 69fa1d87292c46047b9c0773158b3fb4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6496106647783740055}
   m_SourcePrefab: {fileID: 100100000, guid: 69fa1d87292c46047b9c0773158b3fb4, type: 3}
 --- !u!224 &6170868610334703809 stripped
 RectTransform:
@@ -630,16 +627,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739389dbe63e7294881524b3fd8d8145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitHealthState
---- !u!114 &6496106647783740055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7162504021528511839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe46ce499deba044f9fa44a23fe53d36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AttributesManager
-  playerHeroData: {fileID: 0}

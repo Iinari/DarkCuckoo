@@ -12,7 +12,7 @@ public class UnitHealthWatch : MonoBehaviour
 
     private void Awake()
     {
-        attributesManager = GetComponent<AttributesManager>();
+        attributesManager = GameSession.Instance.AttributesManager;
         State = GetComponent<UnitHealthState>();
     }
 

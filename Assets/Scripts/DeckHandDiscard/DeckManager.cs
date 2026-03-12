@@ -87,7 +87,7 @@ public class DeckManager : MonoBehaviour, IDataPersistence
         if (deck.Count == 0)
         {
             Debug.Log("No data on existing deck");
-            deck = GetComponent<DefaultDeckCreator>().LoadStartingDeck();
+            deck = FindFirstObjectByType<DefaultDeckCreator>().LoadStartingDeck();
         }
     }
 
@@ -98,7 +98,7 @@ public class DeckManager : MonoBehaviour, IDataPersistence
 
     public void ResetToDefault(ref GameData data)
     {
-        deck = GetComponent<DefaultDeckCreator>().LoadStartingDeck();
+        deck = FindFirstObjectByType<DefaultDeckCreator>().LoadStartingDeck();
         data.cardsInDeck = deck;
         GetManagerReferences();
         drawPileManager.MakeDrawPile(deck);

@@ -14,10 +14,14 @@ public class CardPlayManager : MonoBehaviour
 
     private DiscardManager discardManager;
 
+    private AttributesManager attributes;
+
     void Awake()
     {
         handManager = FindFirstObjectByType<HandManager>();
         discardManager = FindFirstObjectByType<DiscardManager>();
+
+        attributes = GameSession.Instance.AttributesManager;
     }
 
     public Enemy GetTargetEnemy()
@@ -76,22 +80,21 @@ public class CardPlayManager : MonoBehaviour
 
     public bool CheckHasEnoughMana(int cardCost)
     { 
-        if (playerHero.attributes.GetStat(StatType.Mana) - cardCost >= 0)
+        if (attributes.GetStat(StatType.Mana) - cardCost >= 0)
         {
-            return (playerHero.attributes.GetStat(StatType.Mana) - cardCost >= 0);
+            return (attributes.GetStat(StatType.Mana) - cardCost >= 0);
         }
         else
         {
             Debug.Log("NOT ENOUGH MANA");
-            return (playerHero.attributes.GetStat(StatType.Mana) - cardCost >= 0);
+            return (attributes.GetStat(StatType.Mana) - cardCost >= 0);
         }
         
     }
 
     public void DecreaseMP(int mpAmount)
     {
-        playerHero.GetComponent<AttributesManager>().ModifyStat(StatType.Mana, -mpAmount);
-        //playerHero.GetComponent<AttributesManager>().ModifyAttribute(AttributesManager.Attribute.MP, -mpAmount);
+        attributes.ModifyStat(StatType.Mana, -mpAmount);
     }
 
     public void PlaySkillCard(Card card)
@@ -100,8 +103,7 @@ public class CardPlayManager : MonoBehaviour
         int heal = card.cardData.GetHealPower();
         if (heal > 0) 
         {
-            playerHero.GetComponent<AttributesManager>().ModifyStat(StatType.Health, heal);
-            //playerHero.GetComponent<AttributesManager>().ModifyAttribute(AttributesManager.Attribute.HP, heal);
+            attributes.ModifyStat(StatType.Health, heal);
         }
 
         int block = card.cardData.GetBlockPower();

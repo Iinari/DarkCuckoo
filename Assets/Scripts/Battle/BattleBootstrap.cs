@@ -28,11 +28,11 @@ public class BattleBootstrap : MonoBehaviour
 
     IEnumerator LoadBattle()
     {
-        Debug.Log("Loading Saved Game");
-
         yield return null;
 
         DataPersistenceManager.Instance.LoadGame();
+
+        ResumeBattle();
 
         //BroadcastInitialState();
     }
@@ -48,6 +48,12 @@ public class BattleBootstrap : MonoBehaviour
 
         DeckManager deck = FindFirstObjectByType<DeckManager>();
         deck.InitializeStarterDeck();*/
+    }
+
+    void ResumeBattle()
+    {
+        BattleInitiator battleInitiator = FindFirstObjectByType<BattleInitiator>();
+        battleInitiator.ResumeBattle();
     }
 
     void InitializeDefaultState()

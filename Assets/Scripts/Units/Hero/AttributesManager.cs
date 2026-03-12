@@ -14,7 +14,6 @@ public class AttributesManager : MonoBehaviour, IDataPersistence
 
     public HeroData playerHeroData = null;
 
-
     public void ModifyStat(StatType type, float value)
     {
         if (stats.TryGetValue(type, out Stat stat))
@@ -98,14 +97,11 @@ public class AttributesManager : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-
-        Debug.Log("LOAD DATA");
         stats.Clear();
 
         foreach (var s in data.playerStats)
         {
             stats[s.type] = new Stat(s.current, s.max);
-            Debug.Log(s.ToString());
         }
         BroadcastAllStats();
     }
@@ -122,13 +118,12 @@ public class AttributesManager : MonoBehaviour, IDataPersistence
                 current = stat.Value.current,
                 max = stat.Value.max
             });
-            Debug.Log("PlayerStats to save: " + stat.ToString());
         }
     }
 
     public void ResetToDefault(ref GameData data)
     {
-        SetPlayerHeroData(GetComponent<Hero>().heroData);
+        //SetPlayerHeroData(FindFirstObjectByType<Hero>().heroData);
     }
 
 }

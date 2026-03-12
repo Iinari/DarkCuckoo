@@ -6,7 +6,7 @@ using UnityEngine;
 
 //This class is ment to display enemy/enemies during fight. This is needed if encounter has more than one enemy
 //as enemies only know about themselves as units
-public class EnemyDisplayManager : BattleComponent
+public class EnemyDisplayManager : MonoBehaviour
 {
     public List<Enemy> enemyReferences;
 
@@ -18,20 +18,12 @@ public class EnemyDisplayManager : BattleComponent
 
     private EncounterEnemyTracker encounterEnemyTracker;
 
-    public override void BattleSetUp(BattleInitiator battleSystem)
-    {
-        encounterEnemyTracker = GetComponent<EncounterEnemyTracker>();
-    }
-
-    public override void ResumeBattle(BattleInitiator battleSystem)
-    {
-        encounterEnemyTracker = GetComponent<EncounterEnemyTracker>();
-    }
-
     public void DisplayEnemy(EnemyData enemyData)
     {
         if (enemyPositions != null)
         {
+            encounterEnemyTracker = GetComponent<EncounterEnemyTracker>();
+
             // Instantiate the enemy prefab
             GameObject newEnemy = Instantiate(enemyPrefab, enemyPositions[0].position, Quaternion.identity, enemyPositions[0]);
 

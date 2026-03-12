@@ -46,7 +46,7 @@ public class PlayerTurnManager : MonoBehaviour
         }
         if (player != null)
         {
-            player.GetComponent<AttributesManager>().RestoreStat(StatType.Mana);
+            GameSession.Instance.AttributesManager.RestoreStat(StatType.Mana);
             //player.GetComponent<AttributesManager>().RestoreAttribute(AttributesManager.Attribute.MP);
         }
         
