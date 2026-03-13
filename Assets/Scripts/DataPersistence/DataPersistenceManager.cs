@@ -44,7 +44,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (Instance == null)
         {
-            GameObject obj = new GameObject("DataPersistenceManager");
+            GameObject obj = new("DataPersistenceManager");
             obj.AddComponent<DataPersistenceManager>();
             obj.GetComponent<DataPersistenceManager>().fileName = "data.json";
             obj.GetComponent<DataPersistenceManager>().useEncryption = true;
@@ -144,10 +144,4 @@ public class DataPersistenceManager : MonoBehaviour
         HasLoadedGame = hasLoadedData;
     }
 
-    /*private List<IDataPersistence> FindAllDataPersistenceObjects()
-    {
-        return FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
-           .OfType<IDataPersistence>()
-           .ToList();
-    }*/
 }

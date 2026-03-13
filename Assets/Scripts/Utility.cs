@@ -86,8 +86,13 @@ namespace SnIProductions
         Start, 
         PlayerTurn, 
         EnemyTurn,
-        Won, 
-        Lost 
+        Ended
+    }
+
+    public enum BattleResult
+    {
+        Won,
+        Lost
     }
 
     public enum HealthState
@@ -115,4 +120,6 @@ namespace SnIProductions
         Reward,
         GameOver
     }
+
+    
 }

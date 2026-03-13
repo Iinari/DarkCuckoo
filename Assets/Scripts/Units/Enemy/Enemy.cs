@@ -62,11 +62,13 @@ public class Enemy : BattleUnit
             if (battleSystem != null)
             {
                 battleSystem.popUpManager.OpenResultScreen(false);
+                
             }
             else
             {
                 battleSystem = FindFirstObjectByType<BattleInitiator>();
                 battleSystem.popUpManager.OpenResultScreen(false);
+                
             }
         }
     }

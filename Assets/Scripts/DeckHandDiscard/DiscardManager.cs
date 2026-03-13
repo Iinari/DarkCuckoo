@@ -14,6 +14,8 @@ public class DiscardManager : MonoBehaviour, IDataPersistence
 
     private CardPile discardPileVisual;
 
+    private BattleState BattleState;
+
     private void Awake()
     {
         GameObject visualDiscard = Instantiate(discardPilePrefab, discardPilePosition.position, Quaternion.identity, discardPilePosition);
@@ -26,30 +28,16 @@ public class DiscardManager : MonoBehaviour, IDataPersistence
     private void OnEnable()
     {
         DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
+        GameEvents.OnBattleEnded += EndBattle;
     }
 
     private void OnDisable()
     {
         DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
+        GameEvents.OnBattleEnded -= EndBattle;
     }
 
-    public void LoadData(GameData data)
-    {
-        discardCards = data.cardsInDiscard;
-        discardPileVisual.UpdatePileVisuals(discardCards.Count);
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.cardsInDiscard = discardCards;
-    }
-
-    public void ResetToDefault(ref GameData data)
-    {
-        discardPileVisual.UpdatePileVisuals(discardCards.Count);
-    }
-
-        private void UpdateDiscardCount()
+    private void UpdateDiscardCount()
     {
         if (discardPileVisual != null)
         {
@@ -114,12 +102,27 @@ public class DiscardManager : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void DiscardHand(List<int> cardsToDiscard)
+    public void EndBattle(BattleResult result)
     {
-        if (cardsToDiscard != null)
-        {
-            discardCards.AddRange(cardsToDiscard);
-            UpdateDiscardCount();
-        }
+        discardCards.Clear();
+        UpdateDiscardCount();
+    }
+
+    //SAVE AND LOAD
+
+    public void LoadData(GameData data)
+    {
+        discardCards = data.cardsInDiscard;
+        discardPileVisual.UpdatePileVisuals(discardCards.Count);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.cardsInDiscard = discardCards;
+    }
+
+    public void ResetToDefault(ref GameData data)
+    {
+        discardPileVisual.UpdatePileVisuals(discardCards.Count);
     }
 }
