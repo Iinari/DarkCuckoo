@@ -93,7 +93,10 @@ public class DeckManager : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        data.cardsInDeck = deck;
+        if (data != null)
+        {
+            data.cardsInDeck = deck;
+        }
     }
 
     public void ResetToDefault(ref GameData data)

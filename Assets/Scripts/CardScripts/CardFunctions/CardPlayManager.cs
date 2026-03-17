@@ -12,15 +12,10 @@ public class CardPlayManager : MonoBehaviour
 
     private HandManager handManager;
 
-    private DiscardManager discardManager;
-
     private AttributesManager attributes;
 
     void Awake()
     {
-        handManager = FindFirstObjectByType<HandManager>();
-        discardManager = FindFirstObjectByType<DiscardManager>();
-
         attributes = GameSession.Instance.AttributesManager;
     }
 
@@ -73,13 +68,13 @@ public class CardPlayManager : MonoBehaviour
             DecreaseMP(playedCard.manaCost);
 
             DiscardThisCard();
-            handManager.UnregisterCard(cardObj);
+            BattleContext.Instance.handManager.UnregisterCard(cardObj);
         }    
     }
 
 
     public bool CheckHasEnoughMana(int cardCost)
-    { 
+    {
         if (attributes.GetStat(StatType.Mana) - cardCost >= 0)
         {
             return (attributes.GetStat(StatType.Mana) - cardCost >= 0);
@@ -116,11 +111,7 @@ public class CardPlayManager : MonoBehaviour
     
     public void DiscardThisCard()
     {
-        if (discardManager != null)
-        {
-            discardManager.AddToDiscard(playedCard.cardData);
-            //Destroy(gameObject);
-        }
+        BattleContext.Instance.discardManager.AddToDiscard(playedCard.cardData);
     }
 
     public void TargetEnemyWithPlay(Enemy enemy, GameObject cardObj)
@@ -128,21 +119,14 @@ public class CardPlayManager : MonoBehaviour
 
         if (handManager == null)
         {
-            handManager = FindFirstObjectByType<HandManager>();
+            handManager = BattleContext.Instance.handManager;
         }
         if (handManager != null)
         {
-            if (discardManager == null)
-            {
-                discardManager = FindFirstObjectByType<DiscardManager>();
-            }
-            
             SetLastPlayedCard(playedCard);
             SetTargetEnemy(enemy);
             PlayTheCard(cardObj);
-
         }
     }
-
 
 }

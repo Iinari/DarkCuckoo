@@ -24,7 +24,7 @@ public class BattleBootstrap : MonoBehaviour
     {
         yield return null;
 
-        DataPersistenceManager.Instance.ResetDataToDefault();
+        DataPersistenceManager.Instance.NewGame();
         battleInitiator.SetupNewBattle();
     }
 

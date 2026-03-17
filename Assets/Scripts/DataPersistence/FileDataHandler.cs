@@ -10,7 +10,7 @@ public class FileDataHandler
 
     private bool useEncryption = false;
 
-    private readonly string encryptionKey = "salainensana";
+    private readonly string encryptionKey = "CuculusCanorus";
 
     public FileDataHandler(string dataDirPath, string dataFileName, bool useEncryption)
     {

@@ -300,17 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0ba1ada3cdcaa4ca0ff7c7442ec0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleBootstrap
---- !u!114 &197041455 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2585435656635722100, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
-  m_PrefabInstance: {fileID: 1454462031}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 602c3023b917ea0418b72f867e0bfc20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DeckManager
 --- !u!1 &300683402
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +520,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 197041455}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DeckManager, Assembly-CSharp
         m_MethodName: ResetDeck
         m_Mode: 1
@@ -664,7 +653,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 197041455}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DeckManager, Assembly-CSharp
         m_MethodName: ResetAll
         m_Mode: 1
@@ -785,6 +774,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1945755313}
+  - {fileID: 1363497529}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &568836341
@@ -1565,6 +1555,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4243695089182461650, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
   m_PrefabInstance: {fileID: 1454462031}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &996131595 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2095307243957195477, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+  m_PrefabInstance: {fileID: 1454462031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996131594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a8dfccd1e976a46ba9babbc08082a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1202773156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,6 +1769,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301097445}
   m_CullTransparentMesh: 1
+--- !u!1 &1363497528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1363497529}
+  - component: {fileID: 1363497530}
+  m_Layer: 0
+  m_Name: BattleContext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1363497529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363497528}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 565502853}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1363497530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363497528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65d3e69eb232b54791b5cd9d0671385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleContext
+  handManager: {fileID: 996131595}
+  drawPileManager: {fileID: 1945755315}
+  discardManager: {fileID: 1945755314}
+  battleInitiator: {fileID: 1945755312}
 --- !u!1001 &1454462031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2905,6 +2954,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8060873990032492923, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
   m_PrefabInstance: {fileID: 1454462031}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1945755314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4563350208874991665, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+  m_PrefabInstance: {fileID: 1454462031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dcf6411473b6634ea86781e3cd40947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DiscardManager
+--- !u!114 &1945755315 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3329708685143097853, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+  m_PrefabInstance: {fileID: 1454462031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a523a0e21b9614681dedb239bee8cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DrawPileManager
 --- !u!1 &2073386785
 GameObject:
   m_ObjectHideFlags: 0

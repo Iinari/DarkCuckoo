@@ -108,17 +108,20 @@ public class AttributesManager : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        data.playerStats = new List<StatSaveData>();
-
-        foreach (var stat in stats)
+        if (data != null)
         {
-            data.playerStats.Add(new StatSaveData
+            data.playerStats = new List<StatSaveData>();
+
+            foreach (var stat in stats)
             {
-                type = stat.Key,
-                current = stat.Value.current,
-                max = stat.Value.max
-            });
-        }
+                data.playerStats.Add(new StatSaveData
+                {
+                    type = stat.Key,
+                    current = stat.Value.current,
+                    max = stat.Value.max
+                });
+            }
+        } 
     }
 
     public void ResetToDefault(ref GameData data)

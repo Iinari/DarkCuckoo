@@ -85,6 +85,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.gameData = new GameData();
         SetHasLoadedData(false);
+        ResetDataToDefault();
     }
 
     public void LoadGame()

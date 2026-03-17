@@ -36,5 +36,5 @@ public class Stat
     public void Restore()
     {
         current = max;
-    }
+    }   
 }
