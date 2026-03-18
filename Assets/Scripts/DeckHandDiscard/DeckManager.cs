@@ -9,15 +9,23 @@ public class DeckManager : MonoBehaviour, IDataPersistence
 {
     public List<int> deck = new(); //Player's cards
 
-    private HandManager handManager;
     private DrawPileManager drawPileManager;
-    private DiscardManager discardManager;
 
-    void Start()
+    private void OnEnable()
     {
-        drawPileManager = GetComponent<DrawPileManager>();
-        discardManager = GetComponentInChildren<DiscardManager>();
-        handManager = GetComponentInChildren<HandManager>();
+        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
+        BattleEvents.OnBattleStarted += NewBattle;
+    }
+
+    private void OnDisable()
+    {
+        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
+        BattleEvents.OnBattleStarted -= NewBattle;
+    }
+
+    public void NewBattle()
+    {
+        InitializeStarterDeck();
     }
 
     //Add a new card to deck
@@ -32,37 +40,14 @@ public class DeckManager : MonoBehaviour, IDataPersistence
         deck.Remove(card.ID);
     }
 
-    public void GetManagerReferences()
-    {
-        if (drawPileManager == null)
-        {
-            drawPileManager = FindFirstObjectByType<DrawPileManager>();
-        }
-        if (handManager == null)
-        {
-            handManager = FindFirstObjectByType<HandManager>();
-        }
-        if (discardManager == null)
-        {
-            discardManager = FindFirstObjectByType<DiscardManager>();
-        }
-    }
-
     public void InitializeStarterDeck()
     {
         deck.Clear();
-        deck = GetComponent<DefaultDeckCreator>().LoadStartingDeck();
-        GetManagerReferences();
-        drawPileManager.MakeDrawPile(deck);
+        deck = BattleContext.Instance.defaultDeckCreator.LoadStartingDeck();
+        BattleContext.Instance.drawPileManager.MakeDrawPile(deck);
     }
 
     //FOR TEST PURPOSES 
-    public void ResetDeck()
-    {
-        deck = GetComponent<DefaultDeckCreator>().LoadStartingDeck();
-        FindAnyObjectByType<DataPersistenceManager>().SaveGame();
-    }
-
     public void ResetAll()
     {
         FindAnyObjectByType<DataPersistenceManager>().ResetDataToDefault();
@@ -70,25 +55,11 @@ public class DeckManager : MonoBehaviour, IDataPersistence
 
     //SAVING AND LOADING
 
-    private void OnEnable()
-    {
-        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
-    }
-
-    private void OnDisable()
-    {
-        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
-    }
+    
 
     public void LoadData(GameData data)
     {
         deck = data.cardsInDeck;
-
-        if (deck.Count == 0)
-        {
-            Debug.Log("No data on existing deck");
-            deck = FindFirstObjectByType<DefaultDeckCreator>().LoadStartingDeck();
-        }
     }
 
     public void SaveData(ref GameData data)
@@ -101,9 +72,9 @@ public class DeckManager : MonoBehaviour, IDataPersistence
 
     public void ResetToDefault(ref GameData data)
     {
-        deck = FindFirstObjectByType<DefaultDeckCreator>().LoadStartingDeck();
+        deck = BattleContext.Instance.defaultDeckCreator.LoadStartingDeck();
         data.cardsInDeck = deck;
-        GetManagerReferences();
-        drawPileManager.MakeDrawPile(deck);
+        BattleContext.Instance.drawPileManager.MakeDrawPile(deck);
+ 
     }
 }

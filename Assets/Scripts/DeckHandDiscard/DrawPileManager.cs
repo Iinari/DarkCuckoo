@@ -20,6 +20,15 @@ public class DrawPileManager : MonoBehaviour, IDataPersistence
 
     private CardPile drawPileVisual; //Reference to a component of the DrawPile prefab
 
+    private void OnEnable()
+    {
+        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
+    }
+
+    private void OnDisable()
+    {
+        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
+    }
     void Awake()
     {
         //Create the draw pile game object based on prefab and given position
@@ -51,6 +60,11 @@ public class DrawPileManager : MonoBehaviour, IDataPersistence
         Utility.Shuffle(drawPile);
 
         drawPileVisual.UpdatePileVisuals(drawPile.Count);
+
+        for (int i = 0; i < handManager.handStartSize; i++)
+        {
+            DrawCard();
+        }
     }
 
     public void DrawCard()
@@ -104,15 +118,6 @@ public class DrawPileManager : MonoBehaviour, IDataPersistence
     }
 
     //SAVING AND LOADING:
-    private void OnEnable()
-    {
-        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
-    }
-
-    private void OnDisable()
-    {
-        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
-    }
 
     public void LoadData(GameData data)
     {

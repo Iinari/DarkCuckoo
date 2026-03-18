@@ -85,7 +85,6 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.gameData = new GameData();
         SetHasLoadedData(false);
-        ResetDataToDefault();
     }
 
     public void LoadGame()
@@ -107,7 +106,7 @@ public class DataPersistenceManager : MonoBehaviour
                     obj.LoadData(gameData);
                 }
             }
-        }   
+        }
     }
 
     public void SaveGame() 

@@ -119,6 +119,78 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &3927673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3927677}
+  - component: {fileID: 3927676}
+  - component: {fileID: 3927675}
+  - component: {fileID: 3927674}
+  m_Layer: 0
+  m_Name: GameSession
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &3927674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3927673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602c3023b917ea0418b72f867e0bfc20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeckManager
+  deck: 
+--- !u!114 &3927675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3927673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe46ce499deba044f9fa44a23fe53d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttributesManager
+  heroDefaultData: {fileID: 0}
+--- !u!114 &3927676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3927673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ddb4ecf6d1b8d44083bb1a20bfdf80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameSession
+--- !u!4 &3927677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3927673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1932.05, y: 512, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8195788
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0ba1ada3cdcaa4ca0ff7c7442ec0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleBootstrap
+  battleManager: {fileID: 2120140087}
 --- !u!1 &300683402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,6 +1890,10 @@ MonoBehaviour:
   drawPileManager: {fileID: 1945755315}
   discardManager: {fileID: 1945755314}
   battleInitiator: {fileID: 1945755312}
+  cardPlayManager: {fileID: 1945755319}
+  battleManager: {fileID: 2120140087}
+  playerHero: {fileID: 0}
+  defaultDeckCreator: {fileID: 1454462032}
 --- !u!1001 &1454462031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2060,6 +2137,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+--- !u!114 &1454462032 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8796620582184802606, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+  m_PrefabInstance: {fileID: 1454462031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8400908a38f006429ceafba6b5468f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultDeckCreator
 --- !u!224 &1524714265 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 453002388354565227, guid: 8e8dba7c5f605484f8880d3affc1eae6, type: 3}
@@ -2976,6 +3064,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a523a0e21b9614681dedb239bee8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DrawPileManager
+--- !u!114 &1945755319 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1658475810554266700, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+  m_PrefabInstance: {fileID: 1454462031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ab39835c6791f4ca7796414bb1e8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardPlayManager
 --- !u!1 &2073386785
 GameObject:
   m_ObjectHideFlags: 0
@@ -3111,6 +3210,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3969048741685287255, guid: e82c93aea3847b1469074edc6361c7a8, type: 3}
   m_PrefabInstance: {fileID: 1735944649}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2120140087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -5911678140590029157, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
+  m_PrefabInstance: {fileID: 1454462031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29dd939c1cad9144a820c0abdb1e836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleEventManager
 --- !u!1001 &463116548420603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3239,3 +3349,4 @@ SceneRoots:
   - {fileID: 568836344}
   - {fileID: 1627151928}
   - {fileID: 142912928}
+  - {fileID: 3927677}

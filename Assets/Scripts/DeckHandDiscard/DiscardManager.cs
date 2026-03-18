@@ -28,13 +28,13 @@ public class DiscardManager : MonoBehaviour, IDataPersistence
     private void OnEnable()
     {
         DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
-        GameEvents.OnBattleEnded += EndBattle;
+        BattleEvents.OnBattleEnded += EndBattle;
     }
 
     private void OnDisable()
     {
         DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
-        GameEvents.OnBattleEnded -= EndBattle;
+        BattleEvents.OnBattleEnded -= EndBattle;
     }
 
     private void UpdateDiscardCount()

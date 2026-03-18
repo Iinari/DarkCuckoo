@@ -4,12 +4,10 @@ using System.Collections;
 //Directs the game flow, when starting a new game or when game was loaded from a save
 public class BattleBootstrap : MonoBehaviour
 {
-    BattleInitiator battleInitiator;
+    [SerializeField] private BattleManager battleManager;
 
     void Start()
     {
-        battleInitiator = FindFirstObjectByType<BattleInitiator>();
-
         if (DataPersistenceManager.Instance.HasLoadedGame)
         {
             StartCoroutine(LoadBattle());
@@ -25,7 +23,7 @@ public class BattleBootstrap : MonoBehaviour
         yield return null;
 
         DataPersistenceManager.Instance.NewGame();
-        battleInitiator.SetupNewBattle();
+        battleManager.StartBattle();
     }
 
     IEnumerator LoadBattle()
@@ -33,6 +31,6 @@ public class BattleBootstrap : MonoBehaviour
         yield return null;
 
         DataPersistenceManager.Instance.LoadGame();
-        battleInitiator.ResumeBattle();
+        battleManager.StartLoadedBattle();
     }
 }

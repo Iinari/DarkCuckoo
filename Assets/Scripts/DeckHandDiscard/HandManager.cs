@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine.XR;
+using static UnityEngine.Rendering.GPUSort;
 
 //Script for card hand management 
 public class HandManager : MonoBehaviour, IDataPersistence
@@ -29,9 +30,14 @@ public class HandManager : MonoBehaviour, IDataPersistence
     private Dictionary<CardInteractionState, Action<CardState>> stateHandlers
         = new();
 
-    public void BattleSetup(int setMaxHandSize)
+    private void OnEnable()
     {
-        handMaxSize = setMaxHandSize;
+        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
+    }
+
+    private void OnDisable()
+    {
+        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
     }
 
     public void AddCardToHand(CardData cardData)
@@ -163,16 +169,6 @@ public class HandManager : MonoBehaviour, IDataPersistence
     }
 
     //SAVING AND LOADING
-    private void OnEnable()
-    {
-        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
-    }
-
-    private void OnDisable()
-    {
-        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
-    }
-
     public void LoadData(GameData data)
     {
         ClearHand();
@@ -188,17 +184,14 @@ public class HandManager : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        if (data.cardsInHand != null)
+        List<int> cardIDs = new List<int>();
+   
+        foreach (var obj in handCardObjs)
         {
-            data.cardsInHand.Clear();
-
-            foreach (var obj in handCardObjs)
-            {
-                var card = obj.GetComponent<Card>();
-                data.cardsInHand.Add(card.cardData.ID);
-            }
+            var card = obj.GetComponent<Card>();
+            cardIDs.Add(card.cardData.ID);
         }
-        else Debug.Log("GameData ref gave null");
+        data.cardsInHand = cardIDs;
     }
 
     public void ResetToDefault(ref GameData data)

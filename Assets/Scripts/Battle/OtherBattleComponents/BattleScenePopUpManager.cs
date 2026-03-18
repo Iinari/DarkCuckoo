@@ -27,7 +27,7 @@ public class BattleScenePopUpManager : BattleComponent
         cardPileDisplay = cardDisplay.GetComponent<CardPopUpDisplay>();
         cardDisplay.SetActive(false);
 
-        state = battleSystem.playerHero.GetComponent<UnitHealthState>();
+        state = BattleContext.Instance.playerHero.GetComponent<UnitHealthState>();
         state.OnStateChanged += OnStateChanged;
     }
     public override void ResumeBattle(BattleInitiator battleSystem)
@@ -40,7 +40,7 @@ public class BattleScenePopUpManager : BattleComponent
         cardPileDisplay = cardDisplay.GetComponent<CardPopUpDisplay>();
         cardDisplay.SetActive(false);
 
-        state = battleSystem.playerHero.GetComponent<UnitHealthState>();
+        state = BattleContext.Instance.playerHero.GetComponent<UnitHealthState>();
         state.OnStateChanged += OnStateChanged;
     }
     private void OnStateChanged(HealthState newState)

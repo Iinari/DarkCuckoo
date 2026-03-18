@@ -37,19 +37,14 @@ public class MoonCycle : MonoBehaviour, IDataPersistence
 
     private void OnEnable()
     {
-        if (DataPersistenceManager.Instance == null)
-        {
-            Debug.LogError("DataPersistenceManager Instance is NULL!");
-        }
-        else
-        {
-            DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
-        }
+        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
+        BattleEvents.OnBattleStarted += UpdateMoon;
     }
 
     private void OnDisable()
     {
         DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
+        BattleEvents.OnBattleStarted -= UpdateMoon;
     }
 
     public void LoadData(GameData data)

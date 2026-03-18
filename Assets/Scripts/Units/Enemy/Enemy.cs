@@ -59,17 +59,7 @@ public class Enemy : BattleUnit
         }
         if (enemyCurrentHealth <= 0)
         {
-            if (battleSystem != null)
-            {
-                battleSystem.popUpManager.OpenResultScreen(false);
-                
-            }
-            else
-            {
-                battleSystem = FindFirstObjectByType<BattleInitiator>();
-                battleSystem.popUpManager.OpenResultScreen(false);
-                
-            }
+            BattleContext.Instance.battleManager.EndBattle(BattleResult.Won);
         }
     }
 

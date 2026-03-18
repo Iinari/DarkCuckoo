@@ -2,8 +2,10 @@ using System.Linq;
 using UnityEngine;
 using SnIProductions;
 using System.Collections.Generic;
+using static UnityEngine.Rendering.GPUSort;
+using UnityEditor.EditorTools;
 
-public class PlayerHUDManager : BattleComponent
+public class PlayerHUDManager : MonoBehaviour
 {
     public Hero PlayerHero { get; private set; }
 
@@ -15,9 +17,23 @@ public class PlayerHUDManager : BattleComponent
 
     private List<HeroData> allHeroes = new();
 
-    public override void BattleSetUp(BattleInitiator battleSystem)
+
+    private void OnEnable()
     {
-        playerData = LoadPlayerData()[0];
+        BattleEvents.OnBattleStarted += NewBattle;
+        BattleEvents.OnBattleLoaded += ResumeBattle;
+    }
+
+    private void OnDisable()
+    {
+        BattleEvents.OnBattleStarted -= NewBattle;
+        BattleEvents.OnBattleLoaded -= ResumeBattle;
+
+    }
+
+    void NewBattle()
+    {
+        playerData = LoadPlayerDataFormSciptableObjects()[0];
 
         //Instatiate the hero
         GameObject newHero = Instantiate(prefab, playerPosition.position, Quaternion.identity, playerPosition);
@@ -31,17 +47,23 @@ public class PlayerHUDManager : BattleComponent
             PlayerHero = newHero.GetComponent<Hero>();
             PlayerHero.SetHeroData(playerData);
             GameSession.Instance.AttributesManager.SetPlayerHeroData(playerData);
+            BattleContext.Instance.playerHero = PlayerHero;
         }
     }
-
-    public override void ResumeBattle(BattleInitiator battleSystem)
+   
+    public void ResumeBattle()
     {
-        //Instatiate the hero
+        // Data already loaded via IDataPersistence
+
         GameObject newHero = Instantiate(prefab, playerPosition.position, Quaternion.identity, playerPosition);
+
         PlayerHero = newHero.GetComponent<Hero>();
+
+        // Reconnect references, visuals, runtime-only things
+        BattleContext.Instance.playerHero = PlayerHero;
     }
 
-        public HeroData GetRandonmPlayerStats()
+    public HeroData GetRandonmPlayerStats()
     {
         HeroData[] playerHeroes = Resources.LoadAll<HeroData>("HeroClasses");
         allHeroes.AddRange(playerHeroes);
@@ -55,7 +77,7 @@ public class PlayerHUDManager : BattleComponent
         return null;
     }
 
-    public HeroData[] LoadPlayerData()
+    public HeroData[] LoadPlayerDataFormSciptableObjects()
     {
         return Resources.LoadAll<HeroData>("PlayerData");
     }

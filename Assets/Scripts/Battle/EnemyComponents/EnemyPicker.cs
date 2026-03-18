@@ -3,15 +3,29 @@ using UnityEditorInternal;
 using UnityEngine;
 using SnIProductions;
 using UnityEngine.AI;
+using static UnityEngine.Audio.GeneratorInstance;
 
-public class EnemyPicker : BattleComponent
+public class EnemyPicker : MonoBehaviour
 {
     //These are values that tester might want to change in editor, that is why these are on top
     public EnemyData ChosenEnemy;
 
     public List<EnemyData> allEnemies = new();
 
-    public override void BattleSetUp(BattleInitiator battleSystem)
+    private void OnEnable()
+    {
+        BattleEvents.OnBattleStarted += NewBattle;
+        BattleEvents.OnBattleLoaded += ResumeBattle;
+    }
+
+    private void OnDisable()
+    {
+        BattleEvents.OnBattleStarted -= NewBattle;
+        BattleEvents.OnBattleLoaded -= ResumeBattle;
+
+    }
+
+    public void NewBattle()
     {
         //Enemy can be chosen in Scene, if enemy is not set set randon enemy from the list
         if (ChosenEnemy == null)
@@ -32,7 +46,7 @@ public class EnemyPicker : BattleComponent
         }
     }
 
-    public override void ResumeBattle(BattleInitiator battleSystem)
+    public void ResumeBattle()
     {
         //Enemy can be chosen in Scene, if enemy is not set set randon enemy from the list
         if (ChosenEnemy == null)
@@ -44,7 +58,11 @@ public class EnemyPicker : BattleComponent
             if (allEnemies.Count > 0)
             {
                 Utility.Shuffle(allEnemies);
-                GetComponent<EnemyDisplayManager>().DisplayEnemy(allEnemies[0]);
+                if (GetComponent<EnemyDisplayManager>() != null)
+                {
+                    GetComponent<EnemyDisplayManager>().DisplayEnemy(allEnemies[0]);
+                }
+                else Debug.Log("EnemyDisplayManager reference not valid");
             }
         }
         else
