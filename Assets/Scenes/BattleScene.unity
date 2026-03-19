@@ -1889,10 +1889,9 @@ MonoBehaviour:
   handManager: {fileID: 996131595}
   drawPileManager: {fileID: 1945755315}
   discardManager: {fileID: 1945755314}
-  battleInitiator: {fileID: 1945755312}
   cardPlayManager: {fileID: 1945755319}
   battleManager: {fileID: 2120140087}
-  playerHero: {fileID: 0}
+  playerHero: {fileID: 5873522981297793817, guid: c333728fff481d940adcbdee4fde8066, type: 3}
   defaultDeckCreator: {fileID: 1454462032}
 --- !u!1001 &1454462031
 PrefabInstance:
@@ -2460,7 +2459,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1945755312}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
         m_MethodName: RestoreMana
         m_Mode: 1
@@ -3026,17 +3025,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameUI
   cardTemplate: {fileID: 0}
---- !u!114 &1945755312 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1451605200686595864, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}
-  m_PrefabInstance: {fileID: 1454462031}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db2ecc4446858e345a77071c61fbb1c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1945755313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8060873990032492923, guid: 4e2c0b085ba3f024faad0fb0605da085, type: 3}

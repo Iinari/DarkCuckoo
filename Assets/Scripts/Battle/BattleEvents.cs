@@ -12,6 +12,7 @@ public static class BattleEvents
     //Gameplay (fired by systems)
     public static Action<Card> OnCardPlayed;
     public static Action OnDeckShuffled;
+    public static Action OnHeroSet;
 
     //Loading
     public static Action OnBattleLoaded;
@@ -30,5 +31,10 @@ public static class BattleEvents
     public static void BattleLoaded()
     {
         OnBattleLoaded.Invoke();
+    }
+
+    public static void BattleEnded(BattleResult result)
+    {
+        OnBattleEnded.Invoke(result);
     }
 }

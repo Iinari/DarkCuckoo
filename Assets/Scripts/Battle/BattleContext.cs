@@ -7,7 +7,6 @@ public class BattleContext : MonoBehaviour
     public HandManager handManager;
     public DrawPileManager drawPileManager;
     public DiscardManager discardManager;
-    public BattleInitiator battleInitiator;
     public CardPlayManager cardPlayManager;
     public BattleManager battleManager;
     public Hero playerHero;

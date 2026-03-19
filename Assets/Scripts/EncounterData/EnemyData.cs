@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyData : EncounterData
 {
+    public int enemyID;
+
     public Sprite enemySprite;
 
     public float scale;

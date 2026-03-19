@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Lalli
   m_EditorClassIdentifier: 
   encounterIcon: {fileID: 0}
+  enemyID: 1
   enemySprite: {fileID: 1302993493870987621, guid: 60273f8992eeb0c49a260b604f1d2342, type: 3}
   scale: 0.5
   enemyName: Talonpoika Lalli

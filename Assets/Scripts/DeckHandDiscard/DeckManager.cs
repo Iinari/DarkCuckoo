@@ -32,6 +32,7 @@ public class DeckManager : MonoBehaviour, IDataPersistence
     public void AddCardToDeck(CardData card)
     {
         deck.Add(card.ID);
+        DataPersistenceManager.Instance.SaveGame();
     }
 
     //Removing card from deck

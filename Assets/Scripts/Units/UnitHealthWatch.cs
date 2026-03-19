@@ -38,7 +38,7 @@ public class UnitHealthWatch : MonoBehaviour
 
     public void TakeDamage(float incomingDmg)
     {
-        attributesManager.ModifyStat(StatType.Health, incomingDmg);
+        GameSession.Instance.AttributesManager.ModifyStat(StatType.Health, incomingDmg);
         //attributesManager.ModifyAttribute(AttributesManager.Attribute.HP, incomingDmg);
     }
 }

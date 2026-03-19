@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HPvartija
   m_EditorClassIdentifier: 
   encounterIcon: {fileID: 566335295, guid: 132358e9bf26b60458b731bf001e31db, type: 3}
+  enemyID: 2
   enemySprite: {fileID: 3821784648644234806, guid: ed629a12748f2d54ba65da5e65aa3d08, type: 3}
   scale: 1
   enemyName: Hillopurkin vartija

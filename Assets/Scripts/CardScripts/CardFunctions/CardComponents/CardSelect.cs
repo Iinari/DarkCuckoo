@@ -19,10 +19,6 @@ public class CardSelect : MonoBehaviour,
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (deckManager != null)
-        {
-            deckManager.AddCardToDeck(card.cardData);
-        }
-        FindAnyObjectByType<DataPersistenceManager>().SaveGame();
+        GameSession.Instance.DeckManager.AddCardToDeck(card.cardData);
     }
 }

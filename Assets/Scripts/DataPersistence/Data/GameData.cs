@@ -17,9 +17,13 @@ public class GameData
 
     public List<int> cardsInDiscard;
 
-    
+  
 
     public float moonCycle;
 
     public int battleState;
+
+    public int enemyID;
+
+    public float enemyHP;
 }

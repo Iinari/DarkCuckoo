@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: VihainenKatti
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   encounterIcon: {fileID: 0}
+  enemyID: 3
   enemySprite: {fileID: 3818052225429175914, guid: 20ece848c12407049ae1bf0a85fdfbab, type: 3}
   scale: 0
   enemyName: Vihainen Katti

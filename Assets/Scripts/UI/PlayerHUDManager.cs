@@ -47,7 +47,6 @@ public class PlayerHUDManager : MonoBehaviour
             PlayerHero = newHero.GetComponent<Hero>();
             PlayerHero.SetHeroData(playerData);
             GameSession.Instance.AttributesManager.SetPlayerHeroData(playerData);
-            BattleContext.Instance.playerHero = PlayerHero;
         }
     }
    

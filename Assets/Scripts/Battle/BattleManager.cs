@@ -31,9 +31,10 @@ public class BattleManager : MonoBehaviour
 
     public void EndBattle(BattleResult result)
     {
+        
         currentState.SetState(BattleState.Ended);
 
-        BattleEvents.OnBattleEnded?.Invoke(result);
+        BattleEvents.BattleEnded(result);
     }
 
     public void CardPlayed(Card card)

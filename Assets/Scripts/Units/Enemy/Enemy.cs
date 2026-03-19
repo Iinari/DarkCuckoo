@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using SnIProductions;
 
-public class Enemy : BattleUnit
+public class Enemy : BattleUnit, IDataPersistence
 {
     public EnemyData enemyData;
 
@@ -23,8 +23,6 @@ public class Enemy : BattleUnit
 
     public Rarity enemyRarity;
 
-    public BattleInitiator battleSystem;
-
     public SpriteRenderer spriteRenderer;
 
     public BoxCollider2D boxCollider;
@@ -32,10 +30,30 @@ public class Enemy : BattleUnit
     private BattleStateStatus battleStateStatus;
 
     private Hero player;
-
-    private void Awake()
+    private void OnEnable()
     {
-        player = FindFirstObjectByType<Hero>();
+        DataPersistenceManager.Instance.RegisterDataPersistenceObject(this);
+    }
+
+    private void OnDisable()
+    {
+        DataPersistenceManager.Instance.UnregisterDataPersistenceObject(this);
+    }
+
+    public void LoadData(GameData data)
+    {
+        data.enemyHP = enemyCurrentHealth;
+        UpdateVisuals();    
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        enemyCurrentHealth = data.enemyHP;
+    }
+
+    public void ResetToDefault(ref GameData data)
+    {
+        //TO-DO implement enemies have whole Stat System
     }
 
     public void UpdateEnemyDisplay()
@@ -54,8 +72,7 @@ public class Enemy : BattleUnit
         if (enemyCurrentHealth > 0)
         {
             enemyCurrentHealth -= damage;
-            enemyHPTxt.text = enemyCurrentHealth.ToString();
-            hpSlider.value = enemyCurrentHealth;
+            UpdateVisuals();
         }
         if (enemyCurrentHealth <= 0)
         {
@@ -74,9 +91,15 @@ public class Enemy : BattleUnit
 
         else
         {
-            player = FindFirstObjectByType<Hero>();
+            player = BattleContext.Instance.playerHero;
             player.GetComponent<UnitHealthWatch>().TakeDamage(-dmg);
         }
 
+    }
+
+    public void UpdateVisuals()
+    {
+        enemyHPTxt.text = enemyCurrentHealth.ToString();
+        hpSlider.value = enemyCurrentHealth;
     }
 }

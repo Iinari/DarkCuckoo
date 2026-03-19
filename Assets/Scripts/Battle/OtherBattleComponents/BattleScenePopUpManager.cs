@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class BattleScenePopUpManager : BattleComponent
+public class BattleScenePopUpManager : MonoBehaviour
 {
     //Gameobjects of pop ups
     [SerializeField] GameObject cardDisplayPrefab; //Both draw and discard display use the same prefab
@@ -17,7 +17,22 @@ public class BattleScenePopUpManager : BattleComponent
 
     private UnitHealthState state;
 
-    public override void BattleSetUp(BattleInitiator battleSystem)
+    private void OnEnable()
+    {
+        BattleEvents.OnBattleStarted += NewBattle;
+        BattleEvents.OnBattleLoaded += ResumeBattle;
+        BattleEvents.OnBattleEnded += OpenResultScreen;
+    }
+
+    private void OnDisable()
+    {
+        BattleEvents.OnBattleStarted -= NewBattle;
+        BattleEvents.OnBattleLoaded -= ResumeBattle;
+        BattleEvents.OnBattleEnded -= OpenResultScreen;
+    }
+
+
+    public void NewBattle()
     {
         GameObject results = Instantiate(resultPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
         resultPopUp = results.GetComponent<ResultPopUp>();
@@ -30,7 +45,7 @@ public class BattleScenePopUpManager : BattleComponent
         state = BattleContext.Instance.playerHero.GetComponent<UnitHealthState>();
         state.OnStateChanged += OnStateChanged;
     }
-    public override void ResumeBattle(BattleInitiator battleSystem)
+    public void ResumeBattle()
     {
         GameObject results = Instantiate(resultPrefab, BattleTransform.position, Quaternion.identity, BattleTransform);
         resultPopUp = results.GetComponent<ResultPopUp>();
@@ -55,23 +70,24 @@ public class BattleScenePopUpManager : BattleComponent
         }
     }
 
-    public void OpenResultScreen(bool playerDied)
+    public void OpenResultScreen(BattleResult result)
     {
-        if (playerDied) 
+        switch (result)
         {
-            if (resultPopUp != null)
-            {
-                resultPopUp.OpenDeathScreen();
-            }
-            else Debug.Log("ResultPopUp Null");
-        }
-        else
-        {
-            if (resultPopUp != null)
-            {
-                resultPopUp.OpenVictoryScreen();
-            }
-            else Debug.Log("ResultPopUp Null");
+            case BattleResult.Won:
+                if (resultPopUp != null)
+                {
+                    resultPopUp.OpenVictoryScreen();
+                }
+                else Debug.Log("ResultPopUp Null");
+                break;
+            case BattleResult.Lost:
+                if (resultPopUp != null)
+                {
+                    resultPopUp.OpenDeathScreen();
+                }
+                else Debug.Log("ResultPopUp Null");
+                break;
         }
     }
 

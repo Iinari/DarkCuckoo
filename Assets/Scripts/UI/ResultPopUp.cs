@@ -11,6 +11,7 @@ public class ResultPopUp : PopUp
 
     [SerializeField] Transform deathScreenParent;
     [SerializeField] Transform victoryScreenParent;
+    [SerializeField] GameObject cardDisplay;
 
     [SerializeField] GameObject rewardBtn1;
     [SerializeField] GameObject rewardBtn2;
