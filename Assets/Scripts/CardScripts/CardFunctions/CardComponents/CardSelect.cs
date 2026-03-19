@@ -1,3 +1,4 @@
+using SnIProductions;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,17 +9,17 @@ public class CardSelect : MonoBehaviour,
 
     private Card card;
 
-    [SerializeField] private DeckManager deckManager;
+    public System.Action OnCardSelected;
 
     void Awake()
     {
         state = GetComponent<CardInteractionState>();
         card = GetComponent<Card>();
 
-        deckManager = FindFirstObjectByType<DeckManager>();
     }
     public void OnPointerDown(PointerEventData eventData)
     {
         GameSession.Instance.DeckManager.AddCardToDeck(card.cardData);
+        OnCardSelected?.Invoke();
     }
 }

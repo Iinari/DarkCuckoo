@@ -36,7 +36,7 @@ public class ResultPopUp : PopUp
             child.gameObject.SetActive(false);
         }
 
-        GetComponentInChildren<RewardManager>().DisplayRewardCards();
+        GetComponentInChildren<CardRewardManager>().DisplayRewardCards();
     }
 
     public void OpenDeathScreen()

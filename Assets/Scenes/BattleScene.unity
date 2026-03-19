@@ -1886,13 +1886,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65d3e69eb232b54791b5cd9d0671385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleContext
-  handManager: {fileID: 996131595}
-  drawPileManager: {fileID: 1945755315}
-  discardManager: {fileID: 1945755314}
-  cardPlayManager: {fileID: 1945755319}
   battleManager: {fileID: 2120140087}
-  playerHero: {fileID: 5873522981297793817, guid: c333728fff481d940adcbdee4fde8066, type: 3}
+  cardDatabase: {fileID: 1627151927}
+  cardPlayManager: {fileID: 1945755319}
   defaultDeckCreator: {fileID: 1454462032}
+  discardManager: {fileID: 1945755314}
+  drawPileManager: {fileID: 1945755315}
+  handManager: {fileID: 996131595}
+  playerHero: {fileID: 5873522981297793817, guid: c333728fff481d940adcbdee4fde8066, type: 3}
+  rewardManager: {fileID: 0}
 --- !u!1001 &1454462031
 PrefabInstance:
   m_ObjectHideFlags: 0

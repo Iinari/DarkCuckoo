@@ -291,6 +291,7 @@ MonoBehaviour:
   pointsTxt: {fileID: 0}
   deathScreenParent: {fileID: 2668822207869446866}
   victoryScreenParent: {fileID: 1542630954552010948}
+  cardDisplay: {fileID: 0}
   rewardBtn1: {fileID: 0}
   rewardBtn2: {fileID: 0}
   rewardBtn3: {fileID: 0}
@@ -462,8 +463,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1788988045404779827}
   - {fileID: 777424676373408211}
+  - {fileID: 1788988045404779827}
   - {fileID: 3518178281912400300}
   m_Father: {fileID: 3805121546113768052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -591,6 +592,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8910627948065930097, guid: 714a13f6d7e19ef4db612e6a3a146844, type: 3}
+      propertyPath: contentBox
+      value: 
+      objectReference: {fileID: 4331172600666399301}
+    - target: {fileID: 8910627948065930097, guid: 714a13f6d7e19ef4db612e6a3a146844, type: 3}
       propertyPath: rewardCount
       value: 3
       objectReference: {fileID: 0}
@@ -606,6 +611,11 @@ PrefabInstance:
 --- !u!224 &3518178281912400300 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2062842489889689947, guid: 714a13f6d7e19ef4db612e6a3a146844, type: 3}
+  m_PrefabInstance: {fileID: 3203084979434481911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4331172600666399301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1182421784154393266, guid: 714a13f6d7e19ef4db612e6a3a146844, type: 3}
   m_PrefabInstance: {fileID: 3203084979434481911}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6294607385246655791
@@ -723,7 +733,7 @@ PrefabInstance:
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 3582777905927030487, guid: 022ae2a29a27fe74e9943aa46375fa57, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -738,7 +748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SaveGame
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -746,7 +756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: DataPersistenceManager, Assembly-CSharp
+      value: LevelLoader, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -754,7 +764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2038514017924260409, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6577673412043504906, guid: 352420c21947bc74e9db96ad4cae86e7, type: 3}
       propertyPath: m_Name

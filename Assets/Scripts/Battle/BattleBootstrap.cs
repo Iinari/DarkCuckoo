@@ -28,6 +28,7 @@ public class BattleBootstrap : MonoBehaviour
 
     IEnumerator LoadBattle()
     {
+        Debug.Log("LoadBattle");
         yield return null;
 
         DataPersistenceManager.Instance.LoadGame();

@@ -4,13 +4,16 @@ public class BattleContext : MonoBehaviour
 {
     public static BattleContext Instance { get; private set; }
 
-    public HandManager handManager;
-    public DrawPileManager drawPileManager;
-    public DiscardManager discardManager;
-    public CardPlayManager cardPlayManager;
     public BattleManager battleManager;
-    public Hero playerHero;
+    public CardDatabase cardDatabase;
+    public CardPlayManager cardPlayManager;
     public DefaultDeckCreator defaultDeckCreator;
+    public DiscardManager discardManager;
+    public DrawPileManager drawPileManager;
+    public HandManager handManager;
+    public Hero playerHero;
+    public CardRewardManager rewardManager;
+
 
     void Awake()
     {
