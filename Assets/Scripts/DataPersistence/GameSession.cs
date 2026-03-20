@@ -7,6 +7,9 @@ public class GameSession : MonoBehaviour
     public AttributesManager AttributesManager { get; private set; }
     public DeckManager DeckManager { get; private set; }
 
+    // store the encounter chosen from the map before loading the battle
+    public EncounterData SelectedEncounter { get; set; }
+
     void Awake()
     {
         if (Instance != null && Instance != this)

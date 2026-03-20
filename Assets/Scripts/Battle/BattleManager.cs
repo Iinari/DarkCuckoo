@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    public BattleStateStatus currentState;
+    private BattleStateStatus currentState;
 
     public void StartBattle()
     {
@@ -24,8 +24,9 @@ public class BattleManager : MonoBehaviour
         BattleEvents.TurnStarted();
     }
 
-    public void EndTurn()
+    public void EndPlayerTurn()
     {
+        GetComponent<BattleStateStatus>().SetState(BattleState.EnemyTurn);
         BattleEvents.OnTurnEnded?.Invoke();
     }
 
